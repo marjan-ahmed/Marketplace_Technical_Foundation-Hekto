@@ -3,10 +3,19 @@ import ProductCard from "./components/ProductCard1";
 import { Button } from "@/components/ui/button";
 import FeaturedProduct from "./components/FeaturedProduct";
 import ServiceCard from "./components/ServiceCard";
+import Head from 'next/head';
+
 
 export default function Home() {
   return (
     <>
+    <Head>
+        <title>Home | Heckto</title>
+        <meta name="description" content="Welcome to Our Store Heckto. We offer the best products and services to help you achieve your goals." />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </Head>
+
+    <main>
   <div className="font-[josefin sans]">
   <div className="relative h-[60em] sm:h-[38em] bg-pantonePurple flex flex-col sm:flex-row items-center justify-center sm:justify-between py-8 px-4 sm:px-8 md:px-16 lg:px-32">
     <div className="flex-shrink-0 absolute top-0 sm:left-10">
@@ -134,7 +143,7 @@ export default function Home() {
 
       </div>
     </div>
-
+    </main>
     </>
   );
 }
