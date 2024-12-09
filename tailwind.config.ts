@@ -9,6 +9,11 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+		fontFamily: {
+			josefin: ["var(--font-josefin)"],
+			poppins: ["var(--font-poppins)"],
+			lato: ["var(--font-lato)"],
+		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

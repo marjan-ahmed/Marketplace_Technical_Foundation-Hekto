@@ -17,17 +17,14 @@ function ProductCard({src, alt}: ProductCardProps) {
         height={178}/>
       </div>
       <div className="flex flex-col items-center justify-center gap-3">
-        <h1 className="font-bold text-[18px] text-pink text-center mt-3">Cantilever chair</h1>
+        <h1 className="font-bold font-lato text-[18px] text-pink text-center mt-3">Cantilever chair</h1>
         <div className="flex gap-1 w-[52px] h-[4px] justify-center">
           <div className="w-[14px] h-[4px] bg-[#05E6B7] rounded-[10px]"></div>
           <div className="w-[14px] h-[4px] bg-[#F701A8] rounded-[10px]"></div>
           <div className="w-[14px] h-[4px] bg-[#00009D] rounded-[10px]"></div>
         </div>
-        <p className="text-center text-[#151875] text-[14px]">Code - Y523201</p>
-        <p className="text-center text-[#151875] text-[14px]">$42.00</p>
-      </div>
-      <div className="w-[91px]">
-
+        <p className="text-center font-josefin text-[#151875] text-[14px]">Code - Y523201</p>
+        <p className="text-center mt-[-6px] font-josefin text-[#151875] text-[14px]">$42.00</p>
       </div>
     </div>
   );
