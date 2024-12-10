@@ -283,7 +283,7 @@ export default function Home() {
     </div>
     </div>
 
-  <div className="w-full sm:w-[699px] sm:h-[597px] lg:w-1/2 flex sm:gmt-[-10em] ">
+  <div className="w-full sm:w-[699px] sm:h-[597px] lg:w-1/2 flex sm:mt-[-10em] ">
     <Image className="object-cover"
       src={'/discounted-product.png'}
       alt="Discounted Item"
