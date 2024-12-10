@@ -7,7 +7,7 @@ type BreadcrumbProps = {
 
 function Breadcrumb({ title, subtitle }: BreadcrumbProps) {
   return (
-    <div className="w-full h-auto lg:h-[411px] bg-pantonePurple flex items-center justify-center sm:justify-start">
+    <div className="w-full h-auto lg:h-[286px] bg-pantonePurple flex items-center justify-center sm:justify-start">
       <div className="text-center sm:text-left px-6 sm:px-36 py-12 w-full">
         <h1 className="text-[32px] sm:text-[36px] font-extrabold font-josefin text-[#101750]">
           {title}
