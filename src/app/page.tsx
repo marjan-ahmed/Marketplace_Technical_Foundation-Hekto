@@ -5,7 +5,8 @@ import FeaturedProduct from "./components/FeaturedProduct";
 import ServiceCard from "./components/ServiceCard";
 import Head from 'next/head';
 import TrendingProducts from "./components/TrendingProducts";
-import { Check, Dot } from "lucide-react";
+import { Check, Circle, Dot } from "lucide-react";
+import LatestBlog from "./components/LatestBlog";
 
 
 export default function Home() {
@@ -147,16 +148,16 @@ export default function Home() {
   </h1>
   <div className="flex flex-wrap gap-7 justify-center items-center">
     <div className="flex-grow-0">
-      <TrendingProducts src="/product-18.png" width={171} height={171} />
+      <TrendingProducts src="/product-29.png" width={171} height={171} />
     </div>
     <div className="flex-grow-0">
-      <TrendingProducts src="/product-19.png" width={187} height={187} />
+      <TrendingProducts src="/product-27.png" width={187} height={187} />
     </div>
     <div className="flex-grow-0">
-      <TrendingProducts src="/product-20.png" width={197} height={189} />
+      <TrendingProducts src="/product-28.png" width={197} height={189} />
     </div>
     <div className="flex-grow-0">
-      <TrendingProducts src="/product-17.png" width={253} height={211} />
+      <TrendingProducts src="/product-19.png" width={253} height={211} />
     </div>
     </div>
     <div className="flex flex-start flex-wrap justify-start gap-7 mt-7">
@@ -293,6 +294,146 @@ export default function Home() {
   </div>
   </div>
 </div>
+
+      <div>
+      <h1 className="text-[32px] sm:text-[42px] font-josefin text-center mt-10 sm:mt-12 leading-[49.22px] text-[#151875] font-bold">
+      Top Categories
+      </h1>
+      </div>
+      <div className="flex flex-wrap justify-center gap-6 mt-10">
+  <div className="relative w-[269px] h-[345px]">
+    <div className="relative w-[269px] h-[269px] bg-[#F6F7FB] rounded-full hover:transition-all hover:ring-4 hover:ring-purple hover:ring-inset group">
+      <div className="w-[268px] h-[268px] rounded-full p-4 flex justify-center items-center">
+        <Image 
+          src={'/product-26.png'}
+          alt="Product 1"
+          width={178}
+          height={178}
+        />
+      </div>
+      <div className="flex flex-col justify-center mt-4 text-center">
+        <h5 className="font-normal font-josefin text-[20px] text-[#151875]">Mini LCW Chair</h5>
+        <p className="font-normal font-josefin text-[16px] text-[#151875]">$56.00</p>
+      </div>
+      <div className="absolute bottom-1 left-0 right-0 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">
+        <button className="bg-[#08D15F] text-white py-2 px-4 text-[12px] font-josefin">Shop Now</button>
+      </div>
+    </div>
+  </div>
+
+  <div className="relative w-[269px] h-[345px]">
+    <div className="relative w-[269px] h-[269px] bg-[#F6F7FB] rounded-full hover:transition-all hover:ring-4 hover:ring-purple hover:ring-inset group">
+      <div className="w-[268px] h-[268px] rounded-full p-4 flex justify-center items-center">
+        <Image 
+          src={'/product-1.png'}
+          alt="Product 2"
+          width={178}
+          height={178}
+        />
+      </div>
+      <div className="flex flex-col justify-center mt-4 text-center">
+        <h5 className="font-normal font-josefin text-[20px] text-[#151875]">Mini LCW Chair</h5>
+        <p className="font-normal font-josefin text-[16px] text-[#151875]">$56.00</p>
+      </div>
+      <div className="absolute bottom-1 left-0 right-0 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">
+        <button className="bg-[#08D15F] text-white py-2 px-4 text-[12px] font-josefin">Shop Now</button>
+      </div>
+    </div>
+  </div>
+
+  <div className="relative w-[269px] h-[345px]">
+    <div className="relative w-[269px] h-[269px] bg-[#F6F7FB] rounded-full hover:transition-all hover:ring-4 hover:ring-purple hover:ring-inset group">
+      <div className="w-[268px] h-[268px] rounded-full p-4 flex justify-center items-center">
+        <Image 
+          src={'/product-29.png'}
+          alt="Product 3"
+          width={178}
+          height={178}
+        />
+      </div>
+      <div className="flex flex-col justify-center mt-4 text-center">
+        <h5 className="font-normal font-josefin text-[20px] text-[#151875]">Mini LCW Chair</h5>
+        <p className="font-normal font-josefin text-[16px] text-[#151875]">$56.00</p>
+      </div>
+      <div className="absolute bottom-1 left-0 right-0 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">
+        <button className="bg-[#08D15F] text-white py-2 px-4 text-[12px] font-josefin">Shop Now</button>
+      </div>
+    </div>
+  </div>
+
+  <div className="relative w-[269px] h-[345px]">
+    <div className="relative w-[269px] h-[269px] bg-[#F6F7FB] rounded-full hover:transition-all hover:ring-4 hover:ring-purple hover:ring-inset group">
+      <div className="w-[268px] h-[268px] rounded-full p-4 flex justify-center items-center">
+        <Image 
+          src={'/product-26.png'}
+          alt="Product 4"
+          width={178}
+          height={178}
+        />
+      </div>
+      <div className="flex flex-col justify-center mt-4 text-center">
+        <h5 className="font-normal font-josefin text-[20px] text-[#151875]">Mini LCW Chair</h5>
+        <p className="font-normal font-josefin text-[16px] text-[#151875]">$56.00</p>
+      </div>
+      <div className="absolute bottom-1 left-0 right-0 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">
+        <button className="bg-[#08D15F] text-white py-2 px-4 text-[12px] font-josefin">Shop Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div className="flex gap-3 mt-8 justify-center">
+    <div className="bg-pink rounded-full w-[10px] h-[9.89px]"><Circle size={10} color="#FB2E86"/></div>
+          <div><Circle size={10} color="#FB2E86"/></div>
+          <div><Circle size={10} color="#FB2E86"/></div>
+        </div>
+      
+        <div className="mt-10 w-full h-auto relative flex justify-center items-center">
+  <div className="relative w-full h-auto">
+    {/* Image */}
+    <Image 
+      src={'/latest-update-img.png'}
+      alt="Latest Update Image"
+      layout="responsive"
+      width={1920}
+      height={762}
+    />
+    
+    {/* Content - Heading and Button */}
+    <div className="absolute top-12 sm:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center z-10 px-0 sm:px-4">
+      <h1 className="text-[10px] sm:text-[35px] text-[#151875] leading-[1.5] font-josefin font-bold">
+        Get Latest Update By Subscribe <br className="text-flex"/> Our Newsletter
+      </h1>
+      <Button className="w-[5em] h-[2em] font-josefin text-[8px] px-5 tracking-[2%] leading-[2%] mt-0 sm:mt-8 sm:w-[173px] sm:h-[49px] sm:text-[17px] rounded-sm">
+        Shop Now
+      </Button>
+    </div>
+  </div>
+</div>
+
+
+
+      <div className="mt-20 mb-10">
+        <Image 
+        src={'/companies.png'}
+        alt="companies logos"
+        width={904}
+        height={93}/>
+      </div>
+
+      <div>
+      <h1 className="text-[32px] sm:text-[42px] font-josefin text-center leading-[49.22px] text-[#151875] font-bold">
+    Latest Product
+  </h1>
+      </div>
+      <div className="flex flex-wrap justify-center gap-12 mt-16">
+        <LatestBlog src="/blog-1.png" name="sufyan" date="20 August,2022"/>
+        <LatestBlog src="/blog-2.png" name="marjan" date="20 August,2022"/>
+        <LatestBlog src="/blog-3.png" name="Abdul Rehman" date="20 August,2022"/>
+      </div>
+
+
+
 
 
       </div>

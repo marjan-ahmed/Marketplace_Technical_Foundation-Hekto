@@ -129,10 +129,10 @@ const Header = () => {
 
               {/* Mobile Search Input */}
               <div className="flex w-full max-w-sm relative items-center">
-                <Input type="email" placeholder="Search" className="text-black w-48" />
+                <Input type="email" placeholder="Search" className="text-black w-48 font-josefin" />
                 <button
                   type="submit"
-                  className="p-[8px] absolute right-0 bg-purple text-white"
+                  className="p-[8px] absolute right-0 bg-purple text-white font-josefin"
                 >
                   <SearchIcon size={20} />
                 </button>
