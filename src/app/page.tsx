@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import FeaturedProduct from "./components/FeaturedProduct";
 import ServiceCard from "./components/ServiceCard";
 import Head from 'next/head';
+import TrendingProducts from "./components/TrendingProducts";
+import { Check, Dot } from "lucide-react";
 
 
 export default function Home() {
@@ -139,6 +141,158 @@ export default function Home() {
   </div>
 </div>
 
+<div className="mx-auto max-w-[1200px] px-4">
+  <h1 className="text-[32px] sm:text-[42px] font-josefin text-center leading-[49.22px] text-[#151875] font-bold mt-10 sm:mt-28">
+    Trending Products
+  </h1>
+  <div className="flex flex-wrap gap-7 justify-center items-center">
+    <div className="flex-grow-0">
+      <TrendingProducts src="/product-18.png" width={171} height={171} />
+    </div>
+    <div className="flex-grow-0">
+      <TrendingProducts src="/product-19.png" width={187} height={187} />
+    </div>
+    <div className="flex-grow-0">
+      <TrendingProducts src="/product-20.png" width={197} height={189} />
+    </div>
+    <div className="flex-grow-0">
+      <TrendingProducts src="/product-17.png" width={253} height={211} />
+    </div>
+    </div>
+    <div className="flex flex-start flex-wrap justify-start gap-7 mt-7">
+    <div className="w-full sm:w-[420px] h-[270px] bg-[#FFF6FB] relative">
+      <div className="w-[269px] h-[56px] m-7">
+        <h1 className="font-josefin font-semibold text-[26px] text-[#151875]">23% off in all products</h1>
+        <button className="font-lato font-semibold text-[16px] border-b-2 border-[#FB2E86] text-[#FB2E86]">Shop Now</button>
+        <div className="absolute right-0 bottom-3">
+        <Image 
+        src={'/product-24.png'}
+        alt="product 5"
+        width={213}
+        height={207}/>
+        </div>
+      </div>
+    </div>
+    <div className="w-full sm:w-[420px] h-[270px] bg-[#EEEFFB] relative">
+    <div className="w-[269px] h-[56px] m-7">
+        <h1 className="font-josefin font-semibold text-[26px] text-[#151875]">23% off in all products</h1>
+        <button className="font-lato font-semibold text-[16px] border-b-2 border-[#FB2E86] text-[#FB2E86]">View Collection</button>
+        <div className="absolute right-1 mt-4">
+        <Image 
+        src={'/product-25.png'}
+        alt="product 6"
+        width={312}
+        height={173}/>
+        </div>
+      </div>
+    </div>
+    <div className="flex justify-center gap-7 flex-col">
+      <div className="w-[267px] h-[74px] flex items-center gap-2">
+        <div className="w-[107px] h-[74px] flex justify-center bg-[#F5F6F8]">
+          <Image 
+          src={'/product-21.png'}
+          alt="Product 1"
+          width={64}
+          height={71}/>
+        </div>
+        <div className="flex flex-col">
+        <h1 className="font-josefin text-[16px] text-[#151875]">Executive Seat chair</h1>
+        <p className="line-through text-[12px] text-[#151875] font-josefin font-normal">$32.00</p>
+        </div>
+      </div>
+
+      <div className="w-[267px] h-[74px]">
+      <div className="w-[267px] h-[74px] flex items-center gap-2">
+        <div className="w-[107px] h-[74px] flex justify-center bg-[#F5F6F8]">
+          <Image 
+          src={'/product-22.png'}
+          alt="Product 1"
+          width={64}
+          height={71}/>
+        </div>
+        <div className="flex flex-col">
+        <h1 className="font-josefin text-[16px] text-[#151875]">Executive Seat chair</h1>
+        <p className="line-through text-[12px] text-[#151875] font-josefin font-normal">$32.00</p>
+        </div>
+        </div>
+      </div>
+
+      <div className="w-[267px] h-[74px]">
+      <div className="w-[267px] h-[74px] flex items-center gap-2">
+        <div className="w-[107px] h-[74px] flex justify-center bg-[#F5F6F8]">
+          <Image 
+          src={'/product-23.png'}
+          alt="Product 1"
+          width={67}
+          height={67}/>
+        </div>
+        <div className="flex flex-col">
+        <h1 className="font-josefin text-[16px] text-[#151875]">Executive Seat chair</h1>
+        <p className="line-through text-[12px] text-[#151875] font-josefin font-normal">$32.00</p>
+        </div>
+        </div>
+      </div>
+    </div>
+    
+    <div className="flex justify-center mx-auto">
+    <div className="my-16 flex justify-center flex-col items-center">
+  <h1 className="text-[32px] mb-3 sm:mb-4 sm:text-[42px] font-josefin text-center leading-[49.22px] text-[#151875] font-bold">
+    Discounted Item
+  </h1>
+  <div className="w-full flex justify-center">
+    <ul className="font-lato font-normal text-[14px] sm:text-[18px] text-[#151875] leading-[21.6px] mt-2 flex gap-5 sm:gap-8">
+      <div className="flex gap-0">
+      <li className="text-pink border-b-2 border-pink w-[95px]">Wood Chair</li>
+      <span className="text-pink w-[5px] h-[5px]"><Dot size={30}/></span>
+      </div>
+      <li>Plastic Chair</li>
+      <li>Sofa Collection</li>
+    </ul>
+  </div>
+  </div>
+  </div>
+    </div>
+    
+    <div className="flex flex-wrap lg:flex-nowrap gap-5 sm:mt-12"> {/* main div */}
+  <div className="w-full lg:w-1/2">
+    <div className="sm:w-[509px] sm:h-[46px] flex sm:justify-center">
+      <h1 className="text-[#151875] font-josefin font-bold text-[20px] sm:text-[35px] tracking-[1.5%]">20% Discount Of All Products</h1>
+    </div>
+    <h2 className="mt-0 mb-3 sm:mt-3 text-pink font-lato text-[16px] sm:text-[21px] tracking-[1.5%]">Eams Sofa Compact</h2>
+    <div className="sm:w-[523px] h-[49px] text-wrap">
+      <p className="text-[#B7BACB] text-[14px] sm:text-[17px] font-normal font-lato">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu eget feugiat habitasse nec, bibendum condimentum.</p>
+    </div>
+    <div className="flex flex-wrap text mt-6">
+      <div className="w-full md:w-auto">
+        <ul className="flex flex-wrap gap-x-6 gap-y-4 text-[14px] sm:text-[16px] font-lato font-normal text-[#B8B8DC]">
+          <li className="flex gap-1 w-full sm:w-auto"><Check color="#7569B2"/>Material expose like metals</li>
+          <li className="flex gap-1 w-full sm:w-auto"><Check color="#7569B2"/>Clear lines and geometric figures</li>
+        </ul>
+      </div>
+      <div className="w-full md:w-auto mt-4">
+        <ul className="flex flex-wrap gap-x-14 gap-y-4 text-[14px] sm:text-[16px] font-lato font-normal text-[#B8B8DC]">
+          <li className="flex gap-1 w-full sm:w-auto"><Check color="#7569B2"/>Simple neutral colours.</li>
+          <li className="flex gap-1 w-full sm:w-auto"><Check color="#7569B2"/>Material expose like metals</li>
+        </ul>
+      </div>
+    </div>
+    <div className="mt-8 sm:mt-10">
+      <Button className="w-full sm:w-[200px] h-[45px] sm:h-[57px] text-center text-[14px] sm:text-[17px] font-josefin tracking-[2%] rounded-[2px]">
+        Shop Now
+      </Button>
+    </div>
+    </div>
+
+  <div className="w-full sm:w-[699px] sm:h-[597px] lg:w-1/2 flex sm:gmt-[-10em] ">
+    <Image className="object-cover"
+      src={'/discounted-product.png'}
+      alt="Discounted Item"
+      width={699}
+      height={597}
+    />
+  </div>
+  </div>
+</div>
 
 
       </div>
