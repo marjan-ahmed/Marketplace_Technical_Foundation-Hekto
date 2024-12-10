@@ -44,7 +44,9 @@ const Header = () => {
               USD <ChevronDown size={20} />
             </li>
             <li className="flex items-center gap-1">
+              <Link href={'/login'} className="flex gap-1">
               Login <User size={20} />
+              </Link>
             </li>
             <li className="sm:flex items-center gap-1 hidden">
               Wishlist <Heart size={20} />
@@ -106,7 +108,7 @@ const Header = () => {
               <Menu />
             </SheetTrigger>
             <SheetContent className="w-full max-w-xs">
-              <ul className="flex flex-col gap-8 py-3 text-[16px] font-normal">
+              <ul className="flex flex-col gap-6 py-3 text-[16px] font-normal">
                 <li className="flex">
                   Home <ChevronDown />
                 </li>
@@ -125,11 +127,14 @@ const Header = () => {
                 <li>
                   <Link href="/contact">Contact</Link>
                 </li>
+                <li>
+              <Link href={'/login'}>Login</Link>
+                </li>
               </ul>
 
               {/* Mobile Search Input */}
               <div className="flex w-full max-w-sm relative items-center">
-                <Input type="email" placeholder="Search" className="text-black w-48 font-josefin" />
+                <Input type="email" placeholder="Search" className="text-black w-full font-josefin" />
                 <button
                   type="submit"
                   className="p-[8px] absolute right-0 bg-purple text-white font-josefin"
