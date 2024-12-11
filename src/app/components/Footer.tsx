@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Facebook, Instagram, Twitter } from 'lucide-react'
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+
 import React from 'react'
 
 function Footer() {
@@ -60,13 +61,13 @@ function Footer() {
           <div className="flex justify-center items-center">
             <ul className="flex gap-2 sm:gap-4">
               <li className="bg-[#151875] w-[35px] h-[35px] rounded-full flex justify-center items-center">
-                <Facebook className="text-white" size={20}/>
+                <FaFacebookF color='white' size={20}/>
               </li>
               <li className="bg-[#151875] w-[35px] h-[35px] rounded-full flex justify-center items-center">
-                <Instagram className="text-white" size={20}/>
+              <FaInstagram color="white" size={20}/>
               </li>
               <li className="bg-[#151875] w-[35px] h-[35px] rounded-full flex justify-center items-center">
-                <Twitter className="text-white" size={20}/>
+                <FaTwitter color="white" size={20}/>
               </li>
             </ul>
           </div>
