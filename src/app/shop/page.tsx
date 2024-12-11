@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Breadcrumb from "../components/Breadcrumb";
 import ProductCart2 from "../components/ProductCart2";
+import { products } from "../products/page";
 import Image from "next/image";
 
-export default async function Shop() {
+export default function Shop() {
   return (
     <>
     <div className="">
@@ -27,113 +28,20 @@ export default async function Shop() {
         </div>
 
         <div className="mt-10 flex flex-wrap justify-center gap-5 mx-32 mb-10">
-          <ProductCart2
-            src="/product-5.png"
-            alt="Product 1"
-            width={201}
-            height={201}
-            productName="Vel elit euismod"
-            bg="#F6F7FB"
-          />
-          <ProductCart2
-            src="/product-6.png"
-            alt="Product 2"
-            width={169}
-            height={169}
-            productName="Ultricies condimentum imperdiet"
-            bg="#EBF4F3"
-          />
-          <ProductCart2
-            src="/product-7.png"
-            alt="Product 3"
-            width={201}
-            height={201}
-            productName="Vitae suspendisse sed"
-            bg="#F6F7FB"
-          />
-          <ProductCart2
-            src="/product-8.png"
-            alt="Product 4"
-            width={188}
-            height={188}
-            productName="Sed at fermentum"
-            bg="#F6F7FB"
-          />
-          <ProductCart2
-            src="/product-9.png"
-            alt="Product 5"
-            width={128}
-            height={139}
-            productName="Fusce pellentesque at"
-            bg="#F6F7FB"
-          />
-          <ProductCart2
-            src="/product-10.png"
-            alt="Product 6"
-            width={154}
-            height={158}
-            productName="Vestibulum magna laoreet"
-            bg="#F6F7FB"
-          />
-          <ProductCart2
-            src="/product-11.png"
-            alt="Product 7"
-            width={114}
-            height={144}
-            productName="Sollicitudin amet orci"
-            bg="#F6F7FB"
-          />
-          <ProductCart2
-            src="/product-12.png"
-            alt="Product 8"
-            width={167}
-            height={167}
-            productName="Ultrices mauris sit"
-            bg="#F6F7FB"
-          />
-          <ProductCart2
-            src="/product-13.png"
-            alt="Product 9"
-            width={170}
-            height={151}
-            productName="Pellentesque condimentum ac"
-            bg="#F6F7FB"
-          />
-          <ProductCart2
-            src="/product-14.png"
-            alt="Product 10"
-            width={169}
-            height={158}
-            productName="Cras scelerisque velit"
-            bg="#F6F7FB"
-          />
-          <ProductCart2
-            src="/product-15.png"
-            alt="Product 11"
-            width={176}
-            height={176}
-            productName="Lectus vulputate faucibus"
-            bg="#F6F7FB"
-          />
-          <ProductCart2
-            src="/product-16.png"
-            alt="Product 12"
-            width={188}
-            height={188}
-            productName="Purus risus, ut"
-            bg="#F6F7FB"
-          />
-
-          <div className="flex wrap mt-14 mb-12">
-            <Image
-              src={"/companies.png"}
-              alt="testimonials"
-              width={904}
-              height={93}
-            />
-          </div>
+        {products.map((product) => (
+          <Link key={product.id} href={`/products/${product.id}`} passHref>
+              <ProductCart2
+                src={product.imageSrc}
+                alt={product.name}
+                width={201}
+                height={201}
+                productName={product.name}
+                bg="#F6F7FB"
+              />
+          </Link>
+        ))}      
         </div>
-      </div>
+        </div>
     </>
   );
 }

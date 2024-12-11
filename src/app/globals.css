@@ -6,6 +6,29 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.star-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 14px; /* match the size of the star */
+  height: 14px; /* match the size of the star */
+  background-color: #FFC416; /* background color */
+  clip-path: polygon(
+      50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
+  ); /* star shape */
+}
+
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
