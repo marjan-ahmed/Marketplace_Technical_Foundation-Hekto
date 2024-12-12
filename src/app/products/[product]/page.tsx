@@ -14,8 +14,8 @@ const ProductDetail = ({ params }: { params: { product: string } }) => {
   const product = {
     id,
     name: 'Product Name',
-    imageSrc: '/path/to/image.jpg',
-    price: '32.00'
+    imageSrc: 'product-3.png',
+    price: '$32.00'
   };
 
   if (!product) {

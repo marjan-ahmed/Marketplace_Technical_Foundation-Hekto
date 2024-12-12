@@ -1,7 +1,3 @@
-import React from 'react';
-let totalProducts: number= Math.floor(Math.random() * (29 - 2 + 1)) + 2;
-
-
 type Product = {
   id: string;
   name: string;
