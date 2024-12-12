@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Breadcrumb from "../components/Breadcrumb";
 import ProductCart2 from "../components/ProductCart2";
-import { products } from "../products/page";
+import { products } from "../components/products/page";
 import Image from "next/image";
 
 export default function Shop() {
