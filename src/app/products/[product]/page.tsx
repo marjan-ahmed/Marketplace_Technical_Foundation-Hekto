@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { products } from '../page';
+import totalProducts from '../page';
 import Breadcrumb from '@/app/components/Breadcrumb';
 import { ArrowRight, Facebook, Heart, Instagram, Twitter } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,8 +11,6 @@ import {
 } from "@/components/ui/carousel";
 import StarRating from '@/app/components/StarRating';
 import Link from 'next/link';
-
-const totalProducts= Math.floor(Math.random() * (29 - 2 + 1)) + 2;
 
 
 const ProductDetail = ({ params }: { params: { product: string } }) => {
