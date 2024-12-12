@@ -10,11 +10,20 @@ import {
 } from "@/components/ui/carousel";
 import StarRating from '@/app/components/StarRating';
 
+interface Product {
+  id: string;
+  name: string;
+  imageSrc: string;
+  price: string;
+  // Add other necessary fields
+}
+
+
 const ProductDetail = ({ params }: { params: { product: string } }) => {
   const id = params.product;
   console.log(id);
 
-  const product = products.find((product) => product.id === id);
+  const product = products.find((product: Product) => product.id === id);
 
   if (!product) {
     return <div>Product not found</div>;
