@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const totalProducts = Math.floor(Math.random() * (29 - 2 + 1)) + 2; 
+export const totalProducts: number = Math.floor(Math.random() * (29 - 2 + 1)) + 2; 
 
 
 type Product = {
