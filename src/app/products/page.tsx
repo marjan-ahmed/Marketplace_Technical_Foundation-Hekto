@@ -37,4 +37,3 @@ export const products: Product[] = [
   { id: '29', name: 'Product 29', imageSrc: '/product-29.png', price: '$160' },
 ];
 
-export default totalProducts;
