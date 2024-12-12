@@ -1,6 +1,5 @@
 import React from 'react';
 
-export const totalProducts: number = Math.floor(Math.random() * (29 - 2 + 1)) + 2; 
 
 
 type Product = {
@@ -10,7 +9,7 @@ type Product = {
   price: string;
 };
 
-export const products: Product[] = [
+const products: Product[] = [
   { id: '1', name: 'Product 1', imageSrc: '/product-1.png', price: '$20' },
   { id: '2', name: 'Product 2', imageSrc: '/product-2.png', price: '$25' },
   { id: '3', name: 'Product 3', imageSrc: '/product-3.png', price: '$30' },
@@ -41,3 +40,6 @@ export const products: Product[] = [
   { id: '28', name: 'Product 28', imageSrc: '/product-28.png', price: '$155' },
   { id: '29', name: 'Product 29', imageSrc: '/product-29.png', price: '$160' },
 ];
+
+
+export default products;

@@ -1,7 +1,5 @@
-
-
-import Image from 'next/image';
-import { products, totalProducts } from '../page';
+ import Image from 'next/image';
+import products from '../page';
 import Breadcrumb from '@/app/components/Breadcrumb';
 import { ArrowRight, Facebook, Heart, Instagram, Star, Twitter } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,6 +14,7 @@ const ProductDetail = ({ params }: { params: { product: string } }) => {
   const id = params.product;
   console.log(id);
 
+  let totalProducts = Math.floor(Math.random() * (29 - 2 + 1)) + 2;
   
   const product = products.find((product) => product.id === id);
 
