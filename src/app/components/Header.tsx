@@ -26,7 +26,7 @@ const Header = () => {
       {/* Top Bar */}
       <div className="w-full h-[44px] bg-purple">
         <div className="flex w-full max-w-screen-xl justify-between sm:py-1 items-center mx-auto px-4">
-          <ul className="flex gap-4 font-josefin text-white m-2">
+          <ul className="flex items-center gap-4 font-josefin text-white m-2">
             <li className="flex sm:text-[16px] text-[12px] font-josefin items-center gap-2">
               <Mail size={20} />
               mhhansanul@gmail.com
@@ -52,7 +52,9 @@ const Header = () => {
               Wishlist <Heart size={20} />
             </li>
             <li className="flex items-center">
+              <Link href={'/cart'}>
               <ShoppingCart size={20} />
+              </Link>
             </li>
           </ul>
         </div>
