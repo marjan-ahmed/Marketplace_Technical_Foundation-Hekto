@@ -14,7 +14,6 @@ const ProductDetail = ({ params }: { params: { product: string } }) => {
   const id = params.product;
   console.log(id);
 
-  let totalProducts = Math.floor(Math.random() * (29 - 2 + 1)) + 2;
   
   const product = products.find((product) => product.id === id);
 
@@ -22,8 +21,8 @@ const ProductDetail = ({ params }: { params: { product: string } }) => {
     return <div>Product not found</div>;
   }
 
-  const randomProducts = products.slice(0, totalProducts); 
-  const randomSelectedProducts = randomProducts.sort(() => 0.5 - Math.random()).slice(0, 4);
+  // const randomProducts = products.slice(0, totalProducts); 
+  // const randomSelectedProducts = randomProducts.sort(() => 0.5 - Math.random()).slice(0, 4);
 
   return (
     <div>
@@ -184,7 +183,7 @@ const ProductDetail = ({ params }: { params: { product: string } }) => {
       <div className="mx-4 sm:mx-16 md:mx-36 mt-36 mb-16">
   <h1 className="text-[36px] text-[#101750] font-bold font-josefin">Related Products</h1>
   <div className="mt-10 flex flex-wrap gap-6 justify-center sm:justify-between max-w-full">
-    {randomSelectedProducts.map((product) => (
+    {products.map((product) => (
       <div key={product.id} className="w-full sm:w-[270px] lg:w-[270px] h-[410px] flex flex-col bg-white shadow-md">
         <div className="flex justify-center  w-full h-[340px] bg-slate-200">
           <Image
