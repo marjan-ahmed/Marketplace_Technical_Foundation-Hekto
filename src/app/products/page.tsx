@@ -1,3 +1,8 @@
+import React from 'react';
+
+export const totalProducts = Math.floor(Math.random() * (29 - 2 + 1)) + 2; 
+
+
 type Product = {
   id: string;
   name: string;
@@ -36,4 +41,3 @@ export const products: Product[] = [
   { id: '28', name: 'Product 28', imageSrc: '/product-28.png', price: '$155' },
   { id: '29', name: 'Product 29', imageSrc: '/product-29.png', price: '$160' },
 ];
-

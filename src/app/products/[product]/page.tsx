@@ -1,5 +1,7 @@
+
+
 import Image from 'next/image';
-import { products } from '../page'; // No need to import totalProducts anymore
+import { products, totalProducts } from '../page';
 import Breadcrumb from '@/app/components/Breadcrumb';
 import { ArrowRight, Facebook, Heart, Instagram, Star, Twitter } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,24 +12,19 @@ import {
 } from "@/components/ui/carousel";
 import StarRating from '@/app/components/StarRating';
 
-interface Product {
-  id: string;
-  name: string;
-  imageSrc: string;
-  price: string;
-  // Add other necessary fields
-}
-
-
 const ProductDetail = ({ params }: { params: { product: string } }) => {
   const id = params.product;
   console.log(id);
 
-  const product = products.find((product: Product) => product.id === id);
+  
+  const product = products.find((product) => product.id === id);
 
   if (!product) {
     return <div>Product not found</div>;
   }
+
+  const randomProducts = products.slice(0, totalProducts); 
+  const randomSelectedProducts = randomProducts.sort(() => 0.5 - Math.random()).slice(0, 4);
 
   return (
     <div>
@@ -184,18 +181,49 @@ const ProductDetail = ({ params }: { params: { product: string } }) => {
         </div>
       </div>
 
-      {/* Removed related products section */}
       
-      <div className='flex justify-center mt-16 mb-10'>
-        <Image 
-          src={'/companies.png'}
-          alt='companies testimonials'
-          width={904}
-          height={93}
-        />
+      <div className="mx-4 sm:mx-16 md:mx-36 mt-36 mb-16">
+  <h1 className="text-[36px] text-[#101750] font-bold font-josefin">Related Products</h1>
+  <div className="mt-10 flex flex-wrap gap-6 justify-center sm:justify-between max-w-full">
+    {randomSelectedProducts.map((product) => (
+      <div key={product.id} className="w-full sm:w-[270px] lg:w-[270px] h-[410px] flex flex-col bg-white shadow-md">
+        <div className="flex justify-center  w-full h-[340px] bg-slate-200">
+          <Image
+            src={product.imageSrc} 
+            alt={product.name} 
+            width={280}
+            height={250}
+          />
+        </div>
+        <div className="flex justify-between gap-5 p-4">
+          <div className="w-full">
+            <h5 className="text-[#151875] text-[16px] font-semibold font-josefin leading-[18.75px]">
+              {product.name} 
+            </h5>
+            <h6 className="mt-2 text-[#151875] text-[13px] font-josefin leading-[15.23px]">
+              ${product.price} 
+            </h6>
+          </div>
+
+          
+          <div>
+            <StarRating /> 
+          </div>
+        </div>
       </div>
-    </div> 
-  );
+    ))}
+  </div>
+</div>
+        <div className='flex justify-center mt-16 mb-10'>
+        <Image 
+        src={'/companies.png'}
+        alt='companies testimonials'
+        width={904}
+        height={93}/>
+        </div>
+</div> 
+
+);
 };
 
 export default ProductDetail;
