@@ -7,7 +7,7 @@ type ServiceCardProps = {
 
 function ServiceCard({src}: ServiceCardProps) {
   return (
-    <div className='w-[270px] h-[320px] flex flex-col justify-center text-center items-center gap-3 shadow-gray-100 shadow-md'>
+    <div className='w-[270px] h-[320px] flex flex-col justify-center text-center items-center gap-3 hover:border-b-2 hover:border-[#FF9100]  shadow-gray-100 shadow-md'>
         <div>
         <Image 
         src={src}

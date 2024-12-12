@@ -11,6 +11,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import StarRating from '@/app/components/StarRating';
+import Link from 'next/link';
 
 const ProductDetail = ({ params }: { params: { product: string } }) => {
   const id = params.product;
@@ -89,9 +90,11 @@ const ProductDetail = ({ params }: { params: { product: string } }) => {
 
             <div className="flex gap-8 mt-8 items-center ml-[70px]">
               <div>
+                <Link href={'/cart'}>
                 <button className="text-[#151875] text-[16px] font-semibold font-josefin">
                   Add To Cart
                 </button>
+                </Link>
               </div>
               <div>
                 <Heart size={16} color="#535399" />
