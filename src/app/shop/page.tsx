@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Breadcrumb from "../components/Breadcrumb";
 import ProductCart2 from "../components/ProductCart2";
-import products from "../product/page";
+import { products } from "../product/page";
 import Image from "next/image";
 
 export default function Shop() {
@@ -29,7 +29,7 @@ export default function Shop() {
 
         <div className="mt-10 flex flex-wrap justify-center gap-5 mx-32 mb-10">
         {products.map((product) => (
-          <Link key={product.id} href={`/products/${product.id}`} passHref>
+          <Link key={product.id} href={`/product/${product.id}`} passHref>
               <ProductCart2
                 src={product.imageSrc}
                 alt={product.name}
