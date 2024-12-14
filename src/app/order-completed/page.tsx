@@ -1,8 +1,5 @@
 import React from 'react'
 import Breadcrumb from '../components/Breadcrumb'
-import Image from 'next/image'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
 
 function OrderCompleted() {
   return (

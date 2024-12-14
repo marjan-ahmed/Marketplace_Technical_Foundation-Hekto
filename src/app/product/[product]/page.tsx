@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Breadcrumb from '@/app/components/Breadcrumb';
-import { ArrowRight, Facebook, Heart, Instagram, Twitter } from 'lucide-react';
+import { Facebook, Heart, Instagram, Twitter } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import StarRating from '@/app/components/StarRating';

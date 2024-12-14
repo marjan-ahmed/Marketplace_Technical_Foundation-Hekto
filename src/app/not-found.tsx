@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/button';
-Link
 import Image from 'next/image';
 import Link from 'next/link';
 import Breadcrumb from './components/Breadcrumb';
