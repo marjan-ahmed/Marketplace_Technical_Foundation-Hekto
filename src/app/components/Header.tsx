@@ -1,13 +1,5 @@
 import { Input } from "@/components/ui/input";
-import {
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { NavigationMenu } from "@radix-ui/react-navigation-menu";
 import {
   ChevronDown,
   Heart,
