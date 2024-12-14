@@ -31,7 +31,7 @@ const ProductDetail = ({ params }: { params: { product: string } }) => {
                       <div className="p-1">
                         <Card>
                           <CardContent className="flex aspect-square items-center justify-center p-6">
-                            <img src={product.imageSrc} alt={`Product Image ${index + 1}`} className="w-full h-auto rounded-sm" />
+                            <Image src={product.imageSrc} alt={`Product Image ${index + 1}`} className="w-full h-auto rounded-sm" />
                           </CardContent>
                         </Card>
                       </div>

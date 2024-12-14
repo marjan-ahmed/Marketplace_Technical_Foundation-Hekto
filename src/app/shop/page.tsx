@@ -2,7 +2,7 @@ import Link from "next/link";
 import Breadcrumb from "../components/Breadcrumb";
 import ProductCart2 from "../components/ProductCart2";
 import { products } from "../product/page";
-import Image from "next/image";
+// import Image from "next/image";
 
 export default function Shop() {
   return (
