@@ -7,7 +7,6 @@ import Head from "next/head";
 import TrendingProducts from "./components/TrendingProducts";
 import { Check, Circle, Dot } from "lucide-react";
 import LatestBlog from "./components/LatestBlog";
-// import latest_update_img from "@/../public/latest-update-img.png";
 
 export default function Home() {
   return (
