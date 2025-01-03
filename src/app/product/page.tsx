@@ -1,13 +1,11 @@
-import React from "react";
-
-interface IProducts {
+type Product = {
   id: string;
   name: string;
   imageSrc: string;
   price: string;
-}
+};
 
-export const products: IProducts[] = [
+const products: Product[] = [
   { id: '1', name: 'Product 1', imageSrc: '/product-1.png', price: '$20' },
   { id: '2', name: 'Product 2', imageSrc: '/product-2.png', price: '$25' },
   { id: '3', name: 'Product 3', imageSrc: '/product-3.png', price: '$30' },
@@ -39,18 +37,5 @@ export const products: IProducts[] = [
   { id: '29', name: 'Product 29', imageSrc: '/product-29.png', price: '$160' },
 ];
 
-const ProductPage = () => {
-  return (
-    <div>
-      {products.map((product) => (
-        <div key={product.id}>
-          <h2>{product.name}</h2>
-          <img src={product.imageSrc} alt={product.name} />
-          <p>{product.price}</p>
-        </div>
-      ))}
-    </div>
-  );
-};
 
-export default ProductPage;
+export default products;

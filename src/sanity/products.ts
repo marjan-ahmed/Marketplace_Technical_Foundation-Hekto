@@ -15,21 +15,27 @@ export default {
       },
       {
         name: 'productImage',
-        title: 'Produc Image',
+        title: 'Product Image',
         type: 'image',
         options: {
-          hotspot: true // Enables hotspot for better image cropping
+          hotspot: true 
         },
       },
       {
-        name: 'imageSrc',
-        title: 'Image Source URL',
-        type: 'url',
+        name: 'productCurrentPrice',
+        title: 'Product Current Price',
+        type: 'string',
+        options: {
+            placeholder: 'Enter "$" symbole before price'
+        }
       },
       {
-        name: 'productPrice',
-        title: 'Product Price',
-        type: 'number',
+        name: 'productOldPrice',
+        title: 'Product Old Price',
+        type: 'string',
+        options: {
+            placeholder: 'Enter "$" symbole before price'
+        }
       }
     ]
   };

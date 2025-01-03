@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import { products } from '../page';  // Ensure this is correct path for your products data
+import products from '../page';
 import Breadcrumb from '@/app/components/Breadcrumb';
+
 import { Facebook, Heart, Instagram, Twitter } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
