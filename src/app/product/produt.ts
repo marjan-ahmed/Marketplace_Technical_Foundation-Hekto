@@ -1,11 +1,11 @@
-type Product = {
-  id: string;
-  name: string;
-  imageSrc: string;
-  price: string;
-};
+// interface Product {
+//   id: string;
+//   name: string;
+//   imageSrc: string;
+//   price: string;
+// };
 
-const products: Product[] = [
+const products = [
   { id: '1', name: 'Product 1', imageSrc: '/product-1.png', price: '$20' },
   { id: '2', name: 'Product 2', imageSrc: '/product-2.png', price: '$25' },
   { id: '3', name: 'Product 3', imageSrc: '/product-3.png', price: '$30' },
