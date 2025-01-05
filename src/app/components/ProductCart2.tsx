@@ -1,4 +1,6 @@
+'use client'
 import Image from "next/image"
+import { FaHeart, FaShoppingCart } from "react-icons/fa";
 
 type ProductCart2Props = {
     bg?: string,
@@ -10,14 +12,27 @@ type ProductCart2Props = {
 }
 
 function ProductCart2({ bg, src, alt, width, height, productName }: ProductCart2Props) {
+  const handleAddToCart = () => {
+    alert("Product Added")
+  }
   return (
     <div>
         <div className='w-[270px] h-[363px] bg-white'>
-            <div className='w-[270px] h-[280px] flex justify-center items-center' style={{ backgroundColor: bg }}>
+            <div className='relative w-[270px] h-[280px] flex justify-center items-center overflow-hidden' style={{ backgroundColor: bg }}>
               <Image src={src} 
               alt={alt}
               width={width}
-              height={height}/>
+              height={height}
+              className=""
+              />
+               <div 
+    className="absolute inset-0 bg-gray-800 opacity-0 hover:opacity-50 transition-opacity z-20"
+  >
+    <div className="flex flex-col gap-2 my-14">
+    <button className="bg-white rounded-full p-2 absolute right-3 top-3" onClick={handleAddToCart}><FaShoppingCart size={20} color={"black"}/></button>
+    <button className="bg-white rounded-full p-2 absolute right-3 top-14"><FaHeart size={20} color="black"/></button>
+  </div>
+  </div>
             </div>
             <div className="flex flex-col gap-2 justify-center items-center mt-2">
                 <h1 className="text-[17.3px] text-[#151875] font-bold font-josefin">{productName}</h1>

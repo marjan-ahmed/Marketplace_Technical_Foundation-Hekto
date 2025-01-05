@@ -40,7 +40,7 @@ const Header = () => {
               Login <User size={20} />
               </Link>
             </li>
-            <li className="sm:flex items-center gap-1 hidden">
+            <li className="sm:flex items-center gap-1 hidden relative">
               Wishlist <Heart size={20} />
             </li>
             <li className="flex items-center">

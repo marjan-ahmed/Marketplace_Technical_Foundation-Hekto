@@ -41,11 +41,14 @@ const ProductDetail = ({ params }: { params: { product: string } }) => {
                 </CarouselContent>
               </Carousel>
             </div>
-
+              
+            <div className='flex'>
             <div className="hidden lg:flex flex-col justify-center gap-[16px] mx-auto lg:mx-0">
-              <Image className="bg-gray-200 rounded-sm" src={product.imageSrc} alt="" width={151} height={155} />
-              <Image className="bg-gray-200 rounded-sm" src={product.imageSrc} alt="" width={151} height={155} />
-              <Image className="bg-gray-200 rounded-sm" src={product.imageSrc} alt="" width={151} height={155} />
+              <Image className="bg-gray-200 rounded-sm p-2" src={product.imageSrc} alt="" width={161} height={155} />
+              <Image className="bg-gray-200 rounded-sm p-2" src={product.imageSrc} alt="" width={161} height={155} />
+              <Image className="bg-gray-200 rounded-sm p-2" src={product.imageSrc} alt="" width={161} height={155} />
+            </div>
+            <Image className='bg-gray-200 p-10 rounded-sm mx-4' src={product.imageSrc} alt='' width={490} height={300} />
             </div>
           </div>
 

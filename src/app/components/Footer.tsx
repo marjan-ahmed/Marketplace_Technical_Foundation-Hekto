@@ -11,7 +11,7 @@ function Footer() {
         <div className='bg-pantonePurple w-full h-auto'>
           <div className='flex flex-col sm:flex-row sm:gap-20 gap-10 px-4 sm:px-10 lg:px-36 py-[44px] sm:py-[95px]'>
             <div>
-              <h1 className='text-[32px] sm:text-[38px] font-bold font-josefin'>Heckto</h1>
+              <h1 className='text-[32px] sm:text-[38px] font-bold font-josefin'>Hekto</h1>
               <div className="relative flex w-full max-w-sm mt-4 items-center">
                 <Input className='w-full h-[44px] sm:w-[377px] bg-white' type="email" placeholder="Search Email Address" />
                 <Button className='absolute right-1 w-[135px] h-[39px] rounded-none p-[21px] focus:p-[21px] mx-[-4px] sm:mx-[3px]' type="submit">Sign Up</Button>

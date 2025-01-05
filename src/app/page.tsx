@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 import ProductCard from "./components/ProductCard1";
 import { Button } from "@/components/ui/button";
 import FeaturedProduct from "./components/FeaturedProduct";
@@ -8,17 +9,20 @@ import TrendingProducts from "./components/TrendingProducts";
 import { Check, Circle, Dot } from "lucide-react";
 import LatestBlog from "./components/LatestBlog";
 
+
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Home | Heckto</title>
+        <title>Home | Hekto</title>
         <meta
           name="description"
           content="Welcome to Our Store Heckto. We offer the best products and services to help you achieve your goals."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
+
+
 
       <main>
         <div className="font-[josefin sans]">
