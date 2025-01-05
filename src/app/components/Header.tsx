@@ -78,7 +78,7 @@ const Header = () => {
               <Link href="/blog">Blog</Link>
             </li>
             <li>
-              <Link href="/shop">Shop</Link>
+              <Link href="/shop/grid">Shop</Link>
             </li>
             <li>
               <Link href="/contact">Contact</Link>
@@ -116,7 +116,7 @@ const Header = () => {
                   <Link href="/blog">Blog</Link>
                 </li>
                 <li>
-                  <Link href="/shop">Shop</Link>
+                  <Link href="/shop/grid">Shop</Link>
                 </li>
                 <li>
                   <Link href="/contact">Contact</Link>
