@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import products from '../produt';
+import products from '../product';
 import Breadcrumb from '@/app/components/Breadcrumb';
 
 import { Facebook, Heart, Instagram, Twitter } from 'lucide-react';

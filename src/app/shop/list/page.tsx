@@ -1,4 +1,3 @@
-import ProductCard from '@/app/components/ProductCard1';
 import StarRating from '@/app/components/StarRating';
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
@@ -53,14 +52,14 @@ const ShopList = async () => {
                             return (
                                 <div key={pdt.productTitle} className="mb-6">
                                     <div className="w-full md:w-[1121px] h-full md:h-[254px] p-5 flex flex-wrap items-center gap-8">
-                                        <Link href={`/list/${pdt.productTitle}/`}>
+                                        {/* <Link href={`/list/${pdt.productTitle}/`}> */}
                                             <Image
                                                 src={imageUrl}
                                                 alt={pdt.productTitle}
                                                 width={313.63}
                                                 height={217.56}
                                             />
-                                        </Link>
+                                        {/* </Link> */}
                                         <div>
                                             <div className="w-[230px] flex justify-between">
                                                 <h1 className="text-[#111C85] text-[18px] leading-[23.29px] font-josefin font-bold">
@@ -96,9 +95,9 @@ const ShopList = async () => {
                                                     <FaRegHeart size={21} color="#535399" />
                                                 </button>
                                                 <button className="w-[34.23px] h-[34.23px] shadow-md shadow-gray-200 bg-white rounded-full bg-transparent p-1 flex justify-center items-center">
-                                                    <Link href={`/list/${pdt.productTitle}`}>
+                                                    {/* <Link href={`/list/${pdt.productTitle}`}> */}
                                                         <HiOutlineMagnifyingGlassPlus size={21} color="#535399" />
-                                                    </Link>
+                                                    {/* </Link> */}
                                                 </button>
                                             </div>
                                         </div>
