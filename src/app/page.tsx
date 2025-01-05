@@ -23,7 +23,6 @@ export default function Home() {
       </Head>
 
 
-
       <main>
         <div className="font-[josefin sans]">
           <div className="relative h-[60em] sm:h-[38em] bg-pantonePurple flex flex-col sm:flex-row items-center justify-center sm:justify-between py-8 px-4 sm:px-8 md:px-16 lg:px-32">

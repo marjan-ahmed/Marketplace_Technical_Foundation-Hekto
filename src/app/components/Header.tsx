@@ -57,7 +57,7 @@ const Header = () => {
         <div className="w-full max-w-screen-xl h-[40px] bg-white flex flex-row p-2 sm:p-6 sm:py-1 sm:gap-32 justify-between items-center">
           <ul>
             <li>
-              <h1 className="font-bold text-[30px] sm:text-[34px] font-josefin">Hekto</h1>
+              <h1 className="font-bold text-[30px] sm:text-[34px] font-josefin"><Link href={'/'}>Hekto</Link></h1>
             </li>
           </ul>
 
@@ -75,7 +75,7 @@ const Header = () => {
               <Link href="/products">Products</Link>
             </li>
             <li>
-              <Link href="/shop">Blog</Link>
+              <Link href="/blog">Blog</Link>
             </li>
             <li>
               <Link href="/shop">Shop</Link>
