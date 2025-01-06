@@ -44,6 +44,7 @@ async function Blog() {
 
           return (
             <div key={blog.slug.current || blog.title} className="mb-10">
+              <Link href={`/blog/${blog.slug}/`}>
               <Image
                 src={imageUrl}
                 alt={blog.title}
@@ -51,6 +52,7 @@ async function Blog() {
                 height={453}
                 className="w-full md:w-[870px] h-auto md:h-[453px]"
               />
+              </Link>
               <div className="flex mt-6 gap-2 sm:gap-6 flex-wrap">
                 <div className="flex gap-2 items-center">
                   <ImPen size={14} color="#FB2E86" />
@@ -72,7 +74,9 @@ async function Blog() {
 
               <div className="mt-6 w-full sm:w-[870px]">
                 <h2 className="text-[24px] sm:text-[30px] text-[#151875] leading-[30px] font-josefin font-bold">
-                  {blog.title}
+                <Link href={`/blog/${blog.slug}/`}>
+                {blog.title}
+                </Link>
                 </h2>
                 <p className="text-[14px] sm:text-[16px] text-[#8A8FB9] leading-[25.6px] font-lato font-normal mt-6">
                   {blog.shortDescription}

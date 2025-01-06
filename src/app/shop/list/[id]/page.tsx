@@ -1,22 +1,44 @@
-import Image from 'next/image';
-import products from '../product';
 import Breadcrumb from '@/app/components/Breadcrumb';
-
-import { Facebook, Heart, Instagram, Twitter } from 'lucide-react';
-import { Card, CardContent } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import StarRating from '@/app/components/StarRating';
+import products from '@/app/product/product';
+import { Card, CardContent } from '@/components/ui/card';
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
+import { client } from '@/sanity/lib/client';
+import { Facebook, Heart, Instagram, Twitter } from 'lucide-react';
+import Image from 'next/image';
+import React from 'react';
+import { IShopList } from '../page';
+import { urlFor } from '@/sanity/lib/image';
 
-const ProductDetail = ({ params }: { params: { product: string } }) => {
-  const id = params.product;
-  const product = products.find((product) => product.id === id);
+async function ShopListProduct({ params: { id } }: { params: { id: string } }) {
+  console.log('Product ID:', id);
 
-  if (!product) {
-    return <div>Product not found</div>;
+  const query = `
+      *[_type == "shopList" && id == "${id}"]{
+          id,
+          productImage,
+          productTitle,
+          productDesc,
+          oldPrice,
+          newPrice
+      }
+  `;
+
+  // Fetch the product data by ID
+  const product: IShopList[] = await client.fetch(query);
+
+  if (!product.length) {
+    return <p className="text-center mt-10 text-gray-500">Product not found</p>;
   }
 
   return (
-    <div>
+    <>
+        {product.map((pdt) => {
+          const imageUrl = pdt.productImage ? urlFor(pdt.productImage).url() : '';
+
+        return (
+          <>
+               <div>
       <Breadcrumb title="Product Detail" subtitle="Product Detail" />
       
       <div className="flex justify-center items-center mt-20 mb-20">
@@ -24,25 +46,25 @@ const ProductDetail = ({ params }: { params: { product: string } }) => {
           
           <div className="flex flex-col justify-center gap-[16px] mx-auto lg:mx-0">
               
-            <div className='flex'>
+        <div className='flex'>
             <div className="hidden lg:flex flex-col justify-center gap-[16px] mx-auto lg:mx-0">
-              <Image className="bg-gray-200 rounded-sm p-2" src={product.imageSrc} alt="" width={161} height={155} />
-              <Image className="bg-gray-200 rounded-sm p-2" src={product.imageSrc} alt="" width={161} height={155} />
-              <Image className="bg-gray-200 rounded-sm p-2" src={product.imageSrc} alt="" width={161} height={155} />
+              <Image className="bg-gray-200 rounded-sm" src={imageUrl} alt="" width={151} height={155} />
+              <Image className="bg-gray-200 rounded-sm" src={imageUrl} alt="" width={151} height={155} />
+              <Image className="bg-gray-200 rounded-sm" src={imageUrl} alt="" width={151} height={155} />
             </div>
-            <Image className='bg-gray-200 p-10 rounded-sm mx-4' src={product.imageSrc} alt='' width={490} height={300} />
+            <Image className='bg-gray-200 rounded-sm mx-4' src={imageUrl} alt='' width={375} height={487} />
             </div>
           </div>
 
           <div className="p-8 py-16 lg:w-1/2">
             <h1 className="text-[36px] text-[#0D134E] font-josefin font-bold">
-              {product.name}
+              {pdt.productTitle}
             </h1>
             <StarRating />
             
             <div className="flex gap-8 flex-wrap mt-2">
-              <p className="text-[16px] font-josefin text-[#151875]">${product.price}</p>
-              <p className="line-through text-pink text-[16px] font-josefin">${product.price}</p>
+              <p className="text-[16px] font-josefin text-[#151875]">${pdt.newPrice}</p>
+              <p className="line-through text-pink text-[16px] font-josefin">${pdt.oldPrice}</p>
             </div>
 
             <div className="mt-3">
@@ -131,7 +153,12 @@ const ProductDetail = ({ params }: { params: { product: string } }) => {
         <Image src={'/companies.png'} alt='companies testimonials' width={904} height={93} />
       </div>
     </div>
+          </> 
+          
+          );
+        })}
+    </>
   );
-};
+}
 
-export default ProductDetail;
+export default ShopListProduct;

@@ -8,11 +8,12 @@ import { BsCart2 } from "react-icons/bs";
 import { FaRegHeart } from 'react-icons/fa';
 import { HiOutlineMagnifyingGlassPlus } from "react-icons/hi2";
 import Breadcrumb from '@/app/components/Breadcrumb';
-import Link from 'next/link';
 import ShopLeftSideBar from '@/app/components/ShopLeftSideBar'; 
 import ShopControl from '@/app/components/ShopControl';
+import Link from 'next/link';
 
-interface IShopList {
+export interface IShopList {
+    id: string,
     productImage: ImageAsset | null,
     productTitle: string,
     productDesc: string,
@@ -21,8 +22,9 @@ interface IShopList {
 }
 
 const ShopList = async () => {
-    const product = await client.fetch(`
-        *[_type == 'shopList']{
+    const productList = await client.fetch(`
+        *[_type == 'shopList'] | order(_createdAt asc){
+            id,
             productImage,
             productTitle,
             productDesc,
@@ -30,6 +32,7 @@ const ShopList = async () => {
             newPrice
         }
     `);
+    // console.log(product)
     
     return (
         <>
@@ -44,26 +47,27 @@ const ShopList = async () => {
 
                     {/* Shop List Content */}
                     <div className="lg:w-3/4 lg:mr-16">
-                        {product.map((pdt: IShopList) => {
+                        {productList.map((product: IShopList) => {
                             let imageUrl = "";
-                            if (pdt.productImage) {
-                                imageUrl = urlFor(pdt.productImage).url();
+                            if (product.productImage) {
+                                imageUrl = urlFor(product.productImage).url();
                             }
                             return (
-                                <div key={pdt.productTitle} className="mb-6">
+                                <div key={product.id || product.productTitle} className="mb-6">
                                     <div className="w-full md:w-[1121px] h-full md:h-[254px] p-5 flex flex-wrap items-center gap-8">
-                                        {/* <Link href={`/list/${pdt.productTitle}/`}> */}
+                                        <Link href={`/shop/list/${product.id}`}>
                                             <Image
                                                 src={imageUrl}
-                                                alt={pdt.productTitle}
+                                                alt={product.productTitle}
                                                 width={313.63}
                                                 height={217.56}
+                                                priority
                                             />
-                                        {/* </Link> */}
+                                        </Link>
                                         <div>
                                             <div className="w-[230px] flex justify-between">
                                                 <h1 className="text-[#111C85] text-[18px] leading-[23.29px] font-josefin font-bold">
-                                                    {pdt.productTitle}
+                                                    {product.productTitle}
                                                 </h1>
                                                 <div className="flex gap-1 items-center">
                                                     <div className="w-[12.15px] h-[12.15px] bg-[#DE9034] rounded-full"></div>
@@ -73,10 +77,10 @@ const ShopList = async () => {
                                             </div>
                                             <div className="flex gap-2 items-center mt-3">
                                                 <span className="text-[#111C85] text-[15.46px] leading-[18.12px] font-josefin">
-                                                    ${pdt.newPrice}.00
+                                                    ${product.newPrice}.00
                                                 </span>
                                                 <span className="text-[#FF2AAA] text-[15.46px] leading-[18.12px] font-josefin line-through">
-                                                    ${pdt.oldPrice}.00
+                                                    ${product.oldPrice}.00
                                                 </span>
                                                 <span>
                                                     <StarRating />
@@ -84,7 +88,7 @@ const ShopList = async () => {
                                             </div>
                                             <div className="w-full md:w-[591px]">
                                                 <p className="text-[#9295AA] text-[16px] leading-[30.92px] font-normal font-lato">
-                                                    {pdt.productDesc}
+                                                    {product.productDesc}
                                                 </p>
                                             </div>
                                             <div className="flex gap-6 items-center mt-6">
@@ -95,9 +99,9 @@ const ShopList = async () => {
                                                     <FaRegHeart size={21} color="#535399" />
                                                 </button>
                                                 <button className="w-[34.23px] h-[34.23px] shadow-md shadow-gray-200 bg-white rounded-full bg-transparent p-1 flex justify-center items-center">
-                                                    {/* <Link href={`/list/${pdt.productTitle}`}> */}
+                                                    <Link href={`/list/${product.id}`}>
                                                         <HiOutlineMagnifyingGlassPlus size={21} color="#535399" />
-                                                    {/* </Link> */}
+                                                    </Link>
                                                 </button>
                                             </div>
                                         </div>

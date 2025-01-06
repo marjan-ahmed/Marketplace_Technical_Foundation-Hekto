@@ -6,14 +6,11 @@ import { ImPen } from 'react-icons/im';
 import { urlFor } from '@/sanity/lib/image';
 import Breadcrumb from '@/app/components/Breadcrumb';
 import { PortableText } from 'next-sanity';
-import { FaFacebookF, FaInstagram, FaTwitter, FaUser } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { MdEmail } from 'react-icons/md';
-import { BiSolidMessageRounded } from "react-icons/bi";
-
 
 export default async function getBlog({params: {slug}}: {params: {slug: string}}){
 
