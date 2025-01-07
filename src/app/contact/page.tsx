@@ -9,9 +9,9 @@ function Contact() {
   return (
     <>
       <Breadcrumb title='Contact Us' subtitle='Contact Us' />
-      <div className="mt-28 mb-20 flex mx-5 sm:mx-36 gap-36 sm:flex-nowrap flex-wrap">
+      <div className="mt-10 sm:mt-20 md:mt-28 mb-20 flex mx-5 sm:mx-36 gap-36 sm:flex-nowrap flex-wrap">
         <div className="w-full sm:w-[550px] h-[49px] mb-14">
-          <h1 className="font-josefin text-[36px] text-[#151875] leading-[48px] font-bold">Information About us</h1>
+          <h1 className="font-josefin text-[30px] sm:text-[36px] text-[#151875] leading-[48px] font-bold">Information About us</h1>
           <p className="text-[#8A8FB9] text-[16px] font-lato leading-[25.6px]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis neque ultrices mattis aliquam, malesuada diam est. Malesuada sem tristique amet erat vitae eget dolor lobortis. Accumsan faucibus vitae lobortis quis bibendum quam.
           </p>
@@ -22,8 +22,8 @@ function Contact() {
           </div>
         </div>
 
-        <div className="w-full sm:w-[650px] mt-36 sm:mt-0">
-          <h1 className="font-josefin text-[36px] mb-8 text-[#151875] leading-[48px] font-bold">Contact Way</h1>
+        <div className="w-full sm:w-[650px] mt-28 sm:mt-0">
+          <h1 className="font-josefin text-[30px] sm:text-[36px] mb-8 text-[#151875] leading-[48px] font-bold">Contact Way</h1>
           <div className='w-full sm:w-[489px] h-auto'>
             {/* Contact Items (Responsive Grid) */}
             <div className="flex flex-wrap gap-6 sm:gap-12">
