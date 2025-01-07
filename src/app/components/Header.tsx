@@ -1,5 +1,7 @@
+import { DropdownMenu, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { DropdownMenuContent } from "@radix-ui/react-dropdown-menu";
 import {
   ChevronDown,
   Heart,
@@ -63,11 +65,28 @@ const Header = () => {
 
           {/* Desktop Navigation Links */}
           <ul className="font-lato hidden sm:flex gap-6 sm:gap-10 py-4 sm:py-8 text-[14px] sm:text-[16px] font-normal">
-            <li className="flex items-center gap-2">
-              <Link href="/" className="flex items-center">
-                Home <ChevronDown size={20} />
-              </Link>
-            </li>
+          <li className="relative flex items-center gap-2">
+  <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <Link href="/" className="flex items-center">
+        Home <ChevronDown size={20} />
+      </Link>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent className="bg-white text-gray-800 shadow-lg rounded-md p-2 w-[150px] left-[-10px] absolute z-10">
+      <DropdownMenuSeparator className="border-gray-200" />
+      <DropdownMenuItem className="hover:bg-gray-100 cursor-pointer">
+        <Link href={'/faq'}>FAQ's</Link>
+      </DropdownMenuItem>
+      <DropdownMenuItem className="hover:bg-gray-100 cursor-pointer">
+        <Link href={'/about'}>About</Link>
+      </DropdownMenuItem>
+      <DropdownMenuItem className="hover:bg-gray-100 cursor-pointer">
+        <Link href={'/cart'}>Cart</Link>
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+</li>
+
             <li>
               <Link href="/pages">Pages</Link>
             </li>
@@ -103,9 +122,27 @@ const Header = () => {
             </SheetTrigger>
             <SheetContent className="w-full max-w-xs">
               <ul className="flex flex-col gap-6 py-3 text-[16px] font-normal">
-                <li className="flex">
-                  Home <ChevronDown />
-                </li>
+              <li className="relative flex items-center gap-2">
+  <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <Link href="/" className="flex items-center">
+        Home <ChevronDown size={20} />
+      </Link>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent className="bg-white text-gray-800 shadow-lg rounded-md p-2 w-[150px] left-[-10px] absolute z-10">
+      <DropdownMenuSeparator className="border-gray-200" />
+      <DropdownMenuItem className="hover:bg-gray-100 cursor-pointer">
+        <Link href={'/faq'}>FAQ's</Link>
+      </DropdownMenuItem>
+      <DropdownMenuItem className="hover:bg-gray-100 cursor-pointer">
+        <Link href={'/about'}>About</Link>
+      </DropdownMenuItem>
+      <DropdownMenuItem className="hover:bg-gray-100 cursor-pointer">
+        <Link href={'/cart'}>Cart</Link>
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+</li>
                 <li>
                   <Link href="/pages">Pages</Link>
                 </li>
