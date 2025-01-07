@@ -1,8 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
-
-import React from 'react'
 import Link from 'next/link';
 
 function Footer() {
@@ -14,8 +12,10 @@ function Footer() {
             <div>
               <h1 className='text-[32px] sm:text-[38px] font-bold font-josefin'><Link href={'/'}>Hekto</Link></h1>
               <div className="relative flex w-full max-w-sm mt-4 items-center">
-                <Input className='w-full h-[44px] sm:w-[377px] bg-white' type="email" placeholder="Search Email Address" />
-                <Button className='absolute right-1 w-[135px] h-[39px] rounded-none p-[21px] focus:p-[21px] mx-[-4px] sm:mx-[3px]' type="submit">Sign Up</Button>
+                <Input className='w-full h-[44px] font-lato sm:w-[377px] bg-white' type="email" placeholder="Search Email Address" />
+                <Button className='absolute font-lato right-1 w-[135px] h-[39px] rounded-sm p-[21px] focus:p-[21px] mx-[-4px] sm:mx-[3px]' type="submit">
+                  <Link href={'/login'}>Sign In</Link>
+                  </Button>
               </div>
               <div className='mt-5 sm:mt-8 text-[#8A8FB9] font-lato'>
                 <h1>Contact Info</h1>
