@@ -1,9 +1,30 @@
+'use client'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import { FaList } from 'react-icons/fa'
 import { IoGridSharp } from 'react-icons/io5'
+import products from '../product/product'
 
 function ShopControl() {
+  const [sorting, setSorting] = useState(' ');
+  const [sortedProducts, setSortedProducts] = useState(products);
+
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectVal = e.target.value;
+    setSorting(selectVal);
+    const tempArr = [...products];
+
+    if (selectVal === 'low') {
+      tempArr.sort((product1, product2) => Number(product1.price) - Number(product2.price));
+    } else if (selectVal === 'high') {
+      tempArr.sort((product1, product2) => Number(product2.price) - Number(product1.price));
+    } else if (selectVal === 'titleAsc') {
+      tempArr.sort((product1, product2) => product1.name.localeCompare(product2.name));
+    } else if (selectVal === 'titleDesc') {
+      tempArr.sort((product1, product2) => product2.name.localeCompare(product1.name));
+    }
+    setSortedProducts(tempArr);
+  };
   return (
     <>
 {/* Top Section: Title and Controls */}
@@ -13,7 +34,7 @@ function ShopControl() {
     <h1 className="text-[#151875] text-[22px] lg:text-[28px] font-josefin leading-[25.78px] font-bold">
       Ecommerce Accessories & Fashion Item
     </h1>
-    <p className="text-[#8A8FB9] text-[12px] lg:text-[14px] font-lato font-normal leading-[14.4px]">
+    <p className="text-[#8A8FB9] text-[12px] lg:text-[14px] font-lato font-normal">
       About 9,620 results (0.62 seconds)
     </p>
   </div>
@@ -39,11 +60,13 @@ function ShopControl() {
       </label>
       <select
         id="sortBy"
+        value={sorting}
+        onChange={handleChange}
         className="w-[130px] h-[25px] border-[#E7E6EF] border-2 text-[12px] text-[#8A8FB9] font-lato leading-[18px]"
       >
-        <option value="Best Matches">Best Matches</option>
-        <option value="priceAsc">Price: Low to High</option>
-        <option value="priceDesc">Price: High to Low</option>
+        <option value=" " disabled>Best Matches</option>
+        <option value="low">Price: Low to High</option>
+        <option value="high">Price: High to Low</option>
         <option value="titleAsc">Title: A to Z</option>
         <option value="titleDesc">Title: Z to A</option>
       </select>

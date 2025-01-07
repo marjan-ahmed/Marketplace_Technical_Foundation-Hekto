@@ -55,7 +55,7 @@ const Header = () => {
       </div>
 
       {/* Main Navigation */}
-      <div className="w-full px-2 sm:px-[135px] flex justify-center py-6">
+      <div className="w-full sm:px-[135px] flex justify-center py-6">
         <div className="w-full max-w-screen-xl h-[40px] bg-white flex flex-row p-2 sm:p-6 sm:py-1 sm:gap-32 justify-between items-center">
           <ul>
             <li>
