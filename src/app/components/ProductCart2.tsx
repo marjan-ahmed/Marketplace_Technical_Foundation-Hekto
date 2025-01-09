@@ -1,6 +1,8 @@
 'use client'
 import Image from "next/image";
 import { Heart, ShoppingCart, Search } from 'lucide-react'; // Import the icons
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { HiOutlineMagnifyingGlassPlus } from "react-icons/hi2";
 
 type ProductCart2Props = {
   src: string;
@@ -29,19 +31,8 @@ function ProductCart2({ src, alt, width, height, productName, olderPrice, newPri
         </div>
 
         {/* Icons appear on hover, align to the right */}
-        <div className="absolute left-2 bottom-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="flex flex-col gap-3">
-            <div className="w-[35px] h-[35px] hover:bg-white hover:shadow-sm hover:shadow-gray-300 rounded-full flex justify-center items-center text-[#151875] cursor-pointer">
-              <ShoppingCart size={20} />
-            </div>
-            <div className="w-[35px] h-[35px] hover:bg-white hover:shadow-sm hover:shadow-gray-300 rounded-full flex justify-center items-center text-[#151875] cursor-pointer">
-              <Heart size={20} />
-            </div>
-            <div className="w-[35px] h-[35px] hover:bg-white hover:shadow-sm hover:shadow-gray-300 rounded-full flex justify-center items-center text-[#151875] cursor-pointer">
-              <Search size={20} />
-            </div>
-          </div>
-        </div>
+       
+
 
         {/* Product details */}
         <div className="flex flex-col gap-2 justify-center items-center mt-2">
