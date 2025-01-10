@@ -8,6 +8,7 @@ import Head from "next/head";
 import TrendingProducts from "./components/TrendingProducts";
 import { Check, Circle, Dot } from "lucide-react";
 import LatestBlog from "./components/LatestBlog";
+import Link from "next/link";
 
 
 export default function Home() {
@@ -47,9 +48,11 @@ export default function Home() {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna
                   in est adipiscing in phasellus non in justo.
                 </p>
+                <Link href={'/shop/grid'}>
                 <Button className="w-[120px] sm:w-[163px] h-[40px] sm:h-[50px] rounded-[2px] font-josefin text-[14px] sm:text-[17px] leading-[19.92px]">
                   Shop Now
                 </Button>
+                </Link>
               </div>
             </div>
             <div className="flex-shrink-0 absolute bottom-10 sm:bottom-auto sm:right-10 sm:top-10 w-[calc(100%-2rem)] sm:w-[564px] h-auto">
@@ -69,10 +72,10 @@ export default function Home() {
               Featured Products
             </h1>
             <div className="mt-10 flex justify-center gap-5 flex-wrap">
-              <FeaturedProduct src="/product-1.png" alt="product 1 image" />
-              <FeaturedProduct src="/product-2.png" alt="product 2 image" />
-              <FeaturedProduct src="/product-3.png" alt="product 3 image" />
-              <FeaturedProduct src="/product-4.png" alt="product 4 image" />
+              <FeaturedProduct width={178} height={178} src="/product-1.png" alt="product 1 image" />
+              <FeaturedProduct width={130} height={150} src="/product-2.png" alt="product 2 image" />
+              <FeaturedProduct width={175} height={175} src="/product-3.png" alt="product 3 image" />
+              <FeaturedProduct width={216} height={151} src="/product-4.png" alt="product 4 image" />
             </div>
             <div className="w-[91px] h-[4px] flex gap-1 mt-12">
               <div className="w-[24px] h-[4px] bg-pink rounded-[10px]"></div>
@@ -81,7 +84,7 @@ export default function Home() {
               <div className="w-[16px] h-[4px] bg-[#FEBAD7] rounded-[10px]"></div>
             </div>
             <div className="my-16 flex justify-center flex-col items-center">
-              <h1 className="text-[32px] sm:text-[42px] font-josefin text-center leading-[49.22px] text-[#151875] font-bold">
+              <h1 className="text-[32px] sm:text-[42px] font-josefin text-center mt-4 leading-[49.22px] text-[#151875] font-bold">
                 Latest Products
               </h1>
               <div className="w-full flex justify-center">
@@ -144,21 +147,21 @@ export default function Home() {
               </h1>
             </div>
             <div className="flex flex-wrap gap-6 justify-center mt-8">
-              <div>
+              <div className="bg-white shadow-md shadow-gray-300">
                 <ServiceCard src="/free-delivery.png" />
               </div>
-              <div>
+              <div className="bg-white shadow-md shadow-gray-300">
                 <ServiceCard src="/cashback.png" />
               </div>
-              <div>
+              <div className="bg-white shadow-md shadow-gray-300">
                 <ServiceCard src="/premium-quality.png" />
               </div>
-              <div>
+              <div className="bg-white shadow-md shadow-gray-300">
                 <ServiceCard src="/24-hours-support.png" />
               </div>
             </div>
 
-            <div className="lg:max-w-full w-full bg-pantonePurple">
+            <div className="lg:max-w-full w-full bg-pantonePurple mt-32">
               <div className="px-4 py-8 md:px-16 lg:px-48 flex flex-wrap items-start">
                 <div className="flex-shrink-0 w-full md:w-auto mb-4 md:mb-0">
                   <Image

@@ -6,10 +6,10 @@ type TSrc = {
     height: number;
 }
 
-function FeaturedProduct({src, width, height}: TSrc) {
+function LatestProduct({src, width, height}: TSrc) {
   return (
-    <div className='w-[360px] h-[306px] bg-white'>
-        <div className='w-[full] h-[269.96px] bg-[#F7F7F7] flex justify-center items-center'>
+    <div className='w-[360px] h-[306px] bg-white sm:px-0 px-8'>
+        <div className='w-full h-[269.96px] bg-[#F7F7F7] flex justify-center items-center'>
             <Image 
             src={`${src}`}
             alt='Product image'
@@ -27,4 +27,4 @@ function FeaturedProduct({src, width, height}: TSrc) {
   )
 }
 
-export default FeaturedProduct
+export default LatestProduct
