@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import ProductCard from "./components/ProductCard1";
-import { Button } from "@/components/ui/button";
 import FeaturedProduct from "./components/FeaturedProduct";
+import { Button } from "@/components/ui/button";
+import LatestProduct from "./components/LatestProduct";
 import ServiceCard from "./components/ServiceCard";
 import Head from "next/head";
 import TrendingProducts from "./components/TrendingProducts";
@@ -69,10 +69,10 @@ export default function Home() {
               Featured Products
             </h1>
             <div className="mt-10 flex justify-center gap-5 flex-wrap">
-              <ProductCard src="/product-1.png" alt="product 1 image" />
-              <ProductCard src="/product-2.png" alt="product 2 image" />
-              <ProductCard src="/product-3.png" alt="product 3 image" />
-              <ProductCard src="/product-4.png" alt="product 4 image" />
+              <FeaturedProduct src="/product-1.png" alt="product 1 image" />
+              <FeaturedProduct src="/product-2.png" alt="product 2 image" />
+              <FeaturedProduct src="/product-3.png" alt="product 3 image" />
+              <FeaturedProduct src="/product-4.png" alt="product 4 image" />
             </div>
             <div className="w-[91px] h-[4px] flex gap-1 mt-12">
               <div className="w-[24px] h-[4px] bg-pink rounded-[10px]"></div>
@@ -94,42 +94,42 @@ export default function Home() {
               </div>
               <div className="flex gap-8 justify-center mb-12 mt-10 flex-wrap">
                 <div>
-                  <FeaturedProduct
+                  <LatestProduct
                     src="/product-17.png"
                     width={223}
                     height={229}
                   />
                 </div>
                 <div>
-                  <FeaturedProduct
+                  <LatestProduct
                     src="/product-20.png"
                     width={245}
                     height={245}
                   />
                 </div>
                 <div>
-                  <FeaturedProduct
+                  <LatestProduct
                     src="/product-1.png"
                     width={221.84}
                     height={222.2}
                   />
                 </div>
                 <div>
-                  <FeaturedProduct
+                  <LatestProduct
                     src="/product-18.png"
                     width={267}
                     height={277}
                   />
                 </div>
                 <div>
-                  <FeaturedProduct
+                  <LatestProduct
                     src="/product-19.png"
                     width={303}
                     height={264}
                   />
                 </div>
                 <div>
-                  <FeaturedProduct
+                  <LatestProduct
                     src="/product-4.png"
                     width={360}
                     height={261}
