@@ -40,7 +40,7 @@ function ShopControl() {
   </div>
 
   {/* Controls Section */}
-  <div className="flex flex-wrap justify-center lg:justify-end items-center gap-4 lg:gap-6 w-full lg:w-auto">
+  <div className="flex flex-wrap justify-start sm:px-0 px-4 lg:justify-end items-center gap-4 lg:gap-6 w-full lg:w-auto">
     {/* Per Page Input */}
     <div className="flex items-center gap-2">
       <label htmlFor="perPage" className="font-lato font-normal text-[16px] text-[#3F509E] leading-[19.2px]">
