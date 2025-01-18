@@ -1,12 +1,12 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import React from 'react'
-import Breadcrumb from '../components/Breadcrumb'
+import Breadcrumb from '../../components/Breadcrumb'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import Image from 'next/image'
 
-function page() {
+function Login() {
   return (
     <>
     <Breadcrumb title="My Account" subtitle='My Account'/>
@@ -27,7 +27,7 @@ function page() {
           <Button className="font-bold font-lato text-[17px] w-full h-[47px] sm:w-[432px] mt-6 leading-[20.4px]">Sign In</Button>
           </div>
           <CardFooter className='flex justify-center mt-5'>
-            <p className='text-[17px] text-[#9096B2] font-lato font-bold'>Don’t have an Account?<Link href={'#'}>Create account</Link></p>
+            <p className='text-[17px] text-[#9096B2] font-lato font-bold'>Don’t have an Account?<Link href={'/auth/signup'}>Create account</Link></p>
           </CardFooter>
         </CardContent>
       </Card>
@@ -43,4 +43,4 @@ function page() {
   )
 }
 
-export default page
+export default Login

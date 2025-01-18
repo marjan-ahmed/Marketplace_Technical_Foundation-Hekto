@@ -3,7 +3,6 @@ import Breadcrumb from "../../components/Breadcrumb";
 import ProductCart2 from "../../components/ProductCart2";
 import ShopControl from "@/app/components/ShopControl";
 import { client } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { ShoppingCart, Heart } from "lucide-react";
@@ -11,12 +10,11 @@ import { HiOutlineMagnifyingGlassPlus } from "react-icons/hi2";
 
 export default async function Shop() {
   const query = `
-  *[_type == 'shopGrid'] | order(_createdAt asc) {
-    productTitle,
-    id,
-    productImage,
-    olderPrice,
-    newPrice,
+  *[_type == 'products'] {
+    "slug": slug.current,
+    name,
+    "image": image.asset->url,
+    price,
     description
   }
   `;
@@ -26,22 +24,19 @@ export default async function Shop() {
   return (
     <>
       <Breadcrumb title="Shop" subtitle="Shop" />
-      <ShopControl />
+      <ShopControl/>
       <div className="mt-10 flex flex-wrap justify-center gap-10 mx-36 mb-10">
         {products.map((product: any) => (
-          <div key={product.id} className="relative group">
-            <Link href={`/shop/grid/${product.id}`}>
+          <div key={product.slug} className="relative group">
+            <Link href={`/shop/grid/${product.slug}`}>
             <ProductCart2
-              src={urlFor(product.productImage).url()}
-              alt={product.productTitle}
-              width={195}
-              height={195}
-              productName={product.productTitle}
-              olderPrice={product.olderPrice}
-              newPrice={product.newPrice}
+              src={product.image}
+              alt={product.name}
+              productName={product.name}
+              price={product.price}
             />
             </Link>
-            <div className="absolute left-2 bottom-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute left-2 bottom-28 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="flex flex-col gap-[10px]">
                 {/* Add to Cart */}
                 <TooltipProvider>

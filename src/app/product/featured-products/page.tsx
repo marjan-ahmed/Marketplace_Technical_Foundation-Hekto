@@ -1,42 +1,34 @@
-'use client'
+import Breadcrumb from "@/app/components/Breadcrumb";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { client } from "@/sanity/lib/client";
 import { Heart, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { HiOutlineMagnifyingGlassPlus } from "react-icons/hi2";
 
-function FeaturedProduct() {
-  const [filteredData, setFilteredData] = useState([]);
-
-  useEffect(() => {
-    const getFeaturedProducts = async () => {
-      const query = `
-        *[_type == 'products' && isFeaturedProduct == true]{
-          _id,
-          name,
-          "image": image.asset->url,
-          description,
-          price,
-          category,
-          "slug": slug.current
-        }
-      `;
-      const data = await client.fetch(query);
-      const filteredData = data.slice(2, 6); // Adjust as per your need
-      setFilteredData(filteredData);
-    };
-
-    getFeaturedProducts();
-  }, []); 
-
+async function featuredProducts() {
+  const query = `
+    *[_type == 'products' && isFeaturedProduct == true]{
+      _id,
+      name,
+      "image": image.asset->url,
+      description,
+      price,
+      category,
+      "slug": slug.current
+    }
+  `;
+  const data = await client.fetch(query);
+  // console.log(data);
   return (
     <>
-      {filteredData.map((product: any) => (
+    <Breadcrumb title="Featured Products" subtitle="Featured Products"/>
+    <div className="flex flex-wrap justify-center gap-5 mt-5 mb-8 sm:mt-16 sm:mb-16 sm:mx-32 mx-4">
+      {data.map((product: any) => (
         <div
           key={product.slug}
-          className="mx-3 sm:mx-0 relative w-full sm:w-[300px] h-full sm:h-[391px] bg-white hover:bg-[#2F1AC4] hover:text-white shadow-2xl shadow-gray-300 group"
+          className="mx-4 mt-5 sm:mx-0 relative w-full sm:w-[300px] h-full sm:h-[391px] bg-white hover:bg-[#2F1AC4] hover:text-white shadow-lg shadow-gray-300 group"
         >
           <div className="absolute left-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <div className="flex gap-[3px]">
@@ -86,7 +78,7 @@ function FeaturedProduct() {
 
           {/* Product Image */}
           <div className="h-[236px] bg-[#F6F7FB] flex items-center justify-center">
-            <Link href={`/product/featured-products/${product.slug}`}>
+          <Link href={`/product/featured-products/${product.slug}/`}>
             <Image
               className="object-cover"
               src={product.image}
@@ -100,8 +92,8 @@ function FeaturedProduct() {
           {/* Product Details */}
           <div className="flex flex-col items-center justify-center gap-3 mt-1">
             <h1 className="font-bold font-lato text-[18px] text-pink text-center mt-3 group-hover:text-white">
-            <Link href={`/product/featured-products/${product.slug}`}>
-              {product.name}
+            <Link href={`/product/featured-products/${product.slug}/`}>
+            {product.name}
             </Link>
             </h1>
             <div className="flex gap-1 w-[52px] h-[4px] justify-center">
@@ -111,24 +103,22 @@ function FeaturedProduct() {
             </div>
             <div className="mx-5">
             <p className="text-center font-josefin text-[#151875] text-[14px] group-hover:text-white">
-            <Link href={`/product/featured-products/${product.slug}`}>
+              <Link href={`/product/featured-products/${product.slug}/`}>
               {product.description}
-            </Link>
+              </Link>
             </p>
             <div className="flex justify-between mt-3">
-            <p className="text-center mt-[-6px] font-josefin text-[#151875] text-[14px] group-hover:text-white">
+            <p className="text-center mt-[-6px] font-josefin bg-gray-200 p-1 text-[#151875] text-[14px] group-hover:text-black">
               ${product.price}
-            </p>
-            <p className="text-center mt-[-6px] font-josefin font-semibold text-[#767676] text-[14px] group-hover:text-white">
-              {product.category}
             </p>
             </div>
             </div>
           </div>
         </div>
       ))}
+      </div>
     </>
   );
 }
 
-export default FeaturedProduct;
+export default featuredProducts;

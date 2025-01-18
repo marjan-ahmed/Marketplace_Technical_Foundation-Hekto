@@ -38,7 +38,7 @@ const Header = () => {
               USD <ChevronDown size={20} />
             </li>
             <li className="flex items-center gap-1">
-              <Link href={'/login'} className="flex gap-1">
+              <Link href={'/auth/login'} className="flex gap-1">
               Login <User size={20} />
               </Link>
             </li>
@@ -68,8 +68,8 @@ const Header = () => {
           <li className="relative flex items-center gap-2">
   <DropdownMenu>
     <DropdownMenuTrigger asChild>
-      <Link href="/" className="flex items-center">
-        Home <ChevronDown size={20} />
+      <Link href="/" className="flex items-center gap-1">
+        Home <ChevronDown size={17} />
       </Link>
     </DropdownMenuTrigger>
     <DropdownMenuContent className="bg-white text-gray-800 shadow-lg rounded-md p-2 w-[150px] left-[-10px] absolute z-10">
@@ -86,12 +86,32 @@ const Header = () => {
     </DropdownMenuContent>
   </DropdownMenu>
 </li>
-
+     
             <li>
-              <Link href="/pages">Pages</Link>
-            </li>
-            <li>
-              <Link href="/products">Products</Link>
+            <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <span className="flex items-center gap-1">
+        Products <ChevronDown size={17} />
+      </span>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent className="bg-white text-gray-800 shadow-lg rounded-md p-2 w-[150px] left-[-10px] absolute z-10">
+      <DropdownMenuSeparator className="border-gray-200" />
+      <DropdownMenuItem className="hover:bg-gray-100 cursor-pointer">
+        <Link href={'/product/featured-products'}>Featured Product</Link>
+      </DropdownMenuItem>
+      <DropdownMenuItem className="hover:bg-gray-100 cursor-pointer">
+        <Link href={'/product/trending-products'}>Trending Products</Link>
+      </DropdownMenuItem>
+      <DropdownMenuSeparator />
+      <DropdownMenuLabel>Categories</DropdownMenuLabel>
+      <DropdownMenuItem className="hover:bg-gray-100 cursor-pointer">
+        <Link href={'/product/category/chair'}>Chair</Link>
+      </DropdownMenuItem>
+      <DropdownMenuItem className="hover:bg-gray-100 cursor-pointer">
+        <Link href={'/product/category/sofa'}>Sofa</Link>
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>    
             </li>
             <li>
               <Link href="/blog">Blog</Link>
@@ -143,11 +163,31 @@ const Header = () => {
     </DropdownMenuContent>
   </DropdownMenu>
 </li>
-                <li>
-                  <Link href="/pages">Pages</Link>
-                </li>
-                <li>
-                  <Link href="/products">Products</Link>
+                <li className="relative flex items-center gap-1">
+                <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <span className="flex items-center gap-1">
+        Products <ChevronDown size={17} />
+      </span>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent className="bg-white text-gray-800 shadow-lg rounded-md p-2 w-[150px] left-[-10px] absolute z-10">
+      <DropdownMenuSeparator className="border-gray-200" />
+      <DropdownMenuItem className="hover:bg-gray-100 cursor-pointer">
+        <Link href={'/product/featured-products'}>Featured Product</Link>
+      </DropdownMenuItem>
+      <DropdownMenuItem className="hover:bg-gray-100 cursor-pointer">
+        <Link href={'/product/trending-products'}>Trending Products</Link>
+      </DropdownMenuItem>
+      <DropdownMenuSeparator />
+      <DropdownMenuLabel>Categories</DropdownMenuLabel>
+      <DropdownMenuItem className="hover:bg-gray-100 cursor-pointer">
+        <Link href={'/product/category/chair'}>Chair</Link>
+      </DropdownMenuItem>
+      <DropdownMenuItem className="hover:bg-gray-100 cursor-pointer">
+        <Link href={'/product/category/sofa'}>Sofa</Link>
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu> 
                 </li>
                 <li>
                   <Link href="/blog">Blog</Link>
@@ -159,7 +199,7 @@ const Header = () => {
                   <Link href="/contact">Contact</Link>
                 </li>
                 <li>
-              <Link href={'/login'}>Login</Link>
+              <Link href='/auth/login'>Login</Link>
                 </li>
               </ul>
 

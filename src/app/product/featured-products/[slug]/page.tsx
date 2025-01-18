@@ -1,77 +1,42 @@
-import Image from 'next/image';
-import Breadcrumb from '@/app/components/Breadcrumb';
-import { Facebook, Heart, Instagram, Twitter } from 'lucide-react';
-import StarRating from '@/app/components/StarRating';
-import { client } from '@/sanity/lib/client';
-import { ImageAsset } from 'sanity';
-import { urlFor } from '@/sanity/lib/image';
+import Breadcrumb from "@/app/components/Breadcrumb";
+import StarRating from "@/app/components/StarRating";
+import { client } from "@/sanity/lib/client";
+import { Facebook, Heart, Instagram, Twitter } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
-interface IProduct {
-  productTitle: string;
-  id: string;
-  productImage: ImageAsset;
-  olderPrice: number;
-  newPrice: number;
-  description?: string;
-}
+export default async function getFeaturedProducts({
+  params: { slug },
+}: {
+  params: { slug: string };
+}) {
 
-const ProductDetail = async ({ params }: { params: { id: string } }) => {
-  const { id } = params;
-  console.log(id);
-
-  // Sanity query to fetch the product by id
   const query = `
-  *[_type == 'shopGrid' && id == "${id}"]{
-    productTitle,
-    id,
-    productImage,
-    olderPrice,
-    newPrice,
-    description
-  }
-  `;
-  const product = await client.fetch(query);
-  console.log(product);
+*[_type == 'products' && slug.current == '${slug}'][0]{
+  name,
+  description,
+  price,
+  category,
+  discountPercentage,
+  isFeaturedProduct,
+  "image": image.asset->url,
+  "slug": slug.current
+} `;
 
-  // Handle empty or multiple products (check if the response contains a product)
-  const productData = product[0]; // Assuming only one result will be fetched
+  const data = await client.fetch(query);
+  console.log(data);
 
   return (
-    <div>
-      <Breadcrumb title="Product Detail" subtitle="Product Detail" />
-
+    <>
+      <Breadcrumb title="Product Detail" subtitle="Featured Product" />
       <div className="flex justify-center items-center mt-20 mb-20">
-        <div className="w-full max-w-[1170px] relative flex flex-col lg:flex-row gap-4 h-auto shadow-gray-200 shadow-lg p-4">
+        <div className="w-full max-w-[1170px] relative flex flex-col lg:flex-row gap-4 h-auto shadow-gray-300 shadow-md p-4">
           <div className="flex flex-col justify-center gap-[16px] mx-auto lg:mx-0">
             <div className="flex">
-              <div className="hidden lg:flex flex-col justify-center gap-[16px] mx-auto lg:mx-0">
-                {/* Use correct image references */}
-                <Image
-                  className="bg-gray-200 rounded-sm p-2"
-                  src={urlFor(productData.productImage).url()!}
-                  alt={productData.productTitle}
-                  width={161}
-                  height={155}
-                />
-                <Image
-                  className="bg-gray-200 rounded-sm p-2"
-                  src={urlFor(productData.productImage).url()!}
-                  alt={productData.productTitle}
-                  width={161}
-                  height={155}
-                />
-                <Image
-                  className="bg-gray-200 rounded-sm p-2"
-                  src={urlFor(productData.productImage).url()!}
-                  alt={productData.productTitle}
-                  width={161}
-                  height={155}
-                />
-              </div>
               <Image
                 className="bg-gray-200 p-10 rounded-sm mx-4"
-                src={urlFor(productData.productImage).url()!}
-                alt={productData.productTitle}
+                src={data.image}
+                alt={data.name}
                 width={490}
                 height={300}
               />
@@ -80,19 +45,19 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
 
           <div className="p-8 py-16 lg:w-1/2">
             <h1 className="text-[36px] text-[#0D134E] font-josefin font-bold">
-              {productData.productTitle}
+              {data.name}
             </h1>
             <StarRating />
 
             <div className="flex gap-8 flex-wrap mt-2">
-              <p className="text-[16px] font-josefin text-[#151875]">${productData.newPrice}</p>
-              <p className="line-through text-pink text-[16px] font-josefin">${productData.olderPrice}</p>
+              <p className="text-[16px] font-josefin text-[#151875]">${data.price}</p>
+              <p className="text-pink text-[16px] font-josefin">Discount: {data.discountPercentage}%</p>
             </div>
 
             <div className="mt-3">
               <h5 className="text-[16px] text-[#0D134E] font-josefin font-semibold">Color</h5>
               <p className="mt-2 w-full lg:w-[549px] h-[45px] font-josefin text-[16px] text-[#A9ACC6]">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto sit voluptatibus blanditiis.
+                {data.description}
               </p>
             </div>
 
@@ -106,7 +71,8 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
             </div>
 
             <div className="mt-4">
-              <h1 className="text-[16px] mb-4 text-[#151875] font-josefin font-bold">Categories:</h1>
+              <h1 className="text-[16px] mb-4 text-[#151875] font-josefin font-bold">Categories: <Link className="font-medium" href={`/product/category/${data.category.toLowerCase()}`}>{data.category}</Link>
+              </h1>
               <ul className="text-[16px] text-[#151875] font-josefin font-bold flex gap-4 flex-col">
                 <li>Tags</li>
                 <div className="flex gap-4 items-center">
@@ -142,7 +108,7 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
             <h1 className="text-[20px] sm:text-[22px] text-[#151875] font-semibold font-josefin">Varius tempor.</h1>
             <div className="w-full sm:w-[1153px] h-auto mt-2">
               <p className="text-[#A9ACC6] text-[14px] sm:text-[16px] font-josefin sm:leading-[29px]">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium, architecto.
+                {data.description}
               </p>
             </div>
           </div>
@@ -151,13 +117,13 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
 
       <div className="mx-4 sm:mx-16 md:mx-36 mt-36 mb-16">
         <h1 className="text-[36px] text-[#101750] font-bold font-josefin">Related Products</h1>
-        <div className="mt-10 flex flex-wrap gap-6 justify-center sm:justify-between max-w-full">
-          {product.map((product: IProduct) => (
+        {/* <div className="mt-10 flex flex-wrap gap-6 justify-center sm:justify-between max-w-full">
+          {data.slice(1,4).map((product: any) => (
             <div key={product.id} className="w-full sm:w-[270px] lg:w-[270px] h-[410px] flex flex-col bg-white shadow-md">
               <div className="flex justify-center  w-full h-[340px] bg-slate-200">
                 <Image
-                  src={urlFor(product.productImage).url()!}
-                  alt={product.productTitle}
+                  src={product.image}
+                  alt={product.name}
                   width={280}
                   height={250}
                 />
@@ -165,10 +131,10 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
               <div className="flex justify-between gap-5 p-4">
                 <div className="w-full">
                   <h5 className="text-[#151875] text-[16px] font-semibold font-josefin leading-[18.75px]">
-                    {product.productTitle}
+                    {product.name}
                   </h5>
                   <h6 className="mt-2 text-[#151875] text-[13px] font-josefin leading-[15.23px]">
-                    ${product.newPrice}
+                    ${product.price}
                   </h6>
                 </div>
                 <div>
@@ -177,14 +143,12 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
 
       <div className="flex justify-center mt-16 mb-10">
         <Image src={'/companies.png'} alt="companies testimonials" width={904} height={93} />
       </div>
-    </div>
+    </>
   );
-};
-
-export default ProductDetail;
+}
