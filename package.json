@@ -38,6 +38,7 @@
     "react-medium-image-zoom": "^5.2.13",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.1",
+    "react-share": "^5.1.2",
     "sanity": "^3.68.3",
     "sonner": "^1.7.2",
     "styled-components": "^6.1.13",

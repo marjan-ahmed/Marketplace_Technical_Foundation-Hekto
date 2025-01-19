@@ -21,7 +21,7 @@ async function TrendingProducts() {
   console.log(data);
   return (
     <>
-      <Breadcrumb title="Featured Products" subtitle="Featured Products"/>
+      <Breadcrumb title="Trending" subtitle="Products"/>
       <div className="flex flex-wrap justify-center gap-5 mt-5 mb-8 sm:mt-16 sm:mb-16 sm:mx-10"> 
         {data.map((product: any) => (
           <div key={product.slug} className="w-3/4 sm:w-[360px] h-3/4 sm:h-[306px] bg-white mt-10 sm:px-0 ">

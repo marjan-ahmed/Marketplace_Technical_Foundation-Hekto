@@ -13,23 +13,23 @@ import ShopControl from '@/app/components/ShopControl';
 import Link from 'next/link';
 
 export interface IShopList {
-    id: string,
-    productImage: ImageAsset | null,
-    productTitle: string,
-    productDesc: string,
-    oldPrice: number,
-    newPrice: number
+    slug: string,
+    image: string,
+    name: string,
+    description: string,
+    price: number,
+    discountPercentage: number
 }
 
 const ShopList = async () => {
     const productList = await client.fetch(`
-        *[_type == 'shopList'] | order(_createdAt asc){
-            id,
-            productImage,
-            productTitle,
-            productDesc,
-            oldPrice,
-            newPrice
+        *[_type == 'products']{
+            "slug": slug.current,
+            name,
+            "image": image.asset->url,
+            description,
+            price,
+            discountPercentage
         }
     `);
     // console.log(product)
@@ -48,26 +48,25 @@ const ShopList = async () => {
                     {/* Shop List Content */}
                     <div className="lg:w-3/4 lg:mr-16">
                         {productList.map((product: IShopList) => {
-                            let imageUrl = "";
-                            if (product.productImage) {
-                                imageUrl = urlFor(product.productImage).url();
-                            }
                             return (
-                                <div key={product.id || product.productTitle} className="mb-6">
-                                    <div className="w-full md:w-[1121px] h-full md:h-[254px] p-5 flex flex-wrap items-center gap-8">
-                                        <Link href={`/shop/list/${product.id}`}>
+                                <div key={product.slug || product.name} className="mb-6">
+                                    <div className="w-full md:w-[1121px] h-fullmd:h-[254px] p-5 flex flex-wrap items-center gap-8">
+                                        <Link href={`/shop/list/${product.slug}`}>
                                             <Image
-                                                src={imageUrl}
-                                                alt={product.productTitle}
-                                                width={313.63}
-                                                height={217.56}
+                                            className='bg-red-100 p-2 w-[200px] h-[200px] object-contain'
+                                                src={product.image}
+                                                alt={product.name}
+                                                width={180}
+                                                height={180}
                                                 priority
                                             />
                                         </Link>
                                         <div>
-                                            <div className="w-[230px] flex justify-between">
+                                            <div className="w-full  flex justify-between">
                                                 <h1 className="text-[#111C85] text-[18px] leading-[23.29px] font-josefin font-bold">
-                                                    {product.productTitle}
+                                                <Link href={`/shop/list/${product.slug}`}>
+                                                    {product.name}
+                                                </Link>
                                                 </h1>
                                                 <div className="flex gap-1 items-center">
                                                     <div className="w-[12.15px] h-[12.15px] bg-[#DE9034] rounded-full"></div>
@@ -75,12 +74,12 @@ const ShopList = async () => {
                                                     <div className="w-[12.15px] h-[12.15px] bg-[#5E37FF] rounded-full"></div>
                                                 </div>
                                             </div>
-                                            <div className="flex gap-2 items-center mt-3">
+                                            <div className="flex gap-5 items-center mt-3">
                                                 <span className="text-[#111C85] text-[15.46px] leading-[18.12px] font-josefin">
-                                                    ${product.newPrice}.00
+                                                    ${product.price}.00
                                                 </span>
-                                                <span className="text-[#FF2AAA] text-[15.46px] leading-[18.12px] font-josefin line-through">
-                                                    ${product.oldPrice}.00
+                                                <span className="text-[#FF2AAA] text-[15.46px] leading-[18.12px] font-josefin">
+                                                    Discount: {product.discountPercentage}%
                                                 </span>
                                                 <span>
                                                     <StarRating />
@@ -88,7 +87,9 @@ const ShopList = async () => {
                                             </div>
                                             <div className="w-full md:w-[591px]">
                                                 <p className="text-[#9295AA] text-[16px] leading-[30.92px] font-normal font-lato">
-                                                    {product.productDesc}
+                                                <Link href={`/shop/list/${product.slug}`}>
+                                                {product.description}
+                                                </Link>
                                                 </p>
                                             </div>
                                             <div className="flex gap-6 items-center mt-6">
@@ -99,7 +100,7 @@ const ShopList = async () => {
                                                     <FaRegHeart size={21} color="#535399" />
                                                 </button>
                                                 <button className="w-[34.23px] h-[34.23px] shadow-md shadow-gray-200 bg-white rounded-full bg-transparent p-1 flex justify-center items-center">
-                                                    <Link href={`/list/${product.id}`}>
+                                                    <Link href={`/list/${product.slug}`}>
                                                         <HiOutlineMagnifyingGlassPlus size={21} color="#535399" />
                                                     </Link>
                                                 </button>

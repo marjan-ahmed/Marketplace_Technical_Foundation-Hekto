@@ -23,7 +23,7 @@ async function featuredProducts() {
   // console.log(data);
   return (
     <>
-    <Breadcrumb title="Featured Products" subtitle="Featured Products"/>
+    <Breadcrumb title="Featured" subtitle="Products"/>
     <div className="flex flex-wrap justify-center gap-5 mt-5 mb-8 sm:mt-16 sm:mb-16 sm:mx-32 mx-4">
       {data.map((product: any) => (
         <div

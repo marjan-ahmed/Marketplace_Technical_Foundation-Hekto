@@ -1,4 +1,5 @@
 import Breadcrumb from "@/app/components/Breadcrumb";
+import RelatedProducts from "@/app/components/RelatedProducts";
 import StarRating from "@/app/components/StarRating";
 import { client } from "@/sanity/lib/client";
 import { Facebook, Heart, Instagram, Twitter } from "lucide-react";
@@ -117,33 +118,7 @@ export default async function getTrendingProducts({
 
       <div className="mx-4 sm:mx-16 md:mx-36 mt-36 mb-16">
         <h1 className="text-[36px] text-[#101750] font-bold font-josefin">Related Products</h1>
-        {/* <div className="mt-10 flex flex-wrap gap-6 justify-center sm:justify-between max-w-full">
-          {data.slice(1,4).map((product: any) => (
-            <div key={product.id} className="w-full sm:w-[270px] lg:w-[270px] h-[410px] flex flex-col bg-white shadow-md">
-              <div className="flex justify-center  w-full h-[340px] bg-slate-200">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  width={280}
-                  height={250}
-                />
-              </div>
-              <div className="flex justify-between gap-5 p-4">
-                <div className="w-full">
-                  <h5 className="text-[#151875] text-[16px] font-semibold font-josefin leading-[18.75px]">
-                    {product.name}
-                  </h5>
-                  <h6 className="mt-2 text-[#151875] text-[13px] font-josefin leading-[15.23px]">
-                    ${product.price}
-                  </h6>
-                </div>
-                <div>
-                  <StarRating />
-                </div>
-              </div>
-            </div>
-          ))}
-        </div> */}
+        <RelatedProducts type="true"/>
       </div>
 
       <div className="flex justify-center mt-16 mb-10">
