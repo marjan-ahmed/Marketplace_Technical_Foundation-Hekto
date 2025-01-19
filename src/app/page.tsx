@@ -6,7 +6,6 @@ import LatestProduct from "./components/LatestProduct";
 import ServiceCard from "./components/ServiceCard";
 import Head from "next/head";
 // import TrendingProducts from "./components/TrendingProducts
-import { Check } from "lucide-react";
 import LatestBlog from "./components/LatestBlog";
 import Link from "next/link";
 import SeeMoreBtn from "./components/SeeMoreBtn"
