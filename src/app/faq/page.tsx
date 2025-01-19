@@ -1,33 +1,54 @@
-import React from 'react';
-import Breadcrumb from '../components/Breadcrumb';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
-import Image from 'next/image';
+import React from "react";
+import Breadcrumb from "../components/Breadcrumb";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { client } from "@/sanity/lib/client";
 
-function FAQ() {
+async function FAQ() {
+  const faqData = await client.fetch(`
+  *[_type == 'faq']{
+    question,
+    answer
+  }
+    `);
+  console.log(faqData);
   return (
     <>
       <Breadcrumb title="FAQ" subtitle="Frequently Asked Questions" />
-      <div className="my-24 sm:px-44 px-4 flex flex-col lg:flex-row gap-12 overflow-x-hidden">
-        {/* Left Side - General Information */}
+      <div className="my-24 sm:px-44 px-4 flex flex-col lg:flex-row overflow-x-hidden">
+        {}
         <div className="w-full lg:w-1/2">
-          <h1 className="text-[#1D3178] text-[30px] sm:text-[36px] font-extrabold font-josefin mb-6">General Information</h1>
-          <div className="space-y-6">
-            {faqData.map((item, index) => (
-              <div key={index} className="w-full lg:w-[499px]">
-                <h2 className="text-[#1D3178] mt-5 font-bold text-[17px] font-josefin">{item.question}</h2>
-                <p className="text-[#A1ABCC] mb-16 text-[16px] font-josefin w-full lg:w-[499px] h-[45px]">{item.answer}</p>
+          <h1 className="text-[#1D3178] text-[30px] sm:text-[36px] font-extrabold font-josefin mb-6">
+            General Information
+          </h1>
+          <div className="space-y-10">
+            {faqData.map((faq: { question: string; answer: string }) => (
+              <div key={faq.question} className="w-full lg:max-w-[499px]">
+                <h2 className="text-[#1D3178] font-bold text-[17px] font-josefin">
+                  {faq.question}
+                </h2>
+                <p className="text-[#A1ABCC] text-[16px] font-josefin mt-2">
+                  {faq.answer}
+                </p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Right Side - Ask a Question Form */}
-        <Card className="space-y-6 w-full sm:w-[566px] h-[738px] bg-[#F8F8FD] p-6 lg:w-1/2 mx-0 sm:mx-8 rounded-sm shadow-none">
+        <Card className="space-y-6 mt-16 sm:mt-0 w-full sm:w-[566px] h-[738px] bg-[#F8F8FD] p-6 lg:w-1/2 mx-0 sm:mx-8 rounded-sm shadow-none">
           <CardHeader className="mt-10 mb-20">
-            <CardTitle className="text-[24px] font-josefin text-[#1D3178] leading-[30px]">Ask a Question</CardTitle>
+            <CardTitle className="text-[24px] font-josefin text-[#1D3178] leading-[30px]">
+              Ask a Question
+            </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-10">
             <Input
@@ -49,39 +70,22 @@ function FAQ() {
             />
           </CardContent>
           <CardFooter>
-            <Button className="w-full sm:w-[156px] h-[48px] font-josefin sm:text-[16px] leading-[30px] rounded-sm">Send Mail</Button>
+            <Button className="w-full sm:w-[156px] h-[48px] font-josefin sm:text-[16px] leading-[30px] rounded-sm">
+              Send Mail
+            </Button>
           </CardFooter>
         </Card>
       </div>
-      <div className='flex justify-center items-center mb-12 sm:mb-16'>
-        <Image 
-        src={'/companies.png'}
-        alt='Companies Testimonials'
-        width={1246}
-        height={128}
+      <div className="flex justify-center items-center mb-12 sm:mb-16">
+        <Image
+          src={"/companies.png"}
+          alt="Companies Testimonials"
+          width={1246}
+          height={128}
         />
       </div>
     </>
   );
 }
-
-const faqData = [
-  {
-    question: 'Eu dictumst cum at sed euismood condimentum?',
-    answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt sed tristique mollis vitae, consequat gravida sagittis.'
-  },
-  {
-    question: 'Magna bibendum est fermentum eros.',
-    answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt sed tristique mollis vitae, consequat gravida sagittis.'
-  },
-  {
-    question: 'Odio muskana hak eris conseekin sceleton?',
-    answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt sed tristique mollis vitae, consequat gravida sagittis.'
-  },
-  {
-    question: 'Elit id blandit sabara boi velit gua mara?',
-    answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt sed tristique mollis vitae, consequat gravida sagittis.'
-  }
-];
 
 export default FAQ;
