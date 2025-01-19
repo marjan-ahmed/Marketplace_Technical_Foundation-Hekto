@@ -30,6 +30,7 @@ export default function LatestBlog() {
 
   return (
     <>
+    <div className='flex justify-center gap-12 mx-3 sm:mx-0 flex-wrap'>
       {blogs.map((blog: any) => (
         <div className='w-[370px] h-[493px] mx-3 sm:mx-0 shadow-lg bg-white shadow-gray-200' key={blog.slug}>
           <div className='w-[370px] overflow-hidden rounded-lg'>
@@ -67,12 +68,12 @@ export default function LatestBlog() {
 
           <div className='mx-5 mt-6'>
             <h1 className='font-josefin font-bold text-[#151875] text-[18px]'>
-            <Link href={`blog/${blog.slug}`}>{blog.buttonText}
+            <Link href={`blog/${blog.slug}`}>
             {blog.title}
             </Link>
             </h1>
             <p className='text-[#72718F] text-[16px] font-lato leading-[30px] mt-2 font-normal'>
-            <Link href={`blog/${blog.slug}`}>{blog.buttonText}
+            <Link href={`blog/${blog.slug}`}>
             {blog.shortDescription.slice(0,92).concat('...')}</Link>
             </p>
             <button className='underline leading-[30px] font-lato font-normal text-[16px] mt-6'>
@@ -81,6 +82,7 @@ export default function LatestBlog() {
           </div>
         </div>
       ))}
+      </div>
     </>
   );
 }
