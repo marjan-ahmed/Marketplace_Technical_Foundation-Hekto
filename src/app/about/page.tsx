@@ -70,7 +70,7 @@ function Page() {
       <div className='w-[55px] h-[55px] rounded-sm mt-[-10px]'>
         <Image
           className='object-cover w-full h-full rounded-sm'
-          src={'/client-2.png'}
+          src={'/my-picture(marjan).jpg'}
           alt='Client 2'
           width={55}
           height={55}
@@ -89,8 +89,8 @@ function Page() {
   </div>
 
   <div className='w-[132px] h-[48px] text-center'>
-        <h1 className='text-[22px] font-lato font-medium mt-4'>Selina Gomez</h1>
-        <h3 className='text-[10px] text-[#8A8FB9] font-lato leading-[15.6px]'>Ceo At Webecy Digital</h3>
+        <h1 className='text-[20px] font-lato font-medium mt-4'>Marjan Ahmed</h1>
+        <h3 className='text-[10px] text-[#8A8FB9] font-lato leading-[15.6px]'>Ceo of this Store</h3>
     </div>
     <div className='w-full sm:w-[689px] h-[97px] flex justify-center text-center mt-8'>
         <p className='font-lato font-bold text-[16px] leading-[25.6px] text-[#8A8FB9]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non duis ultrices quam vel dui sollicitudin aliquet id arcu. Nam vitae a enim nunc, sed sapien egestas ac nam. Tristique ultrices dolor aliquam lacus volutpat praesent.</p>
