@@ -1,9 +1,7 @@
 import StarRating from '@/app/components/StarRating';
 import { client } from '@/sanity/lib/client';
-import { urlFor } from '@/sanity/lib/image';
 import Image from 'next/image';
 import React from 'react';
-import { ImageAsset } from 'sanity';
 import { BsCart2 } from "react-icons/bs";
 import { FaRegHeart } from 'react-icons/fa';
 import { HiOutlineMagnifyingGlassPlus } from "react-icons/hi2";
