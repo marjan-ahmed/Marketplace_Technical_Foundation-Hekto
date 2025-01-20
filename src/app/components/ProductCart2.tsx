@@ -1,5 +1,7 @@
 'use client';
-import Image from "next/image";
+import React from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 
 type ProductCart2Props = {
   src: string;
@@ -15,7 +17,7 @@ function ProductCart2({ src, alt, productName, price }: ProductCart2Props) {
         <div className="w-[270px] h-[363px] bg-white group relative flex flex-col items-center">
           {/* Product image */}
           <div className='w-[270px] h-[280px] flex justify-center items-center bg-[#F6F7FB] group-hover:bg-[#EBF4F3] transition-colors duration-300'>
-            <Image 
+            <LazyLoadImage
               src={src} 
               alt={alt}
               width={195}
