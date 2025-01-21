@@ -34,8 +34,8 @@ async function Blog() {
 
   return (
     <>
-      <Breadcrumb title="Blog" subtitle="Blog"/>
-      <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 mt-20">
+    <Breadcrumb subcategory="blog"/>
+    <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 mt-20">
         {blogFields.map((blog: IBlogFields) => {
           let imageUrl = "";
           if (blog.picture) {

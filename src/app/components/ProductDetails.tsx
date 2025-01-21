@@ -19,7 +19,7 @@ interface Product {
 function ProductDetail({product}: ProductDetailProps) {
   return (
     <div>
-        <Breadcrumb title='Product Detail' subtitle='Product Detail'/>
+        <Breadcrumb subcategory='Product Detail'/>
         <div className='flex justify-center items-center mt-20 mb-20'>
             <div className='w-[1170px] h-[509px] bg-red-200'>
                 <div>

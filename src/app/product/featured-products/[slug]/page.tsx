@@ -5,8 +5,9 @@ import { client } from "@/sanity/lib/client";
 import { Facebook, Heart, Instagram, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import Tag from "@/app/components/Tag"
 
-export default async function getFeaturedProducts({
+export default async function getTrendingProducts({
   params: { slug },
 }: {
   params: { slug: string };
@@ -29,9 +30,9 @@ export default async function getFeaturedProducts({
 
   return (
     <>
-      <Breadcrumb title="Product Detail" subtitle="Featured Product" />
+      <Breadcrumb category="featured product" subcategory={data.name} />
       <div className="flex justify-center items-center mt-20 mb-20">
-        <div className="w-full max-w-[1170px] relative flex flex-col lg:flex-row gap-4 h-auto shadow-gray-300 shadow-md p-4">
+        <div className="w-full max-w-[1170px] relative flex flex-col lg:flex-row gap-4 h-auto shadow-gray-200 inset-2 inset-gray-300 shadow-lg p-4">
           <div className="flex flex-col justify-center gap-[16px] mx-auto lg:mx-0">
             <div className="flex">
               <Image
@@ -56,11 +57,19 @@ export default async function getFeaturedProducts({
             </div>
 
             <div className="mt-3">
-              <h5 className="text-[16px] text-[#0D134E] font-josefin font-semibold">Color</h5>
-              <p className="mt-2 w-full lg:w-[549px] h-[45px] font-josefin text-[16px] text-[#A9ACC6]">
+              <div className="flex items-center flex-wrap justify-between gap-2 w-2/4">
+              <h5 className="text-[16px] text-[#0D134E] font-josefin font-semibold">Color:</h5>
+              <div className="flex gap-2 flex-wrap">
+              <Tag title="red" />
+              <Tag title="blue"/>
+              <Tag title="green"/>
+              </div>
+              </div>
+              <p className="mt-5 w-full lg:w-[549px] h-[45px] font-josefin text-[16px] text-[#A9ACC6]">
                 {data.description}
               </p>
             </div>
+            
 
             <div className="flex gap-8 mt-8 items-center ml-[70px]">
               <div>
@@ -71,11 +80,17 @@ export default async function getFeaturedProducts({
               </div>
             </div>
 
-            <div className="mt-4">
-              <h1 className="text-[16px] mb-4 text-[#151875] font-josefin font-bold">Categories: <Link className="font-medium" href={`/product/category/${data.category.toLowerCase()}`}>{data.category}</Link>
+            <div className="pt-4">
+              <h1 className="text-[16px] mb-4 text-[#151875] font-josefin font-bold">Categories: <Link className="font-medium text-[16px]" href={`/product/category/${data.category.toLowerCase()}`}>{data.category}</Link>
               </h1>
               <ul className="text-[16px] text-[#151875] font-josefin font-bold flex gap-4 flex-col">
-                <li>Tags</li>
+                <div className="flex flex-wrap gap-5">
+                <li>Tags:</li>
+                <div className="font-medium text-[15px]">
+                  #{data.category.toLowerCase()},
+                  #{data.isFeaturedProduct == true ? "featured" : "trending"}
+                </div>
+                </div>
                 <div className="flex gap-4 items-center">
                   <li>Share</li>
                   <div className="flex gap-2">
@@ -118,14 +133,12 @@ export default async function getFeaturedProducts({
 
       <div className="mx-4 sm:mx-16 md:mx-36 mt-36 mb-16">
         <h1 className="text-[36px] text-[#101750] font-bold font-josefin">Related Products</h1>
-        <RelatedProducts type='false' />
-        </div>      
-      
+        <RelatedProducts type="true" />
+      </div>
 
       <div className="flex justify-center mt-16 mb-10">
         <Image src={'/companies.png'} alt="companies testimonials" width={904} height={93} />
       </div>
-      
     </>
   );
 }

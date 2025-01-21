@@ -1,12 +1,9 @@
 import Breadcrumb from "@/app/components/Breadcrumb";
 import ProductHoveringEffect from "@/app/components/ProductHoveringEffect";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { client } from "@/sanity/lib/client";
-import { Heart, ShoppingCart } from "lucide-react";
 import Image from "next/image";
-import { HiOutlineMagnifyingGlassPlus } from "react-icons/hi2";
+import Link from "next/link";
 
-// Fetch featured products on the server side
 async function ChairProducts() {
   const query = `
     *[_type == 'products' && category == 'Chair']{
@@ -14,7 +11,7 @@ async function ChairProducts() {
       description,
       price,
       category,
-      _id,
+      "slug": slug.current,
       discountPercentage,
       isFeaturedProduct,
       "image": image.asset->url
@@ -28,11 +25,11 @@ export default async function FeaturedProduct() {
 
   return (
     <>
-      <Breadcrumb title="Chair" subtitle="Category" />
+      <Breadcrumb category="category" subcategory="chair" />
       <div className="flex flex-wrap justify-center mt-20 mb-20 mx-4 gap-5 sm:mx-16 lg:mx-32">
         {data.map((product: any) => (
           <div
-            key={product._id}
+            key={product.slug}
             className="relative w-full sm:w-[300px] md:w-[320px] lg:w-[350px] h-full mt-5 bg-white hover:bg-[#2F1AC4] hover:text-white shadow-2xl shadow-gray-300 group rounded-lg overflow-hidden"
           >
             <div className="absolute left-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -53,7 +50,9 @@ export default async function FeaturedProduct() {
             {/* Product Details */}
             <div className="flex flex-col items-center justify-center gap-3 mt-1 px-4">
               <h1 className="font-bold font-lato text-[18px] text-pink text-center mt-3 group-hover:text-white">
+                <Link href={`/product/category/chair/${product.slug}`}>
                 {product.name}
+                </Link>
               </h1>
               <div className="flex gap-1 w-[52px] h-[4px] justify-center">
                 <div className="w-[14px] h-[4px] bg-[#05E6B7] rounded-[10px]"></div>

@@ -10,7 +10,7 @@ import { FcGoogle } from "react-icons/fc";
 function Signup() {
   return (
     <>
-      <Breadcrumb title="Create Account" subtitle="Create Account" />
+      <Breadcrumb category="my account" subcategory="create an account" />
 
       <div className="mt-24 mb-16 flex justify-center items-center">
         <Card className="w-[544px] h-auto sm:h-auto p-6 text-center">

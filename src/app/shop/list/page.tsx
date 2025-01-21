@@ -34,7 +34,7 @@ const ShopList = async () => {
     
     return (
         <>
-            <Breadcrumb title="Shop List" subtitle="Shop" />
+            <Breadcrumb category="shop" subcategory="list" />
             <ShopControl />
             <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 mt-24">
                 <div className="flex flex-col lg:flex-row gap-0">

@@ -17,7 +17,7 @@ const productImages = [
 function Cart() {
   return (
     <>
-      <Breadcrumb title="Shopping Cart" subtitle="Shopping Cart" />
+      <Breadcrumb subcategory="cart" />
       <div className="container mx-auto px-4 py-24 mb-20 max-w-6xl sm:mx-32">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Cart Table */}

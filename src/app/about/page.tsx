@@ -7,7 +7,7 @@ import ServiceCard from '../components/ServiceCard';
 function Page() {
   return (
     <>
-      <Breadcrumb title="About Us" subtitle="About Us" />
+      <Breadcrumb subcategory="about us" />
       
       {/* About Section */}
       <div className="my-24 mx-auto flex justify-center gap-12 flex-wrap px-4 sm:px-6">

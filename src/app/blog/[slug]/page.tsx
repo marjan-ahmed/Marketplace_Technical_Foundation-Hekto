@@ -37,7 +37,7 @@ export default async function getBlog({params: {slug}}: {params: {slug: string}}
 
     return (
       <>
-        <Breadcrumb title="Single Blog" subtitle='Blog'/>
+        <Breadcrumb category="blog" subcategory={blog.title}/>
         <div className='mx-8 sm:mx-20 lg:mx-40 mb-20 mt-10 sm:mt-28'>
         <Image src={imageUrl} alt={blog.title} width={870} height={453} />
         <div className="flex flex-wrap mt-6 gap-6">

@@ -1,11 +1,8 @@
 import Breadcrumb from "@/app/components/Breadcrumb";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { client } from "@/sanity/lib/client";
-import { Heart, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { HiOutlineMagnifyingGlassPlus } from "react-icons/hi2";
 
 async function TrendingProducts() {
   const query = `
@@ -21,8 +18,8 @@ async function TrendingProducts() {
   console.log(data);
   return (
     <>
-      <Breadcrumb title="Trending" subtitle="Products"/>
-      <div className="flex flex-wrap justify-center gap-5 mt-5 mb-8 sm:mt-16 sm:mb-16 sm:mx-10"> 
+    <Breadcrumb category="product" subcategory="trending"/>
+    <div className="flex flex-wrap justify-center gap-5 mt-5 mb-8 sm:mt-16 sm:mb-16 sm:mx-10"> 
         {data.map((product: any) => (
           <div key={product.slug} className="w-3/4 sm:w-[360px] h-3/4 sm:h-[306px] bg-white mt-10 sm:px-0 ">
             <div className="w-full h-[269.96px] bg-[#F7F7F7] flex justify-center items-center">

@@ -9,7 +9,7 @@ import Image from 'next/image'
 function Login() {
   return (
     <>
-    <Breadcrumb title="My Account" subtitle='My Account'/>
+    <Breadcrumb category="my account" subcategory='login'/>
 
     <div className='mt-24 mb-16 flex justify-center items-center'>
        <Card className='w-[544px] h-[494px] sm:h-[474px] p-6 text-center'>

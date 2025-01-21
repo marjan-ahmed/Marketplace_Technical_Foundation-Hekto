@@ -8,7 +8,7 @@ import Image from 'next/image'
 function Contact() {
   return (
     <>
-      <Breadcrumb title='Contact Us' subtitle='Contact Us' />
+      <Breadcrumb subcategory='contact us' />
       <div className="mt-10 sm:mt-20 md:mt-28 mb-20 flex mx-5 sm:mx-36 gap-36 sm:flex-nowrap flex-wrap">
         <div className="w-full sm:w-[550px] h-[49px] mb-14">
           <h1 className="font-josefin text-[30px] sm:text-[36px] text-[#151875] leading-[48px] font-bold">Information About us</h1>

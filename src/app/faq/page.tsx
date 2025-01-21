@@ -23,7 +23,7 @@ async function FAQ() {
   console.log(faqData);
   return (
     <>
-      <Breadcrumb title="FAQ" subtitle="Frequently Asked Questions" />
+      <Breadcrumb subcategory="Frequently Asked Questions" />
       <div className="my-24 sm:px-44 px-4 flex flex-col lg:flex-row overflow-x-hidden">
         {}
         <div className="w-full lg:w-1/2">
