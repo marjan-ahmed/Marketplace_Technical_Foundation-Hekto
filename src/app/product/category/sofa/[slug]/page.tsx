@@ -30,7 +30,7 @@ export default async function getTrendingProducts({
 
   return (
     <>
-      <Breadcrumb title="Product Detail" subtitle="Featured Product" />
+      <Breadcrumb category="Product Detail" subcategory={data.name}/>
       <div className="flex justify-center items-center mt-20 mb-20">
         <div className="w-full max-w-[1170px] relative flex flex-col lg:flex-row gap-4 h-auto shadow-gray-200 inset-2 inset-gray-300 shadow-lg p-4">
           <div className="flex flex-col justify-center gap-[16px] mx-auto lg:mx-0">
