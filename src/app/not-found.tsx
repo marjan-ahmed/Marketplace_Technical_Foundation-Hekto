@@ -6,7 +6,7 @@ import Breadcrumb from './components/Breadcrumb';
 export default function NotFound() {
   return (
     <>
-      <Breadcrumb title="404 Not Found" subtitle="404 Not Found" />
+      <Breadcrumb subcategory="404 Not Found" />
       <div className="flex flex-col items-center justify-center min-h-screen px-4">
         {/* Main Content */}
         <div className="flex flex-col mt-8 items-center justify-center w-full max-w-2xl">

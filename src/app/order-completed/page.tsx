@@ -4,7 +4,7 @@ import Breadcrumb from '../components/Breadcrumb'
 function OrderCompleted() {
   return (
     <>
-      <Breadcrumb title='Order Completed' subtitle='Order Completed'/>
+      <Breadcrumb subcategory='Order Completed'/>
       <div className='md:w-[1020] h-[526px] bg-red-100 mt-20 mb-20'>
 
       </div>
