@@ -20,7 +20,7 @@ async function featuredProducts() {
     }
   `;
   const data = await client.fetch(query);
-  // console.log(data);
+  console.log(data);
   return (
     <>
     <Breadcrumb category="product" subcategory="featured"/>

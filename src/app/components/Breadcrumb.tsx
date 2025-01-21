@@ -27,9 +27,9 @@ function Breadcrumb({ path, category, subcategory }: BreadcrumbProps) {
           {category && (
             <>
               <span>/</span>
-              <Link href={`/${category}`} passHref>
+              {/* <Link href={`/${category}`} passHref> */}
                 <button className="capitalize hover:text-blue-600">{category}</button>
-              </Link>
+              {/* </Link> */}
             </>
           )}
           <span>/</span>

@@ -2,7 +2,6 @@ import React from 'react'
 import Breadcrumb from '../components/Breadcrumb';
 import Image from 'next/image';
 
-
 interface Product {
     id: string;
     name: string;
