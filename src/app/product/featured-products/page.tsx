@@ -1,13 +1,10 @@
 import Breadcrumb from "@/app/components/Breadcrumb";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import ProductHoveringEffect from "@/app/components/ProductHoveringEffect";
 import { client } from "@/sanity/lib/client";
-import { Heart, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import { HiOutlineMagnifyingGlassPlus } from "react-icons/hi2";
 
-async function featuredProducts() {
+export default async function FeaturedProducts() {
   const query = `
     *[_type == 'products' && isFeaturedProduct == true]{
       _id,
@@ -19,11 +16,13 @@ async function featuredProducts() {
       "slug": slug.current
     }
   `;
-  const data = await client.fetch(query);
-  console.log(data);
+
+    let data = await client.fetch(query);
+    console.log(data) 
+
   return (
     <>
-    <Breadcrumb category="product" subcategory="featured"/>
+        <Breadcrumb category="product" subcategory="featured"/>
     <div className="flex flex-wrap justify-center gap-5 mt-5 mb-8 sm:mt-16 sm:mb-16 sm:mx-32 mx-4">
       {data.map((product: any) => (
         <div
@@ -32,47 +31,7 @@ async function featuredProducts() {
         >
           <div className="absolute left-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <div className="flex gap-[3px]">
-              {/* Add to Cart */}
-              <TooltipProvider>
-                <Tooltip>
-                  <div className="w-[40px] h-[40px] flex items-center justify-center text-[#1389FF] hover:bg-[#EEEFFB] rounded-full relative">
-                    <TooltipTrigger>
-                      <ShoppingCart size={20} />
-                    </TooltipTrigger>
-                    <TooltipContent className="flex items-center text-[12px] py-1 rounded shadow-lg border border-gray-300">
-                      <p>Add to Cart</p>
-                    </TooltipContent>
-                  </div>
-                </Tooltip>
-              </TooltipProvider>
-
-              {/* Add to Wishlist */}
-              <TooltipProvider>
-                <Tooltip>
-                  <div className="w-[40px] h-[40px] flex items-center justify-center text-[#1389FF] hover:bg-[#EEEFFB] rounded-full relative">
-                    <TooltipTrigger>
-                      <Heart size={20} />
-                    </TooltipTrigger>
-                    <TooltipContent className="flex items-center text-[12px] px-2 py-1 rounded shadow">
-                      <p>Add to Wishlist</p>
-                    </TooltipContent>
-                  </div>
-                </Tooltip>
-              </TooltipProvider>
-
-              {/* View Details */}
-              <TooltipProvider>
-                <Tooltip>
-                  <div className="w-[40px] h-[40px] flex items-center justify-center text-[#1389FF] hover:bg-[#EEEFFB] rounded-full relative">
-                    <TooltipTrigger>
-                      <HiOutlineMagnifyingGlassPlus size={20} />
-                    </TooltipTrigger>
-                    <TooltipContent className="flex items-center text-[12px] px-2 py-1 rounded shadow">
-                      <span className="cursor-pointer">View Details</span>
-                    </TooltipContent>
-                  </div>
-                </Tooltip>
-              </TooltipProvider>
+              <ProductHoveringEffect product={product}/>
             </div>
           </div>
 
@@ -120,5 +79,3 @@ async function featuredProducts() {
     </>
   );
 }
-
-export default featuredProducts;

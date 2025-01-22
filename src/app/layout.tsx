@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Poppins , Josefin_Sans, Lato} from "next/font/google"; 
+import ReduxProvider from "./components/ReduxProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -39,9 +40,11 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${josefin.variable} ${lato.variable}`}
       >
+        <ReduxProvider>
         <Header />
         {children}
         <Footer />
+        </ReduxProvider>
       </body>
     </html>
   );

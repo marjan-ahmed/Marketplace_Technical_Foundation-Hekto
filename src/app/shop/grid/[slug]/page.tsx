@@ -1,3 +1,4 @@
+'use client'
 import Breadcrumb from "@/app/components/Breadcrumb";
 import RelatedProducts from "@/app/components/RelatedProducts";
 import StarRating from "@/app/components/StarRating";
@@ -6,13 +7,15 @@ import { Facebook, Heart, Instagram, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Tag from "@/app/components/Tag";
+import { useDispatch } from "react-redux";
+import { add, CartItem } from "@/redux/CartSlice";
 
 export default async function getTrendingProducts({
   params: { slug },
 }: {
   params: { slug: string };
 }) {
-
+  const dispatch = useDispatch();
   const query = `
 *[_type == 'products' && slug.current == '${slug}'][0]{
   name,
@@ -27,6 +30,10 @@ export default async function getTrendingProducts({
 
   const data = await client.fetch(query);
   console.log(data);
+
+    const handleAdd = (data: CartItem) => {
+        dispatch(add(data))
+    }
 
   return (
     <>
@@ -73,7 +80,7 @@ export default async function getTrendingProducts({
 
             <div className="flex gap-8 mt-8 items-center ml-[70px]">
               <div>
-                <button className="text-[#151875] text-[16px] font-semibold font-josefin">Add To Cart</button>
+                <button className="text-[#151875] text-[16px] font-semibold font-josefin" onClick={() => handleAdd(data)}>Add To Cart</button>
               </div>
               <div>
                 <Heart size={16} color="#535399" />

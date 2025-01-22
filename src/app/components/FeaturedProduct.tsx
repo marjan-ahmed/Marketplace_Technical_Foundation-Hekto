@@ -1,14 +1,17 @@
 'use client'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { add, CartItem } from "@/redux/CartSlice";
 import { client } from "@/sanity/lib/client";
 import { Heart, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { HiOutlineMagnifyingGlassPlus } from "react-icons/hi2";
+import { useDispatch } from "react-redux";
 
 function FeaturedProduct() {
   const [filteredData, setFilteredData] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getFeaturedProducts = async () => {
@@ -31,6 +34,10 @@ function FeaturedProduct() {
     getFeaturedProducts();
   }, []); 
 
+  const handleAdd = (product: CartItem) => {
+    dispatch(add(product))
+  }
+
   return (
     <>
       {filteredData.map((product: any) => (
@@ -47,7 +54,7 @@ function FeaturedProduct() {
                     <TooltipTrigger>
                       <ShoppingCart size={20} />
                     </TooltipTrigger>
-                    <TooltipContent className="flex items-center text-[12px] py-1 rounded shadow-lg border border-gray-300">
+                    <TooltipContent onClick={() => handleAdd(product)} className="flex items-center text-[12px] py-1 rounded shadow-lg border border-gray-300">
                       <p>Add to Cart</p>
                     </TooltipContent>
                   </div>

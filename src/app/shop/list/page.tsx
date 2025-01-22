@@ -1,7 +1,8 @@
+'use client'
 import StarRating from '@/app/components/StarRating';
 import { client } from '@/sanity/lib/client';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsCart2 } from "react-icons/bs";
 import { FaRegHeart } from 'react-icons/fa';
 import { HiOutlineMagnifyingGlassPlus } from "react-icons/hi2";
@@ -9,28 +10,35 @@ import Breadcrumb from '@/app/components/Breadcrumb';
 import ShopLeftSideBar from '@/app/components/ShopLeftSideBar'; 
 import ShopControl from '@/app/components/ShopControl';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { add, CartItem } from '@/redux/CartSlice';
 
-export interface IShopList {
-    slug: string,
-    image: string,
-    name: string,
-    description: string,
-    price: number,
-    discountPercentage: number
-}
-
-const ShopList = async () => {
-    const productList = await client.fetch(`
-        *[_type == 'products']{
-            "slug": slug.current,
-            name,
-            "image": image.asset->url,
-            description,
-            price,
-            discountPercentage
-        }
-    `);
-    // console.log(product)
+const ShopList = () => {
+    const [products, setProducts] = useState([])
+    const dispatch = useDispatch();
+    
+    const handleAdd = (product: CartItem) => {
+        dispatch(add(product))
+    }
+    useEffect(() => {
+    const getProducts = async() => {
+        const query = `
+            *[_type == 'products']{
+                "slug": slug.current,
+                name,
+                "image": image.asset->url,
+                description,
+                price,
+                discountPercentage
+            }
+        `;
+        const data = await client.fetch(query);
+        console.log(data);
+        setProducts(data)
+    };
+    getProducts()
+}, [])
+    
     
     return (
         <>
@@ -45,7 +53,7 @@ const ShopList = async () => {
 
                     {/* Shop List Content */}
                     <div className="lg:w-3/4 lg:mr-16">
-                        {productList.map((product: IShopList) => {
+                        {products.map((product: CartItem) => {
                             return (
                                 <div key={product.slug || product.name} className="mb-6">
                                     <div className="w-full md:w-[1121px] h-fullmd:h-[254px] p-5 flex flex-wrap items-center gap-8">
@@ -91,7 +99,7 @@ const ShopList = async () => {
                                                 </p>
                                             </div>
                                             <div className="flex gap-6 items-center mt-6">
-                                                <button className="w-[34.23px] h-[34.23px] shadow-md shadow-gray-200 bg-white rounded-full bg-transparent p-1 flex justify-center items-center">
+                                                <button onClick={() => handleAdd(product)} className="w-[34.23px] h-[34.23px] shadow-md shadow-gray-200 bg-white rounded-full bg-transparent p-1 flex justify-center items-center">
                                                     <BsCart2 size={21} color="#535399" />
                                                 </button>
                                                 <button className="w-[34.23px] h-[34.23px] shadow-md shadow-gray-200 bg-white rounded-full bg-transparent p-1 flex justify-center items-center">

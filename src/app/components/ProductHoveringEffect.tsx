@@ -1,53 +1,77 @@
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { Heart, ShoppingCart } from 'lucide-react';
-import React from 'react'
-import { HiOutlineMagnifyingGlassPlus } from 'react-icons/hi2';
+'use client';
+import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
+import { add, CartItem } from "@/redux/CartSlice";
+import { ShoppingCart, Heart } from "lucide-react";
+import { HiOutlineMagnifyingGlassPlus } from "react-icons/hi2";
+import { useDispatch } from "react-redux";
 
-function ProductHoveringEffect() {
+type ProductHoveringEffectProps = {
+  product: CartItem; // The product being passed to handle actions like add to cart
+  onAddToWishlist?: () => void; // Action for adding to wishlist
+  onViewDetails?: () => void; // Action for viewing details of the product
+};
+
+const ProductHoveringEffect: React.FC<ProductHoveringEffectProps> = ({ product, onAddToWishlist, onViewDetails }) => {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(add(product)); // Add product to the cart using Redux dispatch
+  };
+
   return (
-    <div>
-         <TooltipProvider>
-                <Tooltip>
-                  <div className="w-[40px] h-[40px] flex items-center justify-center text-[#1389FF] hover:bg-[#EEEFFB] rounded-full relative">
-                    <TooltipTrigger>
-                      <ShoppingCart size={20} />
-                    </TooltipTrigger>
-                    <TooltipContent className="flex items-center text-[12px] py-1 rounded shadow-lg border border-gray-300">
-                      <p>Add to Cart</p>
-                    </TooltipContent>
-                  </div>
-                </Tooltip>
-              </TooltipProvider>
+    <div className="flex gap-[3px]">
+      {/* Add to Cart Button */}
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger>
+            <div
+              className="w-[40px] h-[40px] flex items-center justify-center text-[#1389FF] hover:bg-[#EEEFFB] rounded-full relative"
+              onClick={handleAddToCart}
+            >
+              <ShoppingCart size={20} />
+            </div>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Add to Cart</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
 
-              {/* Add to Wishlist */}
-              <TooltipProvider>
-                <Tooltip>
-                  <div className="w-[40px] h-[40px] flex items-center justify-center text-[#1389FF] hover:bg-[#EEEFFB] rounded-full relative">
-                    <TooltipTrigger>
-                      <Heart size={20} />
-                    </TooltipTrigger>
-                    <TooltipContent className="flex items-center text-[12px] px-2 py-1 rounded shadow">
-                      <p>Add to Wishlist</p>
-                    </TooltipContent>
-                  </div>
-                </Tooltip>
-              </TooltipProvider>
+      {/* Add to Wishlist Button */}
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger>
+            <div
+              className="w-[40px] h-[40px] flex items-center justify-center text-[#1389FF] hover:bg-[#EEEFFB] rounded-full relative"
+              onClick={onAddToWishlist}
+            >
+              <Heart size={20} />
+            </div>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Add to Wishlist</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
 
-              {/* View Details */}
-              <TooltipProvider>
-                <Tooltip>
-                  <div className="w-[40px] h-[40px] flex items-center justify-center text-[#1389FF] hover:bg-[#EEEFFB] rounded-full relative">
-                    <TooltipTrigger>
-                      <HiOutlineMagnifyingGlassPlus size={20} />
-                    </TooltipTrigger>
-                    <TooltipContent className="flex items-center text-[12px] px-2 py-1 rounded shadow">
-                      <span className="cursor-pointer">View Details</span>
-                    </TooltipContent>
-                  </div>
-                </Tooltip>
-              </TooltipProvider>
+      {/* View Details Button */}
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger>
+            <div
+              className="w-[40px] h-[40px] flex items-center justify-center text-[#1389FF] hover:bg-[#EEEFFB] rounded-full relative"
+              onClick={onViewDetails}
+            >
+              <HiOutlineMagnifyingGlassPlus size={20} />
+            </div>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>View Details</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
     </div>
-  )
-}
+  );
+};
 
 export default ProductHoveringEffect;

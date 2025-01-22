@@ -10,14 +10,21 @@ import Image from "next/image";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { ShoppingCart, Heart } from "lucide-react";
 import { HiOutlineMagnifyingGlassPlus } from "react-icons/hi2";
+import { useDispatch } from "react-redux";
+import { add, CartItem } from "@/redux/CartSlice";  
 
 export default function Shop() {
+  const dispatch = useDispatch();
   const [products, setProducts] = useState<any[]>([]);
   const [sortBy, setSortBy] = useState<string>(""); // State for sorting
   const [perPage, setPerPage] = useState<number>(12); // Default items per page
 
+
+  const handleAdd = (product: CartItem) => {
+      dispatch(add(product))
+  }
   // Fetch products from the Sanity client
-  useEffect(() => {
+  useEffect(() => {  
     const fetchProducts = async () => {
       const query = `
       *[_type == 'products'] {
@@ -133,7 +140,7 @@ export default function Shop() {
                 <TooltipProvider>
                   <Tooltip>
                     <div className="bg-white w-[35px] h-[35px] hover:shadow-sm hover:shadow-gray-300 rounded-full flex justify-center items-center text-[#151875] cursor-pointer relative">
-                      <TooltipTrigger>
+                      <TooltipTrigger onClick={() => handleAdd(product)}>
                         <ShoppingCart size={20} />
                       </TooltipTrigger>
                       <TooltipContent className="flex items-center text-[12px] absolute left-[120%] top-[50%] -translate-y-1/2 w-max px-2 py-1 rounded shadow">

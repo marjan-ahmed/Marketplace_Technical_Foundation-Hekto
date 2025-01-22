@@ -33,7 +33,7 @@ export default async function FeaturedProduct() {
             className="relative w-full sm:w-[300px] md:w-[320px] lg:w-[350px] h-full mt-5 bg-white hover:bg-[#2F1AC4] hover:text-white shadow-2xl shadow-gray-300 group rounded-lg overflow-hidden"
           >
             <div className="absolute left-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <ProductHoveringEffect/>
+                <ProductHoveringEffect product={product}/>
               </div>
 
             {/* Product Image */}

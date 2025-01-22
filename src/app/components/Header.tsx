@@ -1,3 +1,4 @@
+'use client'
 import { DropdownMenu, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -13,8 +14,11 @@ import {
   User,
 } from "lucide-react";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 const Header = () => {
+  const items = useSelector((state: RootState) => state.cart)
   return (
     <>
       {/* Top Bar */}
@@ -45,11 +49,17 @@ const Header = () => {
             <li className="sm:flex items-center gap-1 hidden relative">
               Wishlist <Heart size={20} />
             </li>
-            <li className="flex items-center">
-              <Link href={'/cart'}>
-              <ShoppingCart size={20} />
-              </Link>
-            </li>
+            <li className="flex items-center relative">
+  <Link href={'/cart'} className="flex items-center">
+    <ShoppingCart size={20} />
+    <span 
+      className="absolute -top-2 left-3 bg-red-500 text-white text-xs rounded-full px-2 py-0.5 font-bold flex items-center justify-center"
+    >
+      {items.length}
+    </span>
+  </Link>
+</li>
+
           </ul>
         </div>
       </div>

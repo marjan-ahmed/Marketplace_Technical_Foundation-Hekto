@@ -48,7 +48,7 @@ function RelatedProducts({ type }: { type: string }) {
 
   return (
     <div>
-      <div className="flex justify-center gap-10 items-center">
+      <div className="flex flex-wrap justify-center gap-10 items-center">
         {products.map((product: any) => (
           <div
             key={product.slug}
@@ -91,7 +91,7 @@ function RelatedProducts({ type }: { type: string }) {
   {/* Hover Effect */}
   <div className="absolute left-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
     <div className="flex gap-[3px]">
-      <ProductHoveringEffect />
+      <ProductHoveringEffect product={product}/>
     </div>
   </div>
 

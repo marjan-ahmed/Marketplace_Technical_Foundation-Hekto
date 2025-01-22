@@ -1,3 +1,4 @@
+'use client'
 import Breadcrumb from "@/app/components/Breadcrumb";
 import RelatedProducts from "@/app/components/RelatedProducts";
 import StarRating from "@/app/components/StarRating";
@@ -5,14 +6,16 @@ import { client } from "@/sanity/lib/client";
 import { Facebook, Heart, Instagram, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import Tag from "@/app/components/Tag"
+import Tag from "@/app/components/Tag";
+import { useDispatch } from "react-redux";
+import { add, CartItem } from "@/redux/CartSlice";
 
 export default async function getTrendingProducts({
   params: { slug },
 }: {
   params: { slug: string };
 }) {
-
+  const dispatch = useDispatch();
   const query = `
 *[_type == 'products' && slug.current == '${slug}'][0]{
   name,
@@ -28,9 +31,13 @@ export default async function getTrendingProducts({
   const data = await client.fetch(query);
   console.log(data);
 
+    const handleAdd = (data: CartItem) => {
+        dispatch(add(data))
+    }
+
   return (
     <>
-      <Breadcrumb category="featured product" subcategory={data.name} />
+      <Breadcrumb category="Product Detail" subcategory={data.name} />
       <div className="flex justify-center items-center mt-20 mb-20">
         <div className="w-full max-w-[1170px] relative flex flex-col lg:flex-row gap-4 h-auto shadow-gray-200 inset-2 inset-gray-300 shadow-lg p-4">
           <div className="flex flex-col justify-center gap-[16px] mx-auto lg:mx-0">
@@ -73,7 +80,7 @@ export default async function getTrendingProducts({
 
             <div className="flex gap-8 mt-8 items-center ml-[70px]">
               <div>
-                <button className="text-[#151875] text-[16px] font-semibold font-josefin">Add To Cart</button>
+                <button className="text-[#151875] text-[16px] font-semibold font-josefin" onClick={() => handleAdd(data)}>Add To Cart</button>
               </div>
               <div>
                 <Heart size={16} color="#535399" />
