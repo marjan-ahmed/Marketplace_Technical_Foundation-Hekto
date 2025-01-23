@@ -2,6 +2,8 @@
 
 # dependencies
 src/components/ShopControl/
+/src/app/tracking/
+/src/app/api/
 
 
 /node_modules
