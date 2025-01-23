@@ -143,7 +143,8 @@ const Header = () => {
           </ul>
 
           {/* Desktop Search Input */}
-        <SearchBar />
+        <SearchBar className="hidden sm:block"/>
+        {/* </div> */}
 
           {/* Mobile Navigation Menu */}
           <Sheet>
@@ -224,13 +225,7 @@ const Header = () => {
 
               {/* Mobile Search Input */}
               <div className="flex w-full max-w-sm relative items-center">
-                <Input type="email" placeholder="Search" className="text-black w-full font-josefin" />
-                <button
-                  type="submit"
-                  className="p-[8px] absolute right-0 bg-purple text-white font-josefin"
-                >
-                  <SearchIcon size={20} />
-                </button>
+              <SearchBar />
               </div>
             </SheetContent>
           </Sheet>
