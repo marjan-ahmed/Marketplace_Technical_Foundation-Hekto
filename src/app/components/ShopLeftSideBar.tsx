@@ -7,10 +7,6 @@ import SearchBar from './SearchBar';
 
 
 function ShopLeftSideBar() {
-  const handleSearch = (query: string) => {
-    console.log('Search query:', query);
-    
-  };
   return (
     <div className='w-[211px]'>
 
@@ -66,7 +62,7 @@ function ShopLeftSideBar() {
         <label className='text-[16px] font-normal text-[#7E81A2] font-lato leading-[30px]' htmlFor='filter-4'>$550.00 +</label>
       </div>
       <div className='relative mt-3'>
-      <SearchBar onSearch={handleSearch} />
+      <SearchBar />
       </div>
     </div>
       </div>
