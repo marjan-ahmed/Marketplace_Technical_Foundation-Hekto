@@ -1,8 +1,4 @@
-'use client'
 import React from 'react'
-import { Input } from '@/components/ui/input';
-import { FaMagnifyingGlass } from 'react-icons/fa6';
-import Link from 'next/link';
 import SearchBar from './SearchBar';
 
 
