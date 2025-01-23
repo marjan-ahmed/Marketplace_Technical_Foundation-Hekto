@@ -73,7 +73,7 @@ function Cart() {
           onChange={(e) =>
             dispatch(updateQuantity({ slug: item.slug, quantity: +e.target.value }))
           }
-          className="w-16 p-1 border rounded"
+          className="w-16 p-1 border rounded text-center"
         />
       </td>
       <td className="border-b p-4 text-[14px] text-[#15245E] font-josefin">
@@ -88,9 +88,6 @@ function Cart() {
             </div>
 
             <div className="flex justify-between mt-4">
-              <Button className="leading-[18.75px] w-[134px] h-[39px] font-josefin text-[16px] py-2 px-4">
-                Update Cart
-              </Button>
               <Button
                 onClick={() => cartItems.forEach((item) => handleRemove(item.slug))}
                 className="leading-[18.75px] w-[134px] h-[39px] font-josefin text-[16px] py-2 px-4"

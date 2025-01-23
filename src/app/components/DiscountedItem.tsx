@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { client } from "@/sanity/lib/client";
 import { Check } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 function DiscountedItem() {
@@ -74,9 +75,11 @@ function DiscountedItem() {
               </div>
             </div>
             <div className="mt-8 sm:mt-10">
+              <Link href={'/shop/grid'}>
               <Button className="w-full sm:w-[200px] h-[45px] sm:h-[57px] text-center text-[14px] sm:text-[17px] font-josefin tracking-[2%] rounded-[2px]">
                 Shop Now
               </Button>
+              </Link>
             </div>
           </div>
           <div className="w-full sm:w-[699px] sm:h-[597px] lg:w-1/2 flex sm:mt-[-10em] ">

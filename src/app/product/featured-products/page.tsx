@@ -44,6 +44,12 @@ export default async function FeaturedProducts() {
               alt={product.name}
               width={178}
               height={178}
+              layout="intrinsic" 
+              objectFit="contain" 
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL={product.image}
+              quality={90}
             />
             </Link>
           </div>

@@ -1,11 +1,18 @@
 'use client';
 import { Button } from '@/components/ui/button'
+import { add, CartItem } from '@/redux/CartSlice';
 import { client } from '@/sanity/lib/client'
 import Image from 'next/image'
 import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux';
 
 export default function UniqueProduct() {
-  const [product, setProduct] = useState<any | null>(null); 
+  const [product, setProduct] = useState<any | null>(null);
+  const dispatch = useDispatch();
+  
+  const handleAdd = (product: CartItem) => {
+    dispatch(add(product))
+  }
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -60,7 +67,9 @@ export default function UniqueProduct() {
             </p>
           </div>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-6 items-center">
-            <Button className="w-[120px] sm:w-[157px] h-[40px] sm:h-[45px] rounded-[2px] font-josefin text-[14px] sm:text-[17px] leading-[19.92px] text-white">
+            <Button 
+            onClick={() => handleAdd(product)}
+            className="w-[120px] sm:w-[157px] h-[40px] sm:h-[45px] rounded-[2px] font-josefin text-[14px] sm:text-[17px] leading-[19.92px] text-white">
               Add To Cart
             </Button>
             <div className="text-center sm:text-left">

@@ -8,17 +8,17 @@ export interface CartItem {
   image: string;
   price: number;
   description: string;
-  quantity: number; // New key for tracking quantity
-  discountPercentage: number
+  quantity: number; // Tracks item quantity
+  discountPercentage: number;
 }
 
 // Load cart from localStorage
 const loadCart = (): CartItem[] => {
-   if (typeof window !== "undefined") {
+  if (typeof window !== "undefined") {
     const storedCart = localStorage.getItem("cart");
     return storedCart ? JSON.parse(storedCart) : [];
   }
-  return []; // Return an empty cart on the server
+  return []; // Return an empty cart when on the server
 };
 
 // Create the cart slice
@@ -29,23 +29,36 @@ const cartSlice = createSlice({
     add(state, action: PayloadAction<CartItem>) {
       const existingItem = state.find((item) => item.slug === action.payload.slug);
       if (existingItem) {
-        existingItem.quantity += 1; // Increment quantity if the item exists
+        // If the item already exists, increase the quantity
+        existingItem.quantity += action.payload.quantity || 1; // Use payload quantity if provided
       } else {
-        state.push({ ...action.payload, quantity: 1 }); // Add new item with quantity 1
+        // Add a new item to the cart
+        state.push({ ...action.payload, quantity: action.payload.quantity || 1 });
       }
-      localStorage.setItem("cart", JSON.stringify(state)); // Update localStorage
+      // Update localStorage
+      if (typeof window !== "undefined") {
+        localStorage.setItem("cart", JSON.stringify(state));
+      }
     },
     remove(state, action: PayloadAction<string>) {
+      // Filter out the item to be removed
       const updatedState = state.filter((item) => item.slug !== action.payload);
-      localStorage.setItem("cart", JSON.stringify(updatedState)); // Update localStorage
-      return updatedState; // Return the updated state
+      // Update localStorage
+      if (typeof window !== "undefined") {
+        localStorage.setItem("cart", JSON.stringify(updatedState));
+      }
+      return updatedState; // Return updated state
     },
     updateQuantity(state, action: PayloadAction<{ slug: string; quantity: number }>) {
       const item = state.find((item) => item.slug === action.payload.slug);
       if (item) {
-        item.quantity = action.payload.quantity; // Update the quantity
+        // Update quantity only if it's greater than 0
+        item.quantity = Math.max(1, action.payload.quantity); // Prevent negative/zero quantity
       }
-      localStorage.setItem("cart", JSON.stringify(state)); // Update localStorage
+      // Update localStorage
+      if (typeof window !== "undefined") {
+        localStorage.setItem("cart", JSON.stringify(state));
+      }
     },
   },
 });

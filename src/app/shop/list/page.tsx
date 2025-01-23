@@ -64,6 +64,12 @@ const ShopList = () => {
                                                 alt={product.name}
                                                 width={180}
                                                 height={180}
+                                                layout="intrinsic" 
+                                                objectFit="contain" 
+                                                loading="lazy"
+                                                placeholder="blur"
+                                                blurDataURL={product.image}
+                                                quality={90}
                                                 priority
                                             />
                                         </Link>

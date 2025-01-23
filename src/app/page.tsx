@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import LatestProduct from "./components/LatestProduct";
 import ServiceCard from "./components/ServiceCard";
 import Head from "next/head";
-// import TrendingProducts from "./components/TrendingProducts
 import LatestBlog from "./components/LatestBlog";
 import Link from "next/link";
 import SeeMoreBtn from "./components/SeeMoreBtn"

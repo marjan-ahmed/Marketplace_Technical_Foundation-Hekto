@@ -76,11 +76,17 @@ const Header = () => {
           {/* Desktop Navigation Links */}
           <ul className="font-lato hidden sm:flex gap-6 sm:gap-10 py-4 sm:py-8 text-[14px] sm:text-[16px] font-normal">
           <li className="relative flex items-center gap-2">
-  <DropdownMenu>
-    <DropdownMenuTrigger asChild>
       <Link href="/" className="flex items-center gap-1">
-        Home <ChevronDown size={17} />
+        Home
       </Link>
+</li>
+
+<li className="relative flex items-center gap-2">
+  <DropdownMenu>
+    <DropdownMenuTrigger >
+      <span className="flex items-center gap-1">
+        Pages <ChevronDown size={17} />
+      </span>
     </DropdownMenuTrigger>
     <DropdownMenuContent className="bg-white text-gray-800 shadow-lg rounded-md p-2 w-[150px] left-[-10px] absolute z-10">
       <DropdownMenuSeparator className="border-gray-200" />
@@ -95,11 +101,10 @@ const Header = () => {
       </DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
-</li>
-     
+</li> 
             <li>
             <DropdownMenu>
-    <DropdownMenuTrigger asChild>
+    <DropdownMenuTrigger>
       <span className="flex items-center gap-1">
         Products <ChevronDown size={17} />
       </span>
@@ -153,11 +158,19 @@ const Header = () => {
             <SheetContent className="w-full max-w-xs">
               <ul className="flex flex-col gap-6 py-3 text-[16px] font-normal">
               <li className="relative flex items-center gap-2">
-  <DropdownMenu>
-    <DropdownMenuTrigger asChild>
+ 
       <Link href="/" className="flex items-center">
-        Home <ChevronDown size={20} />
+        Home 
       </Link>
+   
+</li>
+
+<li className="relative flex items-center gap-2">
+  <DropdownMenu>
+    <DropdownMenuTrigger>
+      <span className="flex items-center gap-1">
+        Pages <ChevronDown size={20} />
+      </span>
     </DropdownMenuTrigger>
     <DropdownMenuContent className="bg-white text-gray-800 shadow-lg rounded-md p-2 w-[150px] left-[-10px] absolute z-10">
       <DropdownMenuSeparator className="border-gray-200" />
@@ -173,9 +186,10 @@ const Header = () => {
     </DropdownMenuContent>
   </DropdownMenu>
 </li>
+
                 <li className="relative flex items-center gap-1">
                 <DropdownMenu>
-    <DropdownMenuTrigger asChild>
+    <DropdownMenuTrigger >
       <span className="flex items-center gap-1">
         Products <ChevronDown size={17} />
       </span>

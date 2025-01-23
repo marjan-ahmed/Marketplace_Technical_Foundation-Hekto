@@ -1,13 +1,13 @@
 'use client'
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { add, CartItem } from "@/redux/CartSlice";
 import { client } from "@/sanity/lib/client";
 import { Heart, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
 import { HiOutlineMagnifyingGlassPlus } from "react-icons/hi2";
-import { useDispatch } from "react-redux";
 
 function FeaturedProduct() {
   const [filteredData, setFilteredData] = useState([]);
@@ -32,11 +32,12 @@ function FeaturedProduct() {
     };
 
     getFeaturedProducts();
-  }, []); 
+  }, []);
 
   const handleAdd = (product: CartItem) => {
-    dispatch(add(product))
-  }
+    console.log("Adding product to cart:", product); // Debugging log
+    dispatch(add(product)); // Dispatch the product to Redux
+  };
 
   return (
     <>
@@ -50,11 +51,14 @@ function FeaturedProduct() {
               {/* Add to Cart */}
               <TooltipProvider>
                 <Tooltip>
-                  <div className="w-[40px] h-[40px] flex items-center justify-center text-[#1389FF] hover:bg-[#EEEFFB] rounded-full relative">
+                  <div
+                    onClick={() => handleAdd(product)} // Moved onClick here
+                    className="w-[40px] h-[40px] flex items-center justify-center text-[#1389FF] hover:bg-[#EEEFFB] rounded-full relative cursor-pointer"
+                  >
                     <TooltipTrigger>
                       <ShoppingCart size={20} />
                     </TooltipTrigger>
-                    <TooltipContent onClick={() => handleAdd(product)} className="flex items-center text-[12px] py-1 rounded shadow-lg border border-gray-300">
+                    <TooltipContent className="flex items-center text-[12px] py-1 rounded shadow-lg border border-gray-300">
                       <p>Add to Cart</p>
                     </TooltipContent>
                   </div>
@@ -64,7 +68,7 @@ function FeaturedProduct() {
               {/* Add to Wishlist */}
               <TooltipProvider>
                 <Tooltip>
-                  <div className="w-[40px] h-[40px] flex items-center justify-center text-[#1389FF] hover:bg-[#EEEFFB] rounded-full relative">
+                  <div className="w-[40px] h-[40px] flex items-center justify-center text-[#1389FF] hover:bg-[#EEEFFB] rounded-full relative cursor-pointer">
                     <TooltipTrigger>
                       <Heart size={20} />
                     </TooltipTrigger>
@@ -78,7 +82,7 @@ function FeaturedProduct() {
               {/* View Details */}
               <TooltipProvider>
                 <Tooltip>
-                  <div className="w-[40px] h-[40px] flex items-center justify-center text-[#1389FF] hover:bg-[#EEEFFB] rounded-full relative">
+                  <div className="w-[40px] h-[40px] flex items-center justify-center text-[#1389FF] hover:bg-[#EEEFFB] rounded-full relative cursor-pointer">
                     <TooltipTrigger>
                       <HiOutlineMagnifyingGlassPlus size={20} />
                     </TooltipTrigger>
@@ -94,22 +98,28 @@ function FeaturedProduct() {
           {/* Product Image */}
           <div className="h-[236px] bg-[#F6F7FB] flex items-center justify-center">
             <Link href={`/product/featured-products/${product.slug}`}>
-            <Image
-              className="object-cover"
-              src={product.image}
-              alt={product.name}
-              width={178}
-              height={178}
-            />
+              <Image
+                className="object-cover"
+                src={product.image}
+                alt={product.name}
+                width={178}
+                height={178}
+                layout="intrinsic"
+                objectFit="contain"
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL={product.image}
+                quality={90}
+              />
             </Link>
           </div>
 
           {/* Product Details */}
           <div className="flex flex-col items-center justify-center gap-3 mt-1">
             <h1 className="font-bold font-lato text-[18px] text-pink text-center mt-3 group-hover:text-white">
-            <Link href={`/product/featured-products/${product.slug}`}>
-              {product.name}
-            </Link>
+              <Link href={`/product/featured-products/${product.slug}`}>
+                {product.name}
+              </Link>
             </h1>
             <div className="flex gap-1 w-[52px] h-[4px] justify-center">
               <div className="w-[14px] h-[4px] bg-[#05E6B7] rounded-[10px]"></div>
@@ -117,19 +127,19 @@ function FeaturedProduct() {
               <div className="w-[14px] h-[4px] bg-[#00009D] rounded-[10px] group-hover:bg-[#FFEAC1]"></div>
             </div>
             <div className="mx-5">
-            <p className="text-center font-josefin text-[#151875] text-[14px] group-hover:text-white">
-            <Link href={`/product/featured-products/${product.slug}`}>
-              {product.description}
-            </Link>
-            </p>
-            <div className="flex justify-between mt-3">
-            <p className="text-center mt-[-6px] font-josefin text-[#151875] text-[14px] group-hover:text-white">
-              ${product.price}
-            </p>
-            <p className="text-center mt-[-6px] font-josefin font-semibold text-[#767676] text-[14px] group-hover:text-white">
-              {product.category}
-            </p>
-            </div>
+              <p className="text-center font-josefin text-[#151875] text-[14px] group-hover:text-white">
+                <Link href={`/product/featured-products/${product.slug}`}>
+                  {product.description}
+                </Link>
+              </p>
+              <div className="flex justify-between mt-3">
+                <p className="text-center mt-[-6px] font-josefin text-[#151875] text-[14px] group-hover:text-white">
+                  ${product.price}
+                </p>
+                <p className="text-center mt-[-6px] font-josefin font-semibold text-[#767676] text-[14px] group-hover:text-white">
+                  {product.category}
+                </p>
+              </div>
             </div>
           </div>
         </div>

@@ -31,6 +31,10 @@ async function TrendingProducts() {
                 height={229}
                 layout="intrinsic" 
                 objectFit="contain" 
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL={product.image}
+                quality={90}
               />
               </Link>
             </div>

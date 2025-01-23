@@ -4,6 +4,8 @@ import { add, CartItem } from "@/redux/CartSlice";
 import { ShoppingCart, Heart } from "lucide-react";
 import { HiOutlineMagnifyingGlassPlus } from "react-icons/hi2";
 import { useDispatch } from "react-redux";
+import Toastify from "../cart/Toastify";
+
 
 type ProductHoveringEffectProps = {
   product: CartItem; // The product being passed to handle actions like add to cart
@@ -18,6 +20,7 @@ const ProductHoveringEffect: React.FC<ProductHoveringEffectProps> = ({ product, 
     dispatch(add(product)); // Add product to the cart using Redux dispatch
   };
 
+
   return (
     <div className="flex gap-[3px]">
       {/* Add to Cart Button */}
@@ -29,6 +32,7 @@ const ProductHoveringEffect: React.FC<ProductHoveringEffectProps> = ({ product, 
               onClick={handleAddToCart}
             >
               <ShoppingCart size={20} />
+              <Toastify cart={product}/>
             </div>
           </TooltipTrigger>
           <TooltipContent>
