@@ -73,14 +73,14 @@ function SearchBar() {
 
   return (
     <div className="w-full max-w-sm mx-auto">
-      {}
+      
       <div className="relative flex items-center">
         <input
           type="text"
-          placeholder="Search for a product"
+          placeholder="Search Product"
           value={searchTerm}
           onChange={handleSearch}
-          className="text-black border border-gray-300 rounded w-full p-2"
+          className="text-black border px-5 border-gray-300 rounded w-full p-2"
         />
         <button
           type="submit"
@@ -89,73 +89,51 @@ function SearchBar() {
           <SearchIcon className="h-5 w-5" />
         </button>
       </div>
-
-      {}
+      
       {filteredProducts.length > 0 && (
-        <ul  className="mt-4 absolute z-10 max-h-[391px] overflow-y-auto p-2 space-y-4 border border-gray-200 rounded shadow-lg bg-white">
-          {filteredProducts.map((product:Product) => (
-            <div
-            key={product.slug}
-            className="mx-3 sm:mx-0 relative w-full sm:w-[300px] h-full sm:h-[391px] bg-white hover:bg-[#2F1AC4] hover:text-white shadow-2xl shadow-gray-300 group"
-            >
-            <div className="absolute left-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div className="flex gap-[3px]">
-                {}
-                <ProductHoveringEffect product={product} />
-              </div>
-            </div>
-  
-            {}
-            <div className="h-[236px] bg-[#F6F7FB] flex items-center justify-center">
-              <Link href={`/product/featured-products/${product.slug}`}>
-                <Image
-                  className="object-cover"
-                  src={product.image}
-                  alt={product.name}
-                  width={178}
-                  height={178}
-                  layout="intrinsic"
-                  objectFit="contain"
-                  loading="lazy"
-                  placeholder="blur"
-                  blurDataURL={product.image}
-                  quality={90}
-                />
-              </Link>
-            </div>
-  
-            {}
-            <div className="flex flex-col items-center justify-center gap-3 mt-1">
-              <h1 className="font-bold font-lato text-[18px] text-pink text-center mt-3 group-hover:text-white">
-                <Link href={`/product/featured-products/${product.slug}`}>
-                  {product.name}
-                </Link>
-              </h1>
-              <div className="flex gap-1 w-[52px] h-[4px] justify-center">
-                <div className="w-[14px] h-[4px] bg-[#05E6B7] rounded-[10px]"></div>
-                <div className="w-[14px] h-[4px] bg-[#F701A8] rounded-[10px]"></div>
-                <div className="w-[14px] h-[4px] bg-[#00009D] rounded-[10px] group-hover:bg-[#FFEAC1]"></div>
-              </div>
-              <div className="mx-5">
-                <p className="text-center font-josefin text-[#151875] text-[14px] group-hover:text-white">
-                  <Link href={`/product/featured-products/${product.slug}`}>
-                    {product.description}
-                  </Link>
-                </p>
-                <div className="flex justify-between mt-3">
-                  <p className="text-center mt-[-6px] font-josefin text-[#151875] text-[14px] group-hover:text-white">
-                    ${product.price}
-                  </p>
-                  <p className="text-center mt-[-6px] font-josefin font-semibold text-[#767676] text-[14px] group-hover:text-white">
-                    {product.category}
-                  </p>
-                </div>
-              </div>
-            </div>
+  <ul className="absolute mt-2 z-10 max-h-96  overflow-y-auto border border-gray-200 rounded-lg shadow-lg bg-white">
+    {filteredProducts.map((product: Product) => (
+      <li
+        key={product.slug}
+        className="flex items-center gap-4 p-4 hover:bg-gray-100 cursor-pointer transition-colors duration-300"
+      >
+        {/* Product Image */}
+        <Link href={`/product/featured-products/${product.slug}`}>
+          <Image
+            className="object-cover rounded-md"
+            src={product.image}
+            alt={product.name}
+            width={60}
+            height={60}
+            layout="fixed"
+            objectFit="contain"
+            loading="lazy"
+            placeholder="blur"
+            blurDataURL={product.image}
+            quality={90}
+          />
+        </Link>
+
+        {/* Product Details */}
+        <div className="flex-1">
+          <h3 className="text-sm font-semibold text-gray-800 hover:text-[#151875] font-josefin">
+            <Link href={`/product/featured-products/${product.slug}`}>
+              {product.name}
+            </Link>
+          </h3>
+          <p className="text-xs text-gray-500 truncate font-lato">{product.description}</p>
+          <div className="flex justify-between items-center mt-2">
+            <span className="text-sm font-semibold font-josefin text-[#151875] hover:text-[#131432]">
+              ${product.price}
+            </span>
+            <span className="text-xs font-medium text-gray-400">
+              {product.category}
+            </span>
           </div>
-    
+        </div>
+      </li>
     ))}
-        </ul>
+  </ul>
       )}
     </div>
   );

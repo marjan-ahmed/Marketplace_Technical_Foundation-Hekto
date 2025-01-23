@@ -54,130 +54,113 @@ export default function ProductDetail({
   return (
     <>
       <Breadcrumb category="Product Detail" subcategory={product.name} />
-      <div className="flex justify-center items-center mt-20 mb-20">
-        <div className="w-full max-w-[1170px] relative flex flex-col lg:flex-row gap-4 h-auto shadow-gray-200 inset-2 inset-gray-300 shadow-lg p-4">
-          <div className="flex flex-col justify-center gap-[16px] mx-auto lg:mx-0">
-            <div className="flex">
+      <div className="flex justify-center items-center mt-20 mb-20 px-4 sm:px-6 lg:px-12">
+        <div className="w-full max-w-[1170px] relative flex flex-col lg:flex-row gap-4 h-auto shadow-lg shadow-gray-200 inset-2 inset-gray-300 p-4">
+          
+          {/* Image Section */}
+          <div className="flex flex-col justify-center gap-4 mx-auto lg:mx-0 mb-8 lg:mb-0">
+            <div className="flex justify-center">
               <Image
-                className="bg-gray-200 p-10 rounded-sm mx-4"
+                className="bg-gray-200 p-4 rounded-sm mx-4"
                 src={product.image}
                 alt={product.name}
                 width={490}
                 height={300}
-                placeholder="blur" // Optional blur-up while loading
-
+                placeholder="blur"
+                blurDataURL={product.image}
               />
             </div>
           </div>
 
+          {/* Product Details Section */}
           <div className="p-8 py-16 lg:w-1/2">
-            <h1 className="text-[36px] text-[#0D134E] font-josefin font-bold">
+            <h1 className="text-2xl font-josefin mb-4 md:text-3xl lg:text-4xl font-bold text-[#0D134E]">
               {product.name}
             </h1>
             <StarRating />
 
-            <div className="flex gap-8 flex-wrap mt-2">
-              <p className="text-[16px] font-josefin text-[#151875]">
-                ${product.price}
-              </p>
-              <p className="text-pink text-[16px] font-josefin">
-                Discount: {product.discountPercentage}%
-              </p>
+            <div className="flex gap-8 flex-wrap mt-4 font-josefin">
+              <p className="text-lg font-semibold text-[#151875]">${product.price}</p>
+              <p className="text-red-500 text-lg">{`Discount: ${product.discountPercentage}%`}</p>
             </div>
 
-            <div className="mt-3">
-              <div className="flex items-center flex-wrap justify-between gap-2 w-2/4">
-                <h5 className="text-[16px] text-[#0D134E] font-josefin font-semibold">
-                  Color:
-                </h5>
+            <div className="mt-5">
+              <div className="flex items-center flex-wrap justify-between gap-2">
+                <h5 className="text-lg font-semibold font-josefin text-[#0D134E]">Color:</h5>
                 <div className="flex gap-2 flex-wrap">
-                  <Tag title="red" />
-                  <Tag title="blue" />
-                  <Tag title="green" />
+                  <Tag title="Red" />
+                  <Tag title="Blue" />
+                  <Tag title="Green" />
                 </div>
               </div>
-              <p className="mt-5 w-full lg:w-[549px] h-[45px] font-josefin text-[16px] text-[#A9ACC6]">
-                {product.description}
-              </p>
+              <p className="mt-5 text-lg text-[#A9ACC6] font-josefin">{product.description}</p>
             </div>
 
-            <div className="flex gap-4 mt-8 items-center ml-[70px]">
-  <div className="text-lg font-semibold text-gray-700">
-    {product.quantity || 1}
-  </div>
+            <div className="flex flex-wrap gap-4 mt-8 items-center">
+              {/* Quantity Controls */}
+              <button
+                onClick={() =>
+                  setProduct((prev: CartItem) => ({
+                    ...prev,
+                    quantity: (prev.quantity || 1) + 1,
+                  }))
+                }
+                className="px-4 py-2 border-2 border-gray-700 text-black rounded-sm hover:text-white hover:bg-gray-700 transition transform hover:scale-105"
+              >
+                +
+              </button>
+              <div className="text-lg font-semibold text-gray-700">{product.quantity || 1}</div>
+              <button
+                onClick={() =>
+                  setProduct((prev: CartItem) => ({
+                    ...prev,
+                    quantity: Math.max((prev.quantity || 1) - 1, 1),
+                  }))
+                }
+                className="px-4 py-2 border-2 border-gray-700 text-black rounded-sm hover:text-white hover:bg-gray-700 transition transform hover:scale-105"
+              >
+                -
+              </button>
 
-  {/* Increase Quantity Button */}
-  <button
-    onClick={() =>
-      setProduct((prev: CartItem) => ({
-        ...prev,
-        quantity: (prev.quantity || 1) + 1,
-      }))
-    }
-    className="px-4 py-1 border-2 border-gray-700 text-black rounded-sm hover:text-white  hover:bg-gray-700 transition duration-300 ease-in-out transform hover:scale-105"
-  >
-    +
-  </button>
+              <button
+                onClick={() => handleAdd({ ...product, quantity: product.quantity || 1 })}
+                className="font-josefin bg-pink bg-opacity-90 text-white px-4 py-2 rounded hover:bg-pink"
+              >
+                Add To Cart
+              </button>
 
-  <div>
-    <button
-      className="text-[#151875] text-[16px] font-semibold font-josefin hover:text-[#535399] transition duration-300 ease-in-out"
-      onClick={() => handleAdd({ ...product, quantity: product.quantity || 1 })}
-    >
-      Add To Cart
-    </button>
-  </div>
+              <Toastify cart={product} />
 
-  {/* Decrease Quantity Button */}
-  <button
-    onClick={() =>
-      setProduct((prev: CartItem) => ({
-        ...prev,
-        quantity: Math.max((prev.quantity || 1) - 1, 1),
-      }))
-    }
-    className="px-4 py-1 border-2 border-gray-700 text-black rounded-sm hover:text-white  hover:bg-gray-700 transition duration-300 ease-in-out transform hover:scale-105"
-  >
-    -
-  </button>
+              <div className="text-red-500 cursor-pointer">
+                <Heart size={16} color="#535399" className="hover:text-red-500 transition transform hover:scale-105" />
+              </div>
+            </div>
 
-  <Toastify cart={product} />
-
-  <div>
-    <Heart size={16} color="#535399" className="cursor-pointer hover:text-red-500 transition duration-300 ease-in-out" />
-  </div>
-</div>
-
-
-            <div className="pt-4">
-              <h1 className="text-[16px] mb-4 text-[#151875] font-josefin font-bold">
+            <div className="mt-6">
+              <h1 className="text-lg font-josefin font-bold text-[#151875]">
                 Categories:{" "}
-                <Link
-                  className="font-medium text-[16px]"
-                  href={`/product/category/${product.category}`}
-                >
+                <Link className="font-medium text-blue-500" href={`/product/category/${product.category}`}>
                   {product.category}
                 </Link>
               </h1>
-              <ul className="text-[16px] text-[#151875] font-josefin font-bold flex gap-4 flex-col">
-                <div className="flex flex-wrap gap-5">
+              <ul className="flex gap-10 mt-2 text-lg font-semibold text-[#151875] flex-wrap">
+                <div className="flex justify-center font-josefin items-center gap-4">
                   <li>Tags:</li>
-                  <div className="font-medium text-[15px]">
-                    #{product.category},
-                    #{product.isFeaturedProduct ? "featured" : "trending"}
+                  <div className="text-md font-medium">
+                    #{product.category} #{product.isFeaturedProduct ? "featured" : "trending"}
                   </div>
                 </div>
-                <div className="flex gap-4 items-center">
-                  <li>Share</li>
+                <div className="flex gap-4 items-center font-josefin">
+                  <li>Share:</li>
                   <div className="flex gap-2">
-                    <div className="w-[16px] h-[16px] bg-[#151875] rounded-full flex items-center justify-center">
-                      <Facebook size={12} color="white" />
+                    <div className="w-8 h-8 bg-[#151875] rounded-full flex items-center justify-center">
+                      <Facebook size={16} color="white" />
                     </div>
-                    <div className="w-[16px] h-[16px] bg-[#FB2E86] rounded-full flex items-center justify-center">
-                      <Instagram size={12} color="white" />
+                    <div className="w-8 h-8 bg-[#FB2E86] rounded-full flex items-center justify-center">
+                      <Instagram size={16} color="white" />
                     </div>
-                    <div className="w-[16px] h-[16px] bg-[#151875] rounded-full flex items-center justify-center">
-                      <Twitter size={12} color="white" />
+                    <div className="w-8 h-8 bg-[#151875] rounded-full flex items-center justify-center">
+                      <Twitter size={16} color="white" />
                     </div>
                   </div>
                 </div>
@@ -186,58 +169,49 @@ export default function ProductDetail({
           </div>
         </div>
       </div>
+      <div className="px-4 lg:px-36 bg-pantonePurple w-full h-auto sm:h-[500px]">
+        <Tabs defaultValue="additionalInfo" className="pt-8 sm:pt-12">
+          <TabsList className="flex gap-4 bg-transparent font-josefin font-bold">
+            <TabsTrigger value="additionalInfo" className="sm:w-2/6 w-full text-xl border-b-2 border-[#d4d0e8]">Additional Info</TabsTrigger>
+            <TabsTrigger value="reviews" className="sm:w-2/6 w-full text-xl border-b-2  border-[#d4d0e8]">Reviews</TabsTrigger>
+            <TabsTrigger value="video" className="sm:w-2/6 w-full text-xl border-b-2  border-[#d4d0e8]">Video</TabsTrigger>
+          </TabsList>
 
-      <div className="w-full h-auto sm:h-[649px] bg-pantonePurple mb-10">
-  <div className="px-6 sm:px-12 md:px-24 lg:px-44 py-24">
-    <Tabs defaultValue="additionalInfo" className="w-full">
-      <TabsList className="bg-transparent text-[18px] sm:text-[20px] items-center md:text-[24px] flex flex-wrap sm:flex-nowrap gap-6 sm:gap-10 md:gap-20 text-[#151875] font-josefin font-bold leading-[28.13px]">
-        <TabsTrigger className="w-full sm:w-3/4 text-[22px] p-2" value="additionalInfo">Additional Info</TabsTrigger>
-        <TabsTrigger className="w-full sm:w-3/4 text-[22px] p-2" value="reviews">Reviews</TabsTrigger>
-        <TabsTrigger className="w-full sm:w-3/4 text-[22px] p-2" value="video">Videos</TabsTrigger>
-      </TabsList>
+          <TabsContent value="additionalInfo" className="mt-5">
+            <h2>{product.name}</h2>
+            <p>{product.description}</p>
+          </TabsContent>
 
-      <TabsContent className="sm:mt-8 mt-20" value="additionalInfo">
-        <h1 className="text-[20px] sm:text-[22px] text-[#151875] font-semibold font-josefin">{product.name}</h1>
-        <p className="text-[#A9ACC6] text-[14px] sm:text-[16px] font-josefin sm:leading-[29px]">{product.description}</p>
-      </TabsContent>
+          <TabsContent value="reviews">
+            <CommentSection />
+          </TabsContent>
 
-      <TabsContent className="sm:mt-8 mt-20" value="reviews">
-        <CommentSection />
-      </TabsContent>
+          <TabsContent value="video">
+            <div className="flex justify-center pt-6 sm:pt-10">
+            <video
+              muted
+              loop 
+              autoPlay
+              src="/videos/video1.mp4"
+              className="w-full max-w-lg"
+            ></video>
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
 
-      <TabsContent className="sm:mt-10 mt-20 flex justify-center items-end" value="video">
-      <video width="700" height="700" muted loop autoPlay preload="none">
-      <source src="/videos/video1.mp4" type="video/mp4" />
-      <track
-        src="/videos/video1.vtt"
-        kind="subtitles"
-        srcLang="en"
-        label="English"
-        
-      />
-      Your browser does not support the video tag.
-    </video>
-      </TabsContent>
-    </Tabs>
-  </div>
-</div>
-
-
-      <div className="mx-4 sm:mx-16 md:mx-36 mt-36 mb-16">
-        <h1 className="text-[36px] text-[#101750] font-bold font-josefin">
-          Related Products
-        </h1>
+      {/* Related Products */}
+      <div className="sm:mx-32 mx-0 mb-10">
+        <h1 className="text-2xl mx-10 sm:mx-0 sm:text-4xl mt-14 font-bold font-josefin">Related Products</h1>
         <RelatedProducts type="true" />
       </div>
+      <Image className="block mx-auto mb-10"
+      src={'/companies.png'}
+      width={800}
+      height={800}
+      alt="Companies Logo"
+      />
 
-      <div className="flex justify-center mt-16 mb-10">
-        <Image
-          src="/companies.png"
-          alt="companies testimonials"
-          width={904}
-          height={93}
-        />
-      </div>
     </>
   );
 }

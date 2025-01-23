@@ -48,7 +48,9 @@ const Header = () => {
               </Link>
             </li>
             <li className="sm:flex items-center gap-1 hidden relative">
+              <Link href={'/wishlist'} className="flex">
               Wishlist <Heart size={20} />
+              </Link>
             </li>
             <li className="flex items-center relative">
   <Link href={'/cart'} className="flex items-center">
