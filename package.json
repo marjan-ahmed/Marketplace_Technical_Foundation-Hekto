@@ -45,6 +45,8 @@
     "react-toastify": "^11.0.3",
     "sanity": "^3.68.3",
     "sharp": "^0.33.5",
+    "shipengine": "^1.0.7",
+    "shippo": "^2.14.1",
     "sonner": "^1.7.2",
     "styled-components": "^6.1.13",
     "tailwind-merge": "^2.5.5",

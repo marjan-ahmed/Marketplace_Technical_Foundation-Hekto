@@ -16,6 +16,7 @@ import {
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
+import SearchBar from "./SearchBar";
 
 const Header = () => {
   const items = useSelector((state: RootState) => state.cart)
@@ -140,15 +141,7 @@ const Header = () => {
           </ul>
 
           {/* Desktop Search Input */}
-          <div className="hidden sm:flex w-full max-w-sm relative items-center">
-            <Input type="email" placeholder="Search" className="text-black" />
-            <button
-              type="submit"
-              className="p-[8px] absolute right-0 bg-purple text-white"
-            >
-              <SearchIcon size={20} />
-            </button>
-          </div>
+        <SearchBar />
 
           {/* Mobile Navigation Menu */}
           <Sheet>
