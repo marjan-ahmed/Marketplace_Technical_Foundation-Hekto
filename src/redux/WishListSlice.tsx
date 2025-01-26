@@ -1,39 +1,49 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+// features/wishlist/wishlistSlice.ts
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { CartItem } from "./CartSlice";
 
-export interface Product {
-  name: string;
-  slug: string;
-  description: string;
-  image: string;
-  price: number;
-  category: string;
-  quantity: number;
-  discountPercentage: number;
-  isWishlisted?: boolean;
+
+interface WishlistState {
+  wishlistItems: CartItem[];
 }
 
-const initialState = {
-  items: typeof window !== 'undefined' && localStorage.getItem('wishlist')
-    ? JSON.parse(localStorage.getItem('wishlist')!)
-    : [],
+const initialState: WishlistState = {
+  wishlistItems: JSON.parse(localStorage.getItem("wishlistItems") || "[]"),
 };
 
 const wishlistSlice = createSlice({
-  name: 'wishlist',
+  name: "wishlist",
   initialState,
   reducers: {
-    addToWishlist: (state, action: PayloadAction<Product>) => {
-      if (!state.items.find((item: Product) => item.slug === action.payload.slug)) {
-        state.items.push(action.payload);
-        localStorage.setItem('wishlist', JSON.stringify(state.items));
+    addToWishlist: (state, action: PayloadAction<CartItem>) => {
+      const itemExists = state.wishlistItems.find(
+        (item) => item.slug === action.payload.slug
+      );
+      if (!itemExists) {
+        state.wishlistItems.push(action.payload);
+        localStorage.setItem(
+          "wishlistItems",
+          JSON.stringify(state.wishlistItems)
+        );
       }
     },
     removeFromWishlist: (state, action: PayloadAction<string>) => {
-      state.items = state.items.filter((item: Product) => item.slug !== action.payload);
-      localStorage.setItem('wishlist', JSON.stringify(state.items));
+      state.wishlistItems = state.wishlistItems.filter(
+        (item) => item.slug !== action.payload
+      );
+      localStorage.setItem(
+        "wishlistItems",
+        JSON.stringify(state.wishlistItems)
+      );
+    },
+    clearWishlist: (state) => {
+      state.wishlistItems = [];
+      localStorage.setItem("wishlistItems", JSON.stringify(state.wishlistItems));
     },
   },
 });
 
-export const { addToWishlist, removeFromWishlist } = wishlistSlice.actions;
+export const { addToWishlist, removeFromWishlist, clearWishlist } =
+  wishlistSlice.actions;
+
 export default wishlistSlice.reducer;

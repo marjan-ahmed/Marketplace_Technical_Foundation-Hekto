@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Poppins , Josefin_Sans, Lato} from "next/font/google"; 
 import ReduxProvider from "./components/ReduxProvider";
+import { Toaster } from "@/components/ui/toaster";
+
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -43,9 +45,11 @@ export default function RootLayout({
         <ReduxProvider>
         <Header />
         {children}
+        <Toaster/>
         <Footer />
         </ReduxProvider>
       </body>
     </html>
+
   );
 }

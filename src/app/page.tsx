@@ -44,7 +44,7 @@ export default function Home() {
                   Best Furniture For Your Castle....
                 </span>
                 <h1 className="text-[32px] sm:text-[48px] md:text-[46px] lg:text-[48px] leading-tight sm:leading-[60px] md:leading-[68px] lg:leading-[70px] font-josefin tracking-[1.5%] font-extrabold mb-4">
-                  New Furniture Collection Trends in 2020
+                  New Furniture Collection Trends in 2025
                 </h1>
                 <p className="font-lato font-bold leading-tight text-[14px] sm:text-[16px] text-[#8A8FB9] mb-6">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna
