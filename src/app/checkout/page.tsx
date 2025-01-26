@@ -13,7 +13,7 @@ import axios from "axios";
 import { Address, Rate, trackingObjType } from "../../../type";
 import { cartProductsWhichCanBeShipped } from "../../../data";
 
-function Checkout() {
+export function Checkout() {
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart);
 
@@ -427,4 +427,3 @@ function Checkout() {
   );
 }
 
-export default Checkout;

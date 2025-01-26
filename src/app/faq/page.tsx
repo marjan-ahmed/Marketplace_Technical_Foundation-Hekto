@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 
-async function FAQ() {
+export async function FAQ() {
   const faqData = await client.fetch(`
   *[_type == 'faq']{
     question,
@@ -86,6 +86,5 @@ async function FAQ() {
       </div>
     </>
   );
-}
 
-export default FAQ;
+}
