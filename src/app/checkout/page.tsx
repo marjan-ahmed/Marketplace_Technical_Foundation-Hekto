@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import { Button } from "@/components/ui/button";
-import { MdCancel } from "react-icons/md";
 import Image from "next/image";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +12,7 @@ import axios from "axios";
 import { Address, Rate, trackingObjType } from "../../../type";
 import { cartProductsWhichCanBeShipped } from "../../../data";
 
-export function Checkout() {
+export default function Checkout() {
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart);
 
