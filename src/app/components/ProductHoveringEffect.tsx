@@ -7,7 +7,6 @@ import { HiOutlineMagnifyingGlassPlus } from "react-icons/hi2";
 import { useDispatch } from "react-redux";
 // import { useToast } from "@/components/ui/use-toast"; // Import useToast from ShadCN
 import { useToast } from "@/hooks/use-toast";
-import { addToWishlist } from "@/redux/WishListSlice";
 import { GoCheckCircleFill } from "react-icons/go";
 
 
@@ -31,14 +30,6 @@ const ProductHoveringEffect: React.FC<ProductHoveringEffectProps> = ({ product, 
   });
   };
 
-  const handleAddToWishlist = () => {
-    if (onAddToWishlist) {
-      onAddToWishlist(); // If onAddToWishlist is provided, call it
-    } else {
-      dispatch(addToWishlist(product)); // Dispatch to Redux if no prop passed
-    }
-  };
-
   return (
     <div className="flex gap-[3px]">
       {/* Add to Cart Button */}
@@ -54,23 +45,6 @@ const ProductHoveringEffect: React.FC<ProductHoveringEffectProps> = ({ product, 
           </TooltipTrigger>
           <TooltipContent>
             <p>Add to Cart</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-
-      {/* Add to Wishlist Button */}
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger>
-            <div
-              className="w-[40px] h-[40px] flex items-center justify-center text-[#1389FF] hover:bg-[#EEEFFB] rounded-full relative"
-              onClick={handleAddToWishlist}
-            >
-              <Heart size={20} />
-            </div>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>Add to Wishlist</p>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>

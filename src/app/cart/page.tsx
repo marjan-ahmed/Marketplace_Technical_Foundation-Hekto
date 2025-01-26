@@ -36,60 +36,65 @@ function Cart() {
                   </tr>
                 </thead>
                 <tbody>
-  {cartItems.map((item: CartItem) => (
-    <tr key={item.slug}>
-      <td className="border-b p-4">
-        <div className="flex items-start gap-4 relative">
-          <div className="relative w-full sm:w-auto">
-            <Image
-              src={item.image}
-              alt={item.name}
-              width={83}
-              height={87}
-              className="object-cover w-[83px] h-[87px] max-w-full"
-            />
-            <button
-              className="absolute top-0 right-0 sm:top-[-8px] sm:left-[72px]"
-              onClick={() => handleRemove(item.slug)}
-            >
-              <MdCancel />
-            </button>
-          </div>
-          <div className="flex flex-col ml-4 sm:mt-4">
-            <span className="text-[14px] font-josefin leading-[16.41px]">
-              {item.name}
-            </span>
-          </div>
-        </div>
-      </td>
-      <td className="border-b p-4 text-[14px] text-[#15245E] font-josefin">
-        ${item.price}
-      </td>
-      <td className="border-b p-4">
-        <input
-          type="number"
-          min="1"
-          value={item.quantity}
-          onChange={(e) =>
-            dispatch(updateQuantity({ slug: item.slug, quantity: +e.target.value }))
-          }
-          className="w-16 p-1 border rounded text-center"
-        />
-      </td>
-      <td className="border-b p-4 text-[14px] text-[#15245E] font-josefin">
-        ${item.price * item.quantity}
-      </td>
-    </tr>
-  ))}
-</tbody>
-
-
+                  {cartItems.map((item: CartItem) => (
+                    <tr key={item.slug}>
+                      <td className="border-b p-4">
+                        <div className="flex items-start gap-4 relative">
+                          <div className="relative w-full sm:w-auto">
+                            <Image
+                              src={item.image}
+                              alt={item.name}
+                              width={83}
+                              height={87}
+                              className="object-cover w-[83px] h-[87px] max-w-full"
+                            />
+                            <button
+                              className="absolute top-0 right-0 sm:top-[-8px] sm:left-[72px]"
+                              onClick={() => handleRemove(item.slug)}
+                            >
+                              <MdCancel />
+                            </button>
+                          </div>
+                          <div className="flex flex-col ml-4 sm:mt-4">
+                            <span className="text-[14px] font-josefin leading-[16.41px]">
+                              {item.name}
+                            </span>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="border-b p-4 text-[14px] text-[#15245E] font-josefin">
+                        ${item.price}
+                      </td>
+                      <td className="border-b p-4">
+                        <input
+                          type="number"
+                          min="1"
+                          value={item.quantity}
+                          onChange={(e) =>
+                            dispatch(
+                              updateQuantity({
+                                slug: item.slug,
+                                quantity: +e.target.value,
+                              })
+                            )
+                          }
+                          className="w-16 p-1 border rounded text-center"
+                        />
+                      </td>
+                      <td className="border-b p-4 text-[14px] text-[#15245E] font-josefin">
+                        ${item.price * item.quantity}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
               </table>
             </div>
 
             <div className="flex justify-between mt-4">
               <Button
-                onClick={() => cartItems.forEach((item) => handleRemove(item.slug))}
+                onClick={() =>
+                  cartItems.forEach((item) => handleRemove(item.slug))
+                }
                 className="leading-[18.75px] w-[134px] h-[39px] font-josefin text-[16px] py-2 px-4"
               >
                 Clear Cart
@@ -108,10 +113,14 @@ function Cart() {
                     Subtotal:
                   </span>
                   <span className="text-[#15245E] text-[16px] font-lato font-normal">
-                    ${cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)}
+                    $
+                    {cartItems.reduce(
+                      (sum, item) => sum + item.price * item.quantity,
+                      0
+                    )}
                   </span>
                 </div>
-                <Link href="/order-completed">
+                <Link href="/checkout">
                   <button className="w-full h-[40px] font-bold text-[14px] font-lato mt-8 bg-[#19D16F] text-white py-2 rounded">
                     Proceed to Checkout
                   </button>
