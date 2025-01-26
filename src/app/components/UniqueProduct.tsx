@@ -6,7 +6,7 @@ import Image from 'next/image'
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 
-export default function UniqueProduct() {
+function UniqueProduct() {
   const [product, setProduct] = useState<any | null>(null);
   const dispatch = useDispatch();
   
@@ -86,3 +86,4 @@ export default function UniqueProduct() {
     </div>
   );
 }
+export default UniqueProduct

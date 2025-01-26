@@ -19,7 +19,7 @@ export interface IBlogFields {
   publishDate: string;
 }
 
-async function Blog() {
+export async function Blog() {
   const blogFields =
     await client.fetch(`*[_type == "blog"] | order(_createdAt asc){
     picture,
@@ -97,5 +97,3 @@ async function Blog() {
     </>
   );
 }
-
-export default Blog;

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-async function TrendingProducts() {
+export async function TrendingProducts() {
   const query = `
     *[_type == 'products' && isFeaturedProduct == false]{
       name,
@@ -55,4 +55,3 @@ async function TrendingProducts() {
   );
 }
 
-export default TrendingProducts;

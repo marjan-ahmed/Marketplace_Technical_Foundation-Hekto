@@ -7,16 +7,14 @@ import { HiOutlineMagnifyingGlassPlus } from "react-icons/hi2";
 import { useDispatch } from "react-redux";
 // import { useToast } from "@/components/ui/use-toast"; // Import useToast from ShadCN
 import { useToast } from "@/hooks/use-toast";
-import { GoCheckCircleFill } from "react-icons/go";
 
 
 type ProductHoveringEffectProps = {
   product: CartItem; // The product being passed to handle actions like add to cart
-  onAddToWishlist?: () => CartItem; // Action for adding to wishlist
   onViewDetails?: () => void; // Action for viewing details of the product
 };
 
-const ProductHoveringEffect: React.FC<ProductHoveringEffectProps> = ({ product, onAddToWishlist, onViewDetails }) => {
+const ProductHoveringEffect: React.FC<ProductHoveringEffectProps> = ({ product, onViewDetails }) => {
   const dispatch = useDispatch();
   const { toast } = useToast(); // Initialize toast
 
