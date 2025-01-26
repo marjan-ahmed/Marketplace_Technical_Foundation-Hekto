@@ -342,7 +342,7 @@ function Checkout() {
             {errors.length > 0 && (
               <div className="mt-8">
                 <h2 className="text-xl font-semibold text-gray-800 mb-4">
-                  Enprrors
+                  Errors
                 </h2>
                 <div className="space-y-2">
                   {errors.map((error, index) => (

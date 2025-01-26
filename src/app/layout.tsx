@@ -7,6 +7,7 @@ import ReduxProvider from "./components/ReduxProvider";
 import { Toaster } from "@/components/ui/toaster";
 
 
+
 const poppins = Poppins({
   subsets: ["latin"],
   display: "swap",
@@ -50,6 +51,5 @@ export default function RootLayout({
         </ReduxProvider>
       </body>
     </html>
-
   );
 }
