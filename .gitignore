@@ -2,7 +2,7 @@
 
 # dependencies
 src/components/ShopControl/
-# src/app/api
+src/app/api
 
 /node_modules
 /.pnp
