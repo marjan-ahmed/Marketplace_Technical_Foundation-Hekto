@@ -32,7 +32,7 @@ const Header = () => {
           <ul className="flex items-center gap-4 font-josefin text-white m-2">
             <li className="flex sm:text-[16px] text-[12px] font-josefin items-center gap-2">
               <Mail size={20} />
-              marjanahmed.dev@gmail.com
+              marvixltd@gmail.com
             </li>
             <li className="flex sm:text-[16px] text-[12px] items-center gap-2">
               <PhoneCall size={20} />

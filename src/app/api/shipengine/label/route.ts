@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 /**
  * POST handler to create a shipping label from a rate ID.
  */
-export async function POST(req: NextRequest): Promise<NextResponse> {
+export default async function POST(req: NextRequest): Promise<NextResponse> {
   try {
     // Parse the JSON body of the request to extract the rateId
     const { rateId } = await req.json();

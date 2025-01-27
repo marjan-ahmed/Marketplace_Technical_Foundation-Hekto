@@ -16,10 +16,6 @@ export default function Checkout() {
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart);
 
-  const handleRemove = (slug: string) => {
-    dispatch(remove(slug));
-  };
-
   const [shipeToAddress, setshipeToAddress] = useState<Address>({
     name: "John Doe",
     phone: "+1 555-678-1234",

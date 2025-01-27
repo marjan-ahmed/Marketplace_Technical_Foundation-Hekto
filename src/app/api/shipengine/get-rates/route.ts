@@ -2,7 +2,7 @@ import { shipengine } from "../../../lib/helper/shipEngine";
 import { Address, Package } from "../../../../../type"; 
 import { NextRequest } from "next/server";
 
-export async function POST(req: NextRequest) {
+export default async function POST(req: NextRequest) {
   try {
     const {
       shipeToAddress,
