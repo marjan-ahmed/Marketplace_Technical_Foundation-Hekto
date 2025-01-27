@@ -41,10 +41,10 @@ export async function POST(req: NextRequest) {
       },
       rateOptions: {
         carrierIds: [
-          process.env.SHIPENGINE_FIRST_COURIER || "",
-          process.env.SHIPENGINE_SECOND_COURIER || "",
-          process.env.SHIPENGINE_THIRD_COURIER || "",
-          process.env.SHIPENGINE_FOURTH_COURIER || "",
+          process.env.SHIPENGINE_FIRST_COURIER as string,
+          process.env.SHIPENGINE_SECOND_COURIER as string,
+          process.env.SHIPENGINE_THIRD_COURIER as string,
+          process.env.SHIPENGINE_FOURTH_COURIER as string,
         ].filter(Boolean), 
       },
     });

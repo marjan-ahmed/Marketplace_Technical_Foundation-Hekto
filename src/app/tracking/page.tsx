@@ -15,6 +15,8 @@ function Tracking() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const queryLabelId = searchParams?.get("labelId") || "";
+  // for checking
+  // console.log("API Key:", process.env.SHIPENGINE_API_KEY)
 
   useEffect(() => {
     if (queryLabelId) {
