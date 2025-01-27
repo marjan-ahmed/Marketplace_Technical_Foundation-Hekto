@@ -41,10 +41,10 @@ export async function POST(req: NextRequest) {
       },
       rateOptions: {
         carrierIds: [
-          process.env.SHIPENGINE_FIRST_COURIER as string,
-          process.env.SHIPENGINE_SECOND_COURIER as string,
-          process.env.SHIPENGINE_THIRD_COURIER as string,
-          process.env.SHIPENGINE_FOURTH_COURIER as string,
+          "se-224931",
+          "se-224932",
+          "se-224933",
+          "se-228363",
         ].filter(Boolean), 
       },
     });
