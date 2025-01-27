@@ -2,7 +2,7 @@ import { shipengine } from "../../../lib/helper/shipEngine";
 import { Address, Package } from "../../../../../type"; 
 import { NextRequest } from "next/server";
 
-export default async function POST(req: NextRequest) {
+const POST = async(req: NextRequest) => {
   try {
     const {
       shipeToAddress,
@@ -66,3 +66,5 @@ export default async function POST(req: NextRequest) {
     });
   }
 }
+
+export { POST };
