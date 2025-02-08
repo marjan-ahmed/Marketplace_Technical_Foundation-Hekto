@@ -21,7 +21,7 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/about", "eslint.config.mjs", "scripts/importDataIntoSanity.mjs"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/about", "eslint.config.mjs", "scripts/importDataIntoSanity.mjs", "src/app/api/auth/[...nextauth].js"],
   "exclude": [
   "node_modules",
   "src/app/fcef",

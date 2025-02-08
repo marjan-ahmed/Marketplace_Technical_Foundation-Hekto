@@ -1,7 +1,7 @@
 import { client } from '@/sanity/lib/client';
 import { LucideCalendarDays } from 'lucide-react';
 import Image from 'next/image';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { ImPen } from 'react-icons/im';
 import { urlFor } from '@/sanity/lib/image';
 import Breadcrumb from '@/app/components/Breadcrumb';
@@ -11,6 +11,7 @@ import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
+import dynamic from 'next/dynamic';
 
 export default async function getBlog({params: {slug}}: {params: {slug: string}}){
 
@@ -34,12 +35,18 @@ export default async function getBlog({params: {slug}}: {params: {slug: string}}
   console.log(blog);
 
   const imageUrl = blog.picture ? urlFor(blog.picture).url() : '';
+  const Breadcrumb = dynamic(() => import('@/app/components/Breadcrumb'), { ssr: false });
+  const PortableText = dynamic(() => import('next-sanity').then((mod) => mod.PortableText), { ssr: false });
+
 
     return (
       <>
-        <Breadcrumb category="blog" subcategory={blog.title}/>
+       <Suspense fallback={<div>Loading...</div>}>
+  <Breadcrumb category="blog" subcategory={blog.title} />
+</Suspense>
+
         <div className='mx-8 sm:mx-20 lg:mx-40 mb-20 mt-10 sm:mt-28'>
-        <Image src={imageUrl} alt={blog.title} width={870} height={453} />
+        <Image src={imageUrl} alt={blog.title} width={870} height={453} loading='lazy'/>
         <div className="flex flex-wrap mt-6 gap-6">
               <div className="flex gap-2 items-center">
                 <ImPen size={14} color="#FB2E86" />

@@ -4,8 +4,7 @@ import { SearchIcon } from 'lucide-react';
 import { client } from '@/sanity/lib/client';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useDispatch } from 'react-redux';
-import { add, CartItem } from '@/redux/CartSlice';
+import { useRouter } from 'next/navigation';
 
 interface Product {
   name: string;
@@ -19,18 +18,14 @@ interface Product {
 }
 
 interface SearchBarProps {
-  className?: string; // className prop for customization
+  className?: string;
 }
 
 function SearchBar({ className }: SearchBarProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-  const dispatch = useDispatch();
-
-  const handleAdd = (product: CartItem) => {
-    dispatch(add(product));
-  };
+  const router = useRouter();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -56,11 +51,11 @@ function SearchBar({ className }: SearchBarProps) {
   }, []);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    const value = e.target.value.trim();
     setSearchTerm(value);
 
-    if (value.trim() === '') {
-      setFilteredProducts([]);
+    if (value === '') {
+      setFilteredProducts([]); // Clear results when search is empty
       return;
     }
 
@@ -69,6 +64,12 @@ function SearchBar({ className }: SearchBarProps) {
     );
 
     setFilteredProducts(filtered);
+  };
+
+  const handleSearchSubmit = () => {
+    if (searchTerm.trim() !== '') {
+      router.push(`/search?query=${encodeURIComponent(searchTerm)}`);
+    }
   };
 
   return (
@@ -83,15 +84,17 @@ function SearchBar({ className }: SearchBarProps) {
         />
         <button
           type="submit"
+          onClick={handleSearchSubmit}
           className="p-[9px] absolute right-0 bg-purple text-white rounded-r"
         >
           <SearchIcon className="h-5 w-5" />
         </button>
       </div>
 
-      {filteredProducts.length > 0 && (
+      {/* Only show the list when searchTerm is not empty */}
+      {searchTerm.length > 0 && filteredProducts.length > 0 && (
         <ul className="absolute mt-2 z-10 max-h-96 overflow-y-auto border border-gray-200 rounded-lg shadow-lg bg-white">
-          {filteredProducts.map((product: Product) => (
+          {filteredProducts.map((product) => (
             <li
               key={product.slug}
               className="flex items-center gap-4 p-4 hover:bg-gray-100 cursor-pointer transition-colors duration-300"
@@ -118,13 +121,9 @@ function SearchBar({ className }: SearchBarProps) {
                     {product.name}
                   </Link>
                 </h3>
-                <p className="text-xs text-gray-500 truncate font-lato">{product.description}</p>
-                <div className="flex justify-between items-center mt-2">
-                  <span className="text-sm font-semibold font-josefin text-[#151875] hover:text-[#131432]">
-                    ${product.price}
-                  </span>
-                  <span className="text-xs font-medium text-gray-400">{product.category}</span>
-                </div>
+                <p className="text-xs text-gray-500 truncate font-lato">
+                  {product.description}
+                </p>
               </div>
             </li>
           ))}

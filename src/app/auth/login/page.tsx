@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useSession, signIn, signOut } from "next-auth/react"
 
 function Login() {
   return (
@@ -24,7 +25,9 @@ function Login() {
           </div>
           <div className='flex items-start mt-4 flex-col'>
           <span className='font-lato text-[17px] text-[#9096B2] leading-[20.4px] font-normal'>Forgot your password?</span>
-          <Button className="font-bold font-lato text-[17px] w-full h-[47px] sm:w-[432px] mt-6 leading-[20.4px]">Sign In</Button>
+          <Button className="font-bold font-lato text-[17px] w-full h-[47px] sm:w-[432px] mt-6 leading-[20.4px]"
+          onClick={() => signIn()}
+          >Sign In</Button>
           </div>
           <CardFooter className='flex justify-center mt-5'>
             <p className='text-[17px] text-[#9096B2] font-lato font-bold'>Don’t have an Account?<Link href={'/auth/signup'}>Create account</Link></p>

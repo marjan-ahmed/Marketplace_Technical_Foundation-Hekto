@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import { Poppins , Josefin_Sans, Lato} from "next/font/google"; 
 import ReduxProvider from "./components/ReduxProvider";
 import { Toaster } from "@/components/ui/toaster";
-
+import { SessionProvider } from "next-auth/react"
 
 
 const poppins = Poppins({
@@ -39,6 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <SessionProvider>
     <html lang="en">
       <body
         className={`${poppins.variable} ${josefin.variable} ${lato.variable}`}
@@ -51,5 +52,6 @@ export default function RootLayout({
         </ReduxProvider>
       </body>
     </html>
+    </SessionProvider>
   );
 }
