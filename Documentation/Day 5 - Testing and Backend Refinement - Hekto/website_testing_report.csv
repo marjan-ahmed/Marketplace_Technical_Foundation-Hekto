@@ -1,0 +1,21 @@
+Test Case ID,Test Case Description,Test Steps,Expected Result,Actual Result,Status,Severity Level,Assigned To,Remarks
+TC001,Verify homepage load time,"1. Navigate to homepage
+2. Measure load time",Load time is under 2 seconds,Load time is 678ms,Passed,Low,-,-
+TC002,Check Largest Contentful Paint (LCP),"1. Run performance test
+2. Record LCP value",LCP is under 1.2 seconds,LCP is 377ms,Passed,Low,-,-
+TC003,Assess Total Blocking Time (TBT),"1. Run performance test
+2. Record TBT value",TBT is under 150ms,TBT is 0ms,Passed,Low,-,-
+TC004,Evaluate Cumulative Layout Shift (CLS),"1. Run performance test
+2. Record CLS value",CLS is less than 0.1,CLS is 0,Passed,Low,-,-
+TC005,Test server response time,"1. Send request to server
+2. Measure time to first byte (TTFB)",TTFB is under 200ms,TTFB is 150ms,Passed,Low,-,-
+TC006,Verify image optimization,"1. Inspect images
+2. Check file sizes and formats",Images are optimized and compressed,Some images are larger than recommended,Failed,Medium,-,Optimize images
+TC007,Check browser caching,"1. Inspect HTTP headers
+2. Verify caching directives",Static resources have appropriate caching headers,No caching headers present,Failed,Medium,-,Implement caching
+TC008,Test minification of CSS and JS,"1. Inspect CSS and JS files
+2. Check for minification",Files are minified to reduce size,Some files are not minified,Failed,Low,-,Minify CSS and JS files
+TC009,Evaluate third-party script impact,"1. Identify third-party scripts
+2. Measure their load times",Third-party scripts do not significantly impact performance,Third-party scripts add 500ms to load time,Failed,Medium,-,Optimize or defer third-party scripts
+TC010,Test website performance under load,"1. Simulate multiple concurrent users
+2. Measure response times",Website maintains performance under load,Response times increase significantly under load,Failed,High,-,Optimize for scalability

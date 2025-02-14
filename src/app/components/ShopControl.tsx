@@ -1,31 +1,8 @@
-// 'use client'
-
 import Link from 'next/link'
-// import React, { useState } from 'react'
 import { FaList } from 'react-icons/fa'
 import { IoGridSharp } from 'react-icons/io5'
 
 function ShopControl() {
-  // const [sorting, setSorting] = useState('');
-  // const [sortedProducts, setSortedProducts] = useState([]); // Replace with your actual products data
-
-  // const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    // const selectVal = e.target.value;
-    // setSorting(selectVal);
-    // const tempArr = [...sortedProducts];
-
-  //   if (selectVal === 'low') {
-  //     tempArr.sort((product1, product2) => Number(product1.price) - Number(product2.price));
-  //   } else if (selectVal === 'high') {
-  //     tempArr.sort((product1, product2) => Number(product2.price) - Number(product1.price));
-  //   } else if (selectVal === 'titleAsc') {
-  //     tempArr.sort((product1, product2) => product1.name.localeCompare(product2.name));
-  //   } else if (selectVal === 'titleDesc') {
-  //     tempArr.sort((product1, product2) => product2.name.localeCompare(product1.name));
-  //   }
-  //   setSortedProducts(tempArr);
-  // };
-
   return (
     <>
       <div className="flex flex-col lg:flex-row justify-between items-center mx-4 lg:mx-40 mt-20 mb-20">
@@ -56,8 +33,6 @@ function ShopControl() {
             </label>
             <select
               id="sortBy"
-              // value={sorting}
-              // onChange={handleChange}
               className="w-[130px] h-[25px] border-[#E7E6EF] border-2 text-[12px] text-[#8A8FB9] font-lato leading-[18px]"
             >
               <option value=" " disabled>

@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Breadcrumb from "../../components/Breadcrumb";
-import ProductCart2 from "../../components/ProductCart2";
+import ProductCart2 from "../../components/ProductCart";
 import { FaList } from 'react-icons/fa'
 import { IoGridSharp } from 'react-icons/io5'
 import { client } from "@/sanity/lib/client";
