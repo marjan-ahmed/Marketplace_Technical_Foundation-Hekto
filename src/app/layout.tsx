@@ -39,7 +39,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <SessionProvider>
     <html lang="en">
       <body
         className={`${poppins.variable} ${josefin.variable} ${lato.variable}`}
@@ -52,6 +51,5 @@ export default function RootLayout({
         </ReduxProvider>
       </body>
     </html>
-    </SessionProvider>
   );
 }

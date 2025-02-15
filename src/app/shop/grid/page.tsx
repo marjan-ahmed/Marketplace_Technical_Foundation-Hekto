@@ -36,6 +36,7 @@ export default function Shop() {
       }
       `;
       const fetchedProducts = await client.fetch(query);
+      console.log(fetchedProducts)
       setProducts(fetchedProducts);
     };
     fetchProducts();

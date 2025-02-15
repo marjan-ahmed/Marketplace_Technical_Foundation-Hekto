@@ -1,0 +1,9 @@
+Test Case ID,Description,Steps,Expected Result,Actual Result,Status,Remarks
+TC001,Validate product listing,Open product page > Verify products,Products displayed,Products displayed,Passed,No issues found
+TC002,Test API error handling,Disconnect API > Refresh page,Show fallback message,Fallback message shown,Passed,Handled gracefully
+TC003,Check cart functionality,Add item to cart > Verify cart,Cart updates correctly,Cart updates correctly,Passed,Works as expected
+TC004,Verify search functionality,Enter product name > Click search,Relevant products displayed,Relevant products displayed,Passed,Search is working fine
+TC005,Test user login,Enter valid credentials > Click login,User logs in successfully,User logs in successfully,Passed,Login works as expected
+TC006,Validate checkout process,Add product > Proceed to checkout > Complete payment,Order placed successfully,Order placed successfully,Passed,Checkout is smooth
+TC007,Check responsive design,Open site on mobile > Verify layout,Elements adjust correctly,Elements adjust correctly,Passed,Responsive design is good
+TC008,Test broken links,Click all links > Verify navigation,All links work correctly,All links work correctly,Passed,No broken links found

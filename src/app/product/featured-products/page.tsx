@@ -22,7 +22,7 @@ export default async function FeaturedProducts() {
 
   return (
     <>
-        <Breadcrumb category="product" subcategory="featured"/>
+    <Breadcrumb category="product" subcategory="featured"/>
     <div className="flex flex-wrap justify-center gap-5 mt-5 mb-8 sm:mt-16 sm:mb-16 sm:mx-32 mx-4">
       {data.map((product: any) => (
         <div

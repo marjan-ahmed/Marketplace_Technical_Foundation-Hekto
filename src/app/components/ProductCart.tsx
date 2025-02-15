@@ -1,8 +1,6 @@
 'use client';
 import Image from 'next/image';
 import React from 'react';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-
 
 type ProductCart2Props = {
   src: string;
