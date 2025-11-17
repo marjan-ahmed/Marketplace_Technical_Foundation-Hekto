@@ -9,6 +9,9 @@
 - [Contributing](#contributing)
 - [License](#license)
 
+#### Figma Design Template
+Check out the [E-commerce UI Kit Template on Figma](https://www.figma.com/design/585QVON4vlgEbmEblRwXDn/Project---Ecom-(An-Ecommerce-Ui-Kit)-(Community)?node-id=110-3077)
+
 ## Project Overview
 
 The Hekto Marketplace project aims to create a robust and scalable platform for buyers and sellers to interact seamlessly. This repository provides the technical foundation, including architecture designs, API specifications, and other essential documentation to guide the development process.
